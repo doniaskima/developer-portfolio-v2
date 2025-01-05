@@ -116,7 +116,7 @@
             "url": "https://lead-generator.incedo.net"
         },
         "3": {
-            "title": "Triqbriq/RentClean/Leutron",
+            "title": "RentClean/Leutron",
             "description": "I contributed to the development of customizations for the Haufe X360 platform, tailoring it to our clients' needs. These enhancements streamlined workflows, automated tasks, and integrated features to improve their daily ERP processes",
             "img": "/images/projects/triqbriq.jpg",
             "tech": ["Microsoft SQL Server","C Sharp","ASPX"],
