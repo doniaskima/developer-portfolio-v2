@@ -117,7 +117,7 @@
         },
         "3": {
             "title": "Triqbriq/RentClean/Leutron",
-            "description": " I contributed to the development of customizations for the Haufe X360 platform to support our clients in their daily ERP processes.",
+            "description": "I contributed to the development of customizations for the Haufe X360 platform, tailoring it to our clients' needs. These enhancements streamlined workflows, automated tasks, and integrated features to improve their daily ERP processes",
             "img": "/images/projects/triqbriq.jpg",
             "tech": ["Microsoft SQL Server","C Sharp","ASPX"],
             "url": "https://rentclean.haufe-x360.app/(W(23))/Frames/Login.aspx?ReturnUrl=%2fMain%3fScreenId%3dFS999999"
