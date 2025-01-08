@@ -6,12 +6,12 @@
 
             <div class="flex">
                 <!-- avatar -->
-                <img :src="gist.owner.avatar_url" alt="" class="w-8 h-8 rounded-full mr-2">
+                <img :src="'/images/donia.jpg'" alt="Profile Picture" class="w-8 h-8 rounded-full mr-2">
     
                 <!-- username & gist date info -->
                 <div class="flex flex-col">
                     <a id="username" :href="'https://github.com/' + gist.owner.login" target="_blank" class="font-fira_bold text-purple-text text-xs pb-1 hover:cursor-pointer">
-                        @{{ gist.owner.login }}
+                        @DoniaSKima
                     </a>
                     <p class="font-fira_retina text-xs text-menu-text">Created {{ monthsAgo }} months ago</p>
                 </div>
