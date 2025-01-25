@@ -10,15 +10,15 @@
                 "info": {
                     "experience": {
                         "title": "Experience",
-                        "description": "I have a strong background in software development and teamwork, with plenty of hands-on experience to bring to the table. I've worked with a variety of technologies, creating smart solutions and introducing new ideas in dynamic settings. Whether it's brainstorming ideas or building reliable systems, I aim to go above and beyond to deliver results that truly make an impact."
+                        "description": "I have a strong background in software development and teamwork, with extensive hands-on experience in creating reliable and scalable solutions. I've worked with diverse technologies, introducing smart innovations and driving impactful results in dynamic environments. Whether it's brainstorming innovative ideas or building robust systems, my aim is always to exceed expectations and deliver value."
                     },
                     "hard-skills": {
                         "title": "hard-skills",
-                        "description": "<br>As a front-end developer, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <br><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                        "description": "As a software developer, I bring a versatile set of technical skills that enable me to deliver effective solutions:<br><br>- **Front-End Development:** Proficient in React, TypeScript, and modern UI/UX design to create responsive, user-friendly interfaces.<br><br>- **Back-End Development:** Skilled in building scalable APIs using frameworks like NestJS and Spring Boot.<br><br>- **Database Management:** Experienced with Microsoft SQL Server , PostgreSQL , MongoDB and SQL, ensuring data integrity and performance optimization.<br><br>- **Microservices Architecture:** Proficient in developing and managing microservices using RabbitMQ for seamless service communication.<br><br>- **DevOps Tools:** Hands-on experience with Docker, Kubernetes, and CI/CD pipelines for efficient deployment and maintenance.<br><br>- **Version Control:** Expertise in Git, ensuring streamlined collaboration and code management.<br><br>I continually refine my technical expertise to stay updated with the latest advancements in technology and development practices."
                     },
                     "soft-skills": {
                         "title": "soft-skills",
-                        "description": "<br>I bring more than Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br><br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                        "description": "In addition to technical expertise, I bring a robust set of soft skills that enhance my ability to work effectively in diverse teams:<br><br>- **Team Collaboration:** An effective team player who thrives in collaborative environments, fostering innovation and open communication.<br><br>- **Problem-Solving:** A solution-focused approach to overcoming challenges, ensuring smooth project execution under tight deadlines.<br><br>- **Adaptability:** Quick to learn and adapt to new technologies and methodologies in a constantly evolving landscape.<br><br>- **Communication:** Strong ability to articulate technical concepts clearly to both technical and non-technical audiences.<br><br>- **Creativity:** Combines technical proficiency with creative thinking to deliver user-centric, impactful solutions.<br><br>These skills complement my technical abilities, empowering me to contribute meaningfully to both individual and team success."
                     }
                 }
             },
@@ -111,7 +111,7 @@
         },
         "2": {
             "title": "Incedo Lead Generator",
-            "description": "I contributed to the project The Incedo Lead Generator, an innovative platform that enables precise targeting of your clearly defined target group. Whether in recruiting to find the right candidates or in sales to generate promising leads, through intelligent automation,",
+            "description": "I contributed to the project The Incedo Lead Generator, an innovative platform that enables precise targeting of your clearly defined target group. Whether in recruiting to find the right candidates or in sales to generate promising leads, through intelligent automation.",
             "img": "/images/projects/ilg.png",
             "tech": ["React","Nestjs","Typescript"],
             "url": "https://lead-generator.incedo.net",
@@ -135,7 +135,7 @@
         },
         "5": {
             "title": "Plot",
-            "description": "I contributed to the Plot project as a frontend developer freelancer. Plot is a platform that makes social videos smarter. I worked on various frontend tasks, delivering key features and improvements",
+            "description": "I contributed to the Plot project as a frontend developer freelancer. Plot is a platform that makes social videos smarter. I worked on various frontend tasks, delivering key features and improvements.",
             "img": "/images/projects/Plot.png",
             "tech": ["React","Typescript"],
             "url": "https://www.plot.so/",
@@ -143,7 +143,7 @@
         },
         "6": {
             "title": "react-crafitify",
-            "description": "React-Crafitify is a versatile React component library designed to enhance the user interface of your web applications. With a focus on aesthetics and usability, React-Crafitify provides a collection of customizable UI components that can seamlessly integrate into your projects..",
+            "description": "React-Crafitify is a versatile React component library designed to enhance the user interface of your web applications. With a focus on aesthetics and usability, React-Crafitify provides a collection of customizable UI components that can seamlessly integrate into your projects.",
             "img": "/images/projects/ai-resources.png",
             "tech": ["React"],
             "url": "https://github.com/doniaskima/react-crafitify",
