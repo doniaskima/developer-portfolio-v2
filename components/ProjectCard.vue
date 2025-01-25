@@ -36,13 +36,13 @@
         >
           view-project
         </a>
-        <router-link
+        <!-- <router-link
           id="view-details"
           to="/project-details"
           class="text-white font-fira_retina py-2 px-4 w-fit text-xs rounded-lg ml-4"
         >
           view-details
-        </router-link>
+        </router-link> -->
       </div>
     </div>
   </div>
