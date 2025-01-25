@@ -36,14 +36,13 @@
         >
           view-project
         </a>
-        <a
+        <router-link
           id="view-details"
-          :href="project.details"
-          target="_blank"
+          to="/project-details"
           class="text-white font-fira_retina py-2 px-4 w-fit text-xs rounded-lg ml-4"
         >
           view-details
-        </a>
+        </router-link>
       </div>
     </div>
   </div>
