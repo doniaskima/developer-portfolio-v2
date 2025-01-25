@@ -197,6 +197,14 @@ function filterProjectsBy(filters) {
   background-color: #263b50;
 }
 
+#view-details {
+  background-color: #1c2b3a;
+}
+
+#view-details:hover {
+  background-color: #263b50;
+}
+
 input[type="checkbox"] {
   appearance: none;
   background-color: transparent;

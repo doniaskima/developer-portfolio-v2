@@ -106,42 +106,48 @@
             "description": "The Aermax project, for an industrial climbers company located in Germany, is an extensive endeavor focused on creating a robust and scalable platform by integrating both existing and newly developed microservices.",
             "img": "/images/projects/aermax.png",
             "tech": ["Flutter","React","Nestjs","Spring-boot","RabbitMq","CSS","Typescript"],
-            "url": "https://app.aermax.de/"
+            "url": "https://app.aermax.de/",
+            "details":""
         },
         "2": {
             "title": "Incedo Lead Generator",
             "description": "I contributed to the project The Incedo Lead Generator, an innovative platform that enables precise targeting of your clearly defined target group. Whether in recruiting to find the right candidates or in sales to generate promising leads, through intelligent automation,",
             "img": "/images/projects/ilg.png",
             "tech": ["React","Nestjs","Typescript"],
-            "url": "https://lead-generator.incedo.net"
+            "url": "https://lead-generator.incedo.net",
+             "details":""
         },
         "3": {
             "title": "RentClean/Triqbriq",
             "description": "I contributed to the development of customizations for the Haufe X360 platform, tailoring it to the specific needs of our clients, including Leutron, Rentclean, and TriqBriq. These enhancements streamlined workflows, automated tasks, and integrated features to improve their daily ERP processes.",
             "img": "/images/projects/triqbriq.jpg",
             "tech": ["Microsoft SQL Server","C Sharp","ASPX"],
-            "url": "https://rentclean.haufe-x360.app/(W(23))/Frames/Login.aspx?ReturnUrl=%2fMain%3fScreenId%3dFS999999"
+            "url": "https://rentclean.haufe-x360.app/(W(23))/Frames/Login.aspx?ReturnUrl=%2fMain%3fScreenId%3dFS999999",
+            "details":""
         },
         "4": {
             "title": "Fleishlelust",
             "description": "I contributed to the Fleischeslust Haufe X360 project, focusing on customizations and integrations. My responsibilities included the regular import of article master data from CSB to X360, as well as the export of customer master data from X360 to Portatours with upsert functionality. Additionally, I managed the export of visit appointments from Portatours (since the last export) and their import into X360. Furthermore, I worked on integrations with Transus and the Warehouse Operator (LIT), ensuring seamless data flow and operational efficiency.",
             "img": "/images/projects/Fleishlelust.jpeg",
             "tech": ["Microsoft SQL Server","C Sharp","ASPX"],
-            "url": "https://rentclean.haufe-x360.app/(W(23))/Frames/Login.aspx?ReturnUrl=%2fMain%3fScreenId%3dFS999999"
+            "url": "https://rentclean.haufe-x360.app/(W(23))/Frames/Login.aspx?ReturnUrl=%2fMain%3fScreenId%3dFS999999",
+             "details":""
         },
         "5": {
             "title": "Plot",
             "description": "I contributed to the Plot project as a frontend developer freelancer. Plot is a platform that makes social videos smarter. I worked on various frontend tasks, delivering key features and improvements",
             "img": "/images/projects/Plot.png",
             "tech": ["React","Typescript"],
-            "url": "https://www.plot.so/"
+            "url": "https://www.plot.so/",
+            "details":""
         },
         "6": {
             "title": "react-crafitify",
             "description": "React-Crafitify is a versatile React component library designed to enhance the user interface of your web applications. With a focus on aesthetics and usability, React-Crafitify provides a collection of customizable UI components that can seamlessly integrate into your projects..",
             "img": "/images/projects/ai-resources.png",
             "tech": ["React"],
-            "url": "https://github.com/doniaskima/react-crafitify"
+            "url": "https://github.com/doniaskima/react-crafitify",
+            "details":""
         }
     }
 }
