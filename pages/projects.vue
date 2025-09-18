@@ -189,7 +189,7 @@ const config = useRuntimeConfig();
  * - Add:
  *   - Haufe X360 – ERP Customizations (tasks)
  *   - JotForm → Haufe X360 Integration (tasks)
- *   - Fleischeslust – Portatour ↔ X360 Integration (description)
+ *   - Portatour ↔ X360 Integration (description)
  */
 const fromCfg = config?.public?.dev?.projects || {};
 let base = Object.entries(fromCfg)
@@ -278,10 +278,10 @@ const curated = [
     url: "",
   },
 
-  // Fleischeslust — Portatour ↔ X360 Integration (short description)
+  // Portatour ↔ X360 Integration (short description)
   {
     id: "fleischeslust-portatour-x360",
-    title: "Fleischeslust — Portatour ↔ Haufe X360 Integration",
+    title: "Portatour ↔ Haufe X360 Integration",
     description:
       "Implemented bidirectional sync: export customers from X360 to Portatour with upsert; import visit appointments from Portatour (delta since last export) into X360. Aligned master data, ensured referential integrity, and stabilized operational flows.",
     tech: [
