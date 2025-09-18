@@ -185,7 +185,7 @@ const config = useRuntimeConfig();
 /**
  * Start from config.public.dev.projects, then:
  * - Remove "Incedo Lead Generator"
- * - Replace "Aermax" with tasks + period/client (no image)
+ * - Replace "" with tasks + period/client (no image)
  * - Add:
  *   - Haufe X360 – ERP Customizations (tasks)
  *   - JotForm → Haufe X360 Integration (tasks)
@@ -195,7 +195,7 @@ const fromCfg = config?.public?.dev?.projects || {};
 let base = Object.entries(fromCfg)
   .map(([id, p]) => ({ id, ...p }))
   .filter((p) => p.title !== "Incedo Lead Generator")
-  .filter((p) => p.title !== "Aermax") // we will inject curated Aermax below
+  .filter((p) => p.title !== "") // we will inject curated Aermax below
   .map((p) => {
     const { img, ...rest } = p; // strip images everywhere
     return rest;
@@ -203,7 +203,7 @@ let base = Object.entries(fromCfg)
 
 // Curated/added entries
 const curated = [
-  // Aermax (tasks + meta)
+  //  (tasks + meta)
   {
     id: "",
     title: "Industrial Climbers Platform",
@@ -225,7 +225,7 @@ const curated = [
       "TypeScript",
       "CSS",
     ],
-    url: "https://app.aermax.de/",
+    url: "/",
     details: "",
   },
 
