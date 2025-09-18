@@ -205,10 +205,10 @@ let base = Object.entries(fromCfg)
 const curated = [
   // Aermax (tasks + meta)
   {
-    id: "aermax",
-    title: "Aermax — Industrial Climbers Platform",
+    id: "",
+    title: "Industrial Climbers Platform",
     period: "Jan 2024 – Jun 2024",
-    client: "Aermax (Germany)",
+    client: "",
     tasks: [
       "Fixed bugs and built features across the platform.",
       "Maintained and shipped features on the legacy app (Spring Boot + React).",
