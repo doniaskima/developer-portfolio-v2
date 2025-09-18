@@ -188,7 +188,7 @@ const config = useRuntimeConfig();
  * - Replace "Aermax" with tasks + period/client (no image)
  * - Add:
  *   - Haufe X360 – ERP Customizations (tasks)
- *   - Triqbriq – JotForm → Haufe X360 Integration (tasks)
+ *   - JotForm → Haufe X360 Integration (tasks)
  *   - Fleischeslust – Portatour ↔ X360 Integration (description)
  */
 const fromCfg = config?.public?.dev?.projects || {};
@@ -253,10 +253,10 @@ const curated = [
     url: "",
   },
 
-  // Triqbriq – JotForm → X360 Integration (tasks)
+  // JotForm → X360 Integration (tasks)
   {
     id: "triqbriq-jotform-x360",
-    title: "Triqbriq — JotForm → Haufe X360 Integration",
+    title: "JotForm → Haufe X360 Integration",
     tasks: [
       "Webhook intake from JotForm with schema validation and error handling.",
       "Normalization: phone formatting, postal code checks, attribute mapping.",
