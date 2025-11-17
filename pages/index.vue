@@ -14,13 +14,6 @@
             {{ config.dev.role }}
           </h2>
         </span>
-        <a
-          href="/resume/Donia_resume.pdf"
-          download="Donia_Resume.pdf"
-          class="mt-4 inline-block px-4 py-1 text-white bg-[#0e2535] rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition"
-        >
-          Download My Resume
-        </a>
       </div>
 
       <div id="info">
