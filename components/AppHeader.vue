@@ -40,7 +40,12 @@ export default {
   computed: {
     // Set active class to current page link
     isActive() {
-      return route => this.$route.path === route;
+      return route => {
+        if (route === '/projects') {
+          return this.$route.path.startsWith('/projects');
+        }
+        return this.$route.path === route;
+      };
     }
   },
   setup() {
@@ -98,4 +103,3 @@ export default {
 }
 
 </style>
-
