@@ -10,15 +10,15 @@
                 "info": {
                     "experience": {
                         "title": "Experience",
-                        "description": "I have a strong background in software development and teamwork, with extensive hands-on experience in creating reliable and scalable solutions. I've worked with diverse technologies, introducing smart innovations and driving impactful results in dynamic environments. Whether it's brainstorming innovative ideas or building robust systems, my aim is always to exceed expectations and deliver value."
+                        "description": "Full-stack engineer shipping web and mobile products for startups and SMBs. I move between React/NestJS/Spring Boot, wire integrations, and keep deployments stable while teams iterate fast."
                     },
                     "hard-skills": {
                         "title": "hard-skills",
-                        "description": "As a software developer, I bring a versatile set of technical skills that enable me to deliver effective solutions:<br><br>- **Front-End Development:** Proficient in React, TypeScript, and modern UI/UX design to create responsive, user-friendly interfaces.<br><br>- **Back-End Development:** Skilled in building scalable APIs using frameworks like NestJS and Spring Boot.<br><br>- **Database Management:** Experienced with Microsoft SQL Server , PostgreSQL , MongoDB and SQL, ensuring data integrity and performance optimization.<br><br>- **Microservices Architecture:** Proficient in developing and managing microservices using RabbitMQ for seamless service communication.<br><br>- **DevOps Tools:** Hands-on experience with Docker, Kubernetes, and CI/CD pipelines for efficient deployment and maintenance.<br><br>- **Version Control:** Expertise in Git, ensuring streamlined collaboration and code management.<br><br>I continually refine my technical expertise to stay updated with the latest advancements in technology and development practices."
+                        "description": "Frontend: React, TypeScript, Flutter. Backend: NestJS, Spring Boot, Node. Data/Integrations: REST, OData, SQL, MongoDB, RabbitMQ. Delivery: Docker, CI/CD, lean docs."
                     },
                     "soft-skills": {
                         "title": "soft-skills",
-                        "description": "In addition to technical expertise, I bring a robust set of soft skills that enhance my ability to work effectively in diverse teams:<br><br>- **Team Collaboration:** An effective team player who thrives in collaborative environments, fostering innovation and open communication.<br><br>- **Problem-Solving:** A solution-focused approach to overcoming challenges, ensuring smooth project execution under tight deadlines.<br><br>- **Adaptability:** Quick to learn and adapt to new technologies and methodologies in a constantly evolving landscape.<br><br>- **Communication:** Strong ability to articulate technical concepts clearly to both technical and non-technical audiences.<br><br>- **Creativity:** Combines technical proficiency with creative thinking to deliver user-centric, impactful solutions.<br><br>These skills complement my technical abilities, empowering me to contribute meaningfully to both individual and team success."
+                        "description": "Clear communicator, collaborative, calm under pressure. I like clear goals, fast feedback, and keeping stakeholders looped in without extra noise."
                     }
                 }
             },
@@ -28,15 +28,15 @@
                 "info": { 
                     "bio": {
                         "title": "bio",
-                        "description": "<br> I'm currently a software developer, freelancer, and instructor, constantly learning new things and building projects with amazing people.<br> I am also embarking on an exciting journey as a software developer and freelancer, collaborating with multiple companies and startups, while teaching people worldwide.<br><br><br> I enjoy bridging the gap between programming and design, combining my technical expertise with a keen eye for aesthetics to craft beautiful, functional products.<br> My goal is to build applications that are scalable and efficient behind the scenes, while delivering engaging and accessible user experiences.<br><br><br> Fast-forward to today, I've had the privilege of working with a global IT startup, Incedo, and contributing to innovative projects at a tech startup.<br> Currently, my primary focus is on creating accessible, inclusive products and digital experiences for a diverse range of clients at an advertising agency."
+                        "description": "I build reliable products for teams that need design-aware engineering and integrations that just work."
                     },
                     "interests": {
                         "title": "interests",
-                        "description": "<br>I’m passionate about exploring the connection between web development and innovative strategies.<br><br>I enjoy working with agile teams to create impactful solutions quickly and efficiently.<br>Beyond work, I stay up-to-date with emerging technologies and actively contribute to open-source projects.<br><br>Marketing also interests me, as I love understanding how technology and strategy come together to create value."
+                        "description": "Tooling, design systems, fast prototypes, and sharing what I learn with teams."
                     },
                     "education": {
                         "title": "education",
-                        "description": "<br> I earned a degree in Computer Science with a strong focus on mathematics and programming. My background has equipped me with strong skills in algorithms, software development, and problem-solving. I stay current with technological advancements and apply my education to contribute effectively to innovative projects and collaborative teams.",
+                        "description": "Computer Science degree – Higher Institute of Informatics and Mathematics of Monastir.",
                         "files": {
                             "university": "Higher Institute of Informatics and Mathematics of Monastir"
                         }
@@ -49,7 +49,7 @@
                 "info": {
                     "favorite-games": {
                         "title": "favorite-games",
-                        "description": "<br>In my free time, I enjoy playing Valorant, a tactical first-person shooter that enhances my strategic thinking and teamwork skills.<br><br>It’s a fun way to relax while staying mentally sharp.<br>Balancing gaming with work helps me recharge and maintain a healthy work-life balance."
+                        "description": "I wind down with Valorant and co-op games with friends."
                     }
                 }
             }
