@@ -31,6 +31,7 @@ export type Project = {
   impact?: string;
   accent?: string;
   accentSoft?: string;
+  detailImage?: string;
 };
 
 const curatedProjects: Project[] = [
@@ -101,6 +102,7 @@ const curatedProjects: Project[] = [
     title: "Haufe X360 - ERP Customizations",
     headline: "Custom pricing, workflows, and data rails for Haufe X360.",
     image: "/x360/x360.png",
+    detailImage: "/x360/x360-2.png",
     summary:
       "Extended Haufe X360 with new DAC fields, pricing logic, workflow automation, and quote-to-order alignment for finance and sales teams.",
     badge: "ERP",
@@ -165,6 +167,7 @@ const curatedProjects: Project[] = [
     title: "JotForm to Haufe X360 Integration",
     headline: "Webhook intake to ERP with validation and retries.",
     image: "/x360/x360.png",
+    detailImage: "/x360/x360-2.png",
     summary:
       "Normalized JotForm payloads, deduped submissions, and upserted leads and contacts into Haufe X360 with monitoring and backoff.",
     badge: "Integration",
@@ -229,6 +232,7 @@ const curatedProjects: Project[] = [
     title: "Portatour and Haufe X360 Integration",
     headline: "Two-way scheduling sync for sales routes.",
     image: "/x360/x360.png",
+    detailImage: "/x360/x360-2.png",
     summary:
       "Kept customers and visit appointments aligned between Portatour and Haufe X360 with safe import/export pipelines.",
     badge: "Integration",
@@ -373,6 +377,7 @@ function mergeProjects(base: Partial<Project> = {}, override: Partial<Project> =
     description: override.description || base.description,
     headline: override.headline || base.headline,
     image: override.image || base.image,
+    detailImage: override.detailImage || base.detailImage,
   } as Project;
 }
 
@@ -412,6 +417,7 @@ export function buildProjects(config?: any): Project[] {
   )
     .map((p: any) => {
       const image = p.image || p.img;
+      const detailImage = p.detailImage || p.detailImg;
       return {
         slug: slugify(p.title),
         title: p.title || "",
@@ -420,6 +426,7 @@ export function buildProjects(config?: any): Project[] {
         url: p.url,
         tech: p.tech || [],
         ...(image ? { image } : {}),
+        ...(detailImage ? { detailImage } : {}),
       };
     })
     .filter(

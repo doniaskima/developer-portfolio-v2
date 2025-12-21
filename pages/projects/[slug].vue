@@ -25,17 +25,27 @@
             </div>
           </div>
 
-          <div class="space-y-3">
-            <h1 class="text-white text-2xl lg:text-3xl font-fira_bold leading-snug">
-              {{ project.title }}
-            </h1>
-            <p class="text-base text-menu-text leading-7 max-w-4xl">
-              {{ project.summary || project.headline }}
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span v-for="tech in project.tech" :key="tech" class="chip strong">
-                {{ tech }}
-              </span>
+          <div class="hero-main">
+            <div v-if="project.detailImage || project.image" class="hero-media">
+              <img
+                :src="project.detailImage || project.image"
+                :alt="`${project.title} preview`"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="space-y-3 hero-copy">
+              <h1 class="text-white text-2xl lg:text-3xl font-fira_bold leading-snug">
+                {{ project.title }}
+              </h1>
+              <p class="text-base text-menu-text leading-7 max-w-4xl">
+                {{ project.summary || project.headline }}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span v-for="tech in project.tech" :key="tech" class="chip strong">
+                  {{ tech }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -220,6 +230,71 @@ const links = computed(() => project.value?.links || []);
   top: -80px;
   right: -120px;
   background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.08), transparent 60%);
+}
+
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-media {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #1e2d3d;
+  background: #0b1420;
+  position: relative;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4 / 3;
+}
+
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 20, 32, 0) 0%, rgba(11, 20, 32, 0.4) 100%);
+  pointer-events: none;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.01);
+  transition: transform 200ms ease;
+}
+
+.hero-media:hover img {
+  transform: scale(1.03);
+}
+
+@media (min-width: 768px) {
+  .hero-main {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero-media {
+    width: 320px;
+    max-width: 320px;
+    flex: 0 0 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-media {
+    width: 360px;
+    max-width: 360px;
+    flex-basis: 360px;
+  }
 }
 
 .crumb {
