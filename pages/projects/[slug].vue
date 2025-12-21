@@ -13,10 +13,16 @@
 
         <div class="relative px-6 py-6 lg:px-10 lg:py-8 space-y-4">
           <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
-            <div class="flex items-center gap-2 flex-wrap">
-              <NuxtLink to="/projects" class="crumb">Projects</NuxtLink>
-              <span class="sep">/</span>
-              <span class="crumb active">{{ project.title }}</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <NuxtLink to="/projects" class="back-btn">
+                <span aria-hidden="true">←</span>
+                Back
+              </NuxtLink>
+              <div class="flex items-center gap-2 flex-wrap">
+                <NuxtLink to="/projects" class="crumb">Projects</NuxtLink>
+                <span class="sep">/</span>
+                <span class="crumb active">{{ project.title }}</span>
+              </div>
             </div>
             <div class="flex items-center gap-2 flex-wrap">
               <span class="pill" v-if="project.badge">{{ project.badge }}</span>
