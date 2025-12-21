@@ -21,6 +21,7 @@ export type Project = {
   role?: string;
   tech: string[];
   url?: string;
+  image?: string;
   links?: ProjectLink[];
   highlights?: string[];
   tasks?: string[];
@@ -37,6 +38,7 @@ const curatedProjects: Project[] = [
     slug: "industrial-climbers-platform",
     title: "Industrial Climbers Platform",
     headline: "Reward-driven field ops for crews and subcontractors.",
+    image: "/x360/industrial-climber-climbs-down-roof-footage.webp",
     summary:
       "Stabilized and evolved the multi-stack platform with a rewards engine and a NestJS microservice that talks to the legacy Spring Boot + React app.",
     period: "Jan 2024 - Jun 2024",
@@ -98,6 +100,7 @@ const curatedProjects: Project[] = [
     slug: "haufe-x360-erp-customizations",
     title: "Haufe X360 - ERP Customizations",
     headline: "Custom pricing, workflows, and data rails for Haufe X360.",
+    image: "/x360/x360.png",
     summary:
       "Extended Haufe X360 with new DAC fields, pricing logic, workflow automation, and quote-to-order alignment for finance and sales teams.",
     badge: "ERP",
@@ -161,6 +164,7 @@ const curatedProjects: Project[] = [
     slug: "jotform-x360-integration",
     title: "JotForm to Haufe X360 Integration",
     headline: "Webhook intake to ERP with validation and retries.",
+    image: "/x360/x360.png",
     summary:
       "Normalized JotForm payloads, deduped submissions, and upserted leads and contacts into Haufe X360 with monitoring and backoff.",
     badge: "Integration",
@@ -224,6 +228,7 @@ const curatedProjects: Project[] = [
     slug: "portatour-x360-integration",
     title: "Portatour and Haufe X360 Integration",
     headline: "Two-way scheduling sync for sales routes.",
+    image: "/x360/x360.png",
     summary:
       "Kept customers and visit appointments aligned between Portatour and Haufe X360 with safe import/export pipelines.",
     badge: "Integration",
@@ -367,6 +372,7 @@ function mergeProjects(base: Partial<Project> = {}, override: Partial<Project> =
     summary: override.summary || base.summary || base.description,
     description: override.description || base.description,
     headline: override.headline || base.headline,
+    image: override.image || base.image,
   } as Project;
 }
 
@@ -404,14 +410,18 @@ export function buildProjects(config?: any): Project[] {
   const fromConfig: Project[] = Object.values(
     config?.public?.dev?.projects || {}
   )
-    .map((p: any) => ({
-      slug: slugify(p.title),
-      title: p.title || "",
-      summary: p.description,
-      description: p.description,
-      url: p.url,
-      tech: p.tech || [],
-    }))
+    .map((p: any) => {
+      const image = p.image || p.img;
+      return {
+        slug: slugify(p.title),
+        title: p.title || "",
+        summary: p.description,
+        description: p.description,
+        url: p.url,
+        tech: p.tech || [],
+        ...(image ? { image } : {}),
+      };
+    })
     .filter(
       (p) => p.title && p.slug && p.title !== "Incedo Lead Generator"
     );

@@ -71,33 +71,47 @@
               data-aos="fade-up"
               :data-aos-delay="idx * 50"
             >
-              <div class="card-top">
-                <span class="badge">{{ project.badge || "Case study" }}</span>
-                <span v-if="project.period" class="meta">{{ project.period }}</span>
-                <span v-else class="meta">{{ project.role || "Multi-stack" }}</span>
+              <div class="media">
+                <img
+                  v-if="project.image"
+                  :src="project.image"
+                  :alt="`${project.title} preview`"
+                  loading="lazy"
+                />
+                <div v-else class="media-placeholder" aria-hidden="true">
+                  <span class="media-title">{{ project.title }}</span>
+                </div>
               </div>
 
-              <h3 class="title">{{ project.title }}</h3>
-              <p class="headline">
-                {{ project.headline || project.summary }}
-              </p>
+              <div class="card-body">
+                <div class="card-top">
+                  <span class="badge">{{ project.badge || "Case study" }}</span>
+                  <span v-if="project.period" class="meta">{{ project.period }}</span>
+                  <span v-else class="meta">{{ project.role || "Multi-stack" }}</span>
+                </div>
 
-              <div class="chips">
-                <span v-for="tech in project.tech" :key="tech" class="chip">
-                  {{ tech }}
-                </span>
-              </div>
-
-              <div class="divider"></div>
-
-              <div class="foot">
-                <p class="highlight">
-                  {{ project.highlights?.[0] || project.summary }}
+                <h3 class="title">{{ project.title }}</h3>
+                <p class="headline">
+                  {{ project.headline || project.summary }}
                 </p>
-                <span class="cta">
-                  Open detail
-                  <span aria-hidden="true">-></span>
-                </span>
+
+                <div class="chips">
+                  <span v-for="tech in project.tech" :key="tech" class="chip">
+                    {{ tech }}
+                  </span>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="foot">
+                  <p class="highlight">
+                    {{ project.highlights?.[0] || project.summary }}
+                  </p>
+                  <span class="cta">
+                    Open detail
+                    <span aria-hidden="true">-></span>
+                  </span>
+                </div>
               </div>
             </NuxtLink>
           </div>
@@ -317,13 +331,15 @@ function clearFilters() {
   position: relative;
   border: 1px solid #223349;
   border-radius: 18px;
-  padding: 18px;
+  padding: 0;
   background: linear-gradient(160deg, #0d1727 0%, #0e1a2d 45%, #0b1322 100%);
   overflow: hidden;
   transition: transform 150ms ease, box-shadow 180ms ease, border-color 180ms ease;
-  min-height: 260px;
+  min-height: 320px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card::after {
@@ -335,6 +351,73 @@ function clearFilters() {
   opacity: 0.9;
   pointer-events: none;
   transition: opacity 160ms ease;
+  z-index: 0;
+}
+
+.media {
+  position: relative;
+  z-index: 1;
+  height: 160px;
+  overflow: hidden;
+  border-bottom: 1px solid #1e2d3d;
+  background: #0b1420;
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 18, 32, 0) 0%, rgba(11, 18, 32, 0.65) 100%);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.media img,
+.media-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.media img {
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+  transition: transform 200ms ease, filter 200ms ease;
+  filter: saturate(1.02);
+  position: relative;
+  z-index: 0;
+}
+
+.project-card:hover .media img {
+  transform: scale(1.05);
+  filter: saturate(1.1) contrast(1.02);
+}
+
+.media-placeholder {
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  background: radial-gradient(circle at 20% 20%, var(--accent-soft, rgba(85, 101, 232, 0.2)), transparent 55%),
+    linear-gradient(145deg, #0f1c2b 0%, #0b1420 60%);
+  color: #e5e9f0;
+  position: relative;
+  z-index: 2;
+}
+
+.media-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.card-body {
+  position: relative;
+  z-index: 1;
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-card:hover {
@@ -413,6 +496,7 @@ function clearFilters() {
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
+  margin-top: auto;
 }
 
 .highlight {
