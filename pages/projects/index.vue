@@ -51,7 +51,7 @@
           </button>
         </aside>
 
-        <div class="flex-1 overflow-auto">
+        <div class="flex-1 overflow-auto projects-scroll">
           <div v-if="projects.length === 0" class="empty-state">
             <div class="text-3xl pb-2">X__X</div>
             <p class="text-white text-lg">No projects for those filters.</p>
@@ -352,6 +352,31 @@ function clearFilters() {
   pointer-events: none;
   transition: opacity 160ms ease;
   z-index: 0;
+}
+
+.projects-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #607b96 transparent;
+}
+
+.projects-scroll::-webkit-scrollbar {
+  width: 14px;
+  display: block;
+}
+
+.projects-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.projects-scroll::-webkit-scrollbar-thumb {
+  background: #607b96;
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.projects-scroll::-webkit-scrollbar-thumb:hover {
+  background: #7b9bbb;
 }
 
 .media {
