@@ -282,6 +282,25 @@ const links = computed(() => project.value?.links || []);
   transform: scale(1.03);
 }
 
+.back-btn {
+  border: 1px solid #1e2d3d;
+  background: #0b1420;
+  color: #e5e9f0;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.back-btn:hover {
+  border-color: var(--accent, #5565e8);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
 @media (min-width: 768px) {
   .hero-main {
     flex-direction: row;
