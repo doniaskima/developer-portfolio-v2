@@ -51,7 +51,7 @@
         </div>
       </section>
 
-      <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body">
+      <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll">
         <div class="grid gap-6 lg:grid-cols-3">
           <div class="panel lg:col-span-2">
             <div class="panel-title">Case narrative</div>
@@ -325,6 +325,31 @@ const links = computed(() => project.value?.links || []);
 
 .detail-body {
   background: radial-gradient(circle at 10% 20%, rgba(77, 91, 206, 0.08), transparent 40%);
+}
+
+.detail-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #607b96 transparent;
+}
+
+.detail-scroll::-webkit-scrollbar {
+  width: 14px;
+  display: block;
+}
+
+.detail-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.detail-scroll::-webkit-scrollbar-thumb {
+  background: #607b96;
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.detail-scroll::-webkit-scrollbar-thumb:hover {
+  background: #7b9bbb;
 }
 
 .panel {
