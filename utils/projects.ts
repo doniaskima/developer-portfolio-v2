@@ -36,68 +36,6 @@ export type Project = {
 
 const curatedProjects: Project[] = [
   {
-    slug: "industrial-climbers-platform",
-    title: "Industrial Climbers Platform",
-    headline: "Reward-driven field ops for crews and subcontractors.",
-    image: "/x360/industrial-climber-climbs-down-roof-footage.webp",
-    summary:
-      "Stabilized and evolved the multi-stack platform with a rewards engine and a NestJS microservice that talks to the legacy Spring Boot + React app.",
-    period: "Jan 2024 - Jun 2024",
-    badge: "Platform Ops",
-    role: "Full-stack and mobile",
-    tech: [
-      "Spring Boot",
-      "React",
-      "NestJS",
-      "RabbitMQ",
-      "Flutter",
-      "TypeScript",
-      "CSS",
-    ],
-    highlights: [
-      "Fixed critical bugs while shipping features across Spring Boot and React.",
-      "Built XP/token rewards with gated capabilities for subcontractors.",
-      "Introduced a NestJS microservice wired through RabbitMQ events.",
-      "Documented flows and components in Storybook, JSDoc, and Markdown.",
-    ],
-    tasks: [
-      "Fixed bugs and built features across the platform.",
-      "Maintained and shipped features on the legacy app (Spring Boot + React).",
-      "Built a rewards system for subcontractors (XP/tokens) with gated features.",
-      "Implemented a new NestJS microservice; inter-service comms via RabbitMQ.",
-      "Wrote docs with Storybook, JSDoc, Markdown, and README files.",
-    ],
-    timeline: [
-      {
-        title: "Stabilize and triage",
-        detail:
-          "Patched blocking bugs and shipped incremental fixes on the Spring Boot + React legacy app.",
-      },
-      {
-        title: "Design rewards",
-        detail: "Created XP and token flows with role-based gating for subcontractors.",
-      },
-      {
-        title: "Connect services",
-        detail:
-          "Built a NestJS microservice and connected it to the platform via RabbitMQ messaging.",
-      },
-      {
-        title: "Document",
-        detail:
-          "Left Storybook entries and Markdown/JSDoc for the new surface area to keep velocity up.",
-      },
-    ],
-    problem:
-      "A split stack needed stability while adding a rewards model that motivated subcontractors without breaking day-to-day operations.",
-    solution:
-      "Hardened the legacy stack, designed and implemented the rewards engine, spun up a NestJS microservice, and documented the moving parts.",
-    impact:
-      "Unified operations across teams, improved engagement via gated rewards, and reduced onboarding friction thanks to living docs.",
-    accent: "#43D9AD",
-    accentSoft: "rgba(67, 217, 173, 0.14)",
-  },
-  {
     slug: "haufe-x360-erp-customizations",
     title: "Haufe X360 - ERP Customizations",
     headline: "Custom pricing, workflows, and data rails for Haufe X360.",
@@ -272,6 +210,68 @@ const curatedProjects: Project[] = [
     impact: "Kept routes and ERP data aligned so teams could trust scheduling.",
     accent: "#67E8F9",
     accentSoft: "rgba(103, 232, 249, 0.18)",
+  },
+  {
+    slug: "industrial-climbers-platform",
+    title: "Industrial Climbers Platform",
+    headline: "Reward-driven field ops for crews and subcontractors.",
+    image: "/x360/industrial-climber-climbs-down-roof-footage.webp",
+    summary:
+      "Stabilized and evolved the multi-stack platform with a rewards engine and a NestJS microservice that talks to the legacy Spring Boot + React app.",
+    period: "Jan 2024 - Jun 2024",
+    badge: "Platform Ops",
+    role: "Full-stack and mobile",
+    tech: [
+      "Spring Boot",
+      "React",
+      "NestJS",
+      "RabbitMQ",
+      "Flutter",
+      "TypeScript",
+      "CSS",
+    ],
+    highlights: [
+      "Fixed critical bugs while shipping features across Spring Boot and React.",
+      "Built XP/token rewards with gated capabilities for subcontractors.",
+      "Introduced a NestJS microservice wired through RabbitMQ events.",
+      "Documented flows and components in Storybook, JSDoc, and Markdown.",
+    ],
+    tasks: [
+      "Fixed bugs and built features across the platform.",
+      "Maintained and shipped features on the legacy app (Spring Boot + React).",
+      "Built a rewards system for subcontractors (XP/tokens) with gated features.",
+      "Implemented a new NestJS microservice; inter-service comms via RabbitMQ.",
+      "Wrote docs with Storybook, JSDoc, Markdown, and README files.",
+    ],
+    timeline: [
+      {
+        title: "Stabilize and triage",
+        detail:
+          "Patched blocking bugs and shipped incremental fixes on the Spring Boot + React legacy app.",
+      },
+      {
+        title: "Design rewards",
+        detail: "Created XP and token flows with role-based gating for subcontractors.",
+      },
+      {
+        title: "Connect services",
+        detail:
+          "Built a NestJS microservice and connected it to the platform via RabbitMQ messaging.",
+      },
+      {
+        title: "Document",
+        detail:
+          "Left Storybook entries and Markdown/JSDoc for the new surface area to keep velocity up.",
+      },
+    ],
+    problem:
+      "A split stack needed stability while adding a rewards model that motivated subcontractors without breaking day-to-day operations.",
+    solution:
+      "Hardened the legacy stack, designed and implemented the rewards engine, spun up a NestJS microservice, and documented the moving parts.",
+    impact:
+      "Unified operations across teams, improved engagement via gated rewards, and reduced onboarding friction thanks to living docs.",
+    accent: "#43D9AD",
+    accentSoft: "rgba(67, 217, 173, 0.14)",
   },
   {
     slug: "plot",
