@@ -68,8 +68,6 @@
                 '--accent': project.accent || '#5565E8',
                 '--accent-soft': project.accentSoft || 'rgba(85, 101, 232, 0.12)',
               }"
-              data-aos="fade-up"
-              :data-aos-delay="idx * 50"
             >
               <div class="media">
                 <img

@@ -351,6 +351,62 @@ const curatedProjects: Project[] = [
     accent: "#22D3EE",
     accentSoft: "rgba(34, 211, 238, 0.2)",
   },
+  {
+    slug: "cmdbook-cli",
+    title: "cmdbook-cli",
+    headline: "Command Book for saving and finding the shell commands you care about.",
+    summary:
+      "CmdBook is a small CLI for storing and retrieving shell commands with tags, descriptions, and fast full-text search.",
+    description:
+      "CmdBook stores your go-to commands in a local SQLite database with FTS5 so you can search, filter, and recall them quickly.",
+    badge: "Fun build",
+    role: "Personal",
+    tech: ["Node.js", "SQLite", "FTS5", "CLI"],
+    url: "https://github.com/doniaskima/cmdbook-cli",
+    highlights: [
+      "Stores commands with descriptions, tags, shell, and working directory.",
+      "FTS5 search across commands + descriptions for fast recall.",
+      "Favorites, tag filters, and duplicate detection on add.",
+      "Export/import as JSON for backup and migration.",
+      "Local-only data in ~/.cmdbook/cmdbook.db.",
+    ],
+    problem:
+      "I kept re-Googling the same shell commands and needed a faster way to recall them.",
+    solution:
+      "Built a local-first command notebook with tags and instant search via SQLite FTS5.",
+    impact:
+      "Cuts time spent hunting for commands and keeps my favorite snippets in one place.",
+    accent: "#F59E0B",
+    accentSoft: "rgba(245, 158, 11, 0.2)",
+  },
+  {
+    slug: "ask-cli",
+    title: "ask-cli",
+    headline: "Natural-language to shell commands with local context awareness.",
+    summary:
+      "ask is a small terminal assistant that generates shell commands from plain language using your current environment context.",
+    description:
+      "ask inspects your OS, shell, cwd, visible files, and git status, then calls an OpenAI-compatible API to return precise commands.",
+    badge: "Fun build",
+    role: "Personal",
+    tech: ["Node.js", "OpenAI API", "CLI", "Chalk"],
+    url: "https://github.com/doniaskima/ask-cli",
+    highlights: [
+      "Generates commands with context (OS, shell, cwd, files, git status).",
+      "ask and ask explain modes for command creation or explanations.",
+      "History log stored in ~/.ask-cli/history.json.",
+      "Clipboard support with optional cmdbook integration via --save.",
+      "Supports OPENAI_API_KEY or ASK_CLI_API_KEY.",
+    ],
+    problem:
+      "I wanted a fast way to turn ideas into exact shell commands without losing context.",
+    solution:
+      "Built a CLI assistant that captures environment context and returns executable commands.",
+    impact:
+      "Speeds up terminal workflows while keeping command history and shareable snippets.",
+    accent: "#38BDF8",
+    accentSoft: "rgba(56, 189, 248, 0.2)",
+  },
 ];
 
 function slugify(text?: string) {

@@ -122,6 +122,22 @@
             "tech": ["React"],
             "url": "https://github.com/doniaskima/react-crafitify",
             "details":""
+        },
+        "7": {
+            "title": "cmdbook-cli",
+            "description": "Just-for-fun CLI project I am developing to explore terminal UX and tiny utilities.",
+            "img": "",
+            "tech": ["CLI","Tooling"],
+            "url": "https://github.com/doniaskima/cmdbook-cli",
+            "details":""
+        },
+        "8": {
+            "title": "ask-cli",
+            "description": "A playful CLI project I am developing just for fun to experiment with prompts and helpers.",
+            "img": "",
+            "tech": ["CLI","Tooling"],
+            "url": "https://github.com/doniaskima/ask-cli",
+            "details":""
         }
     }
 }
