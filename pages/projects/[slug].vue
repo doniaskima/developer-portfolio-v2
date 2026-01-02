@@ -60,51 +60,18 @@
       <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll">
         <div class="grid gap-6 lg:grid-cols-3">
           <div class="panel lg:col-span-2">
-            <div class="panel-title">Case narrative</div>
-            <div class="grid gap-4 md:grid-cols-3">
-              <div class="callout">
-                <p class="label">Problem</p>
-                <p class="body">{{ problem }}</p>
-              </div>
-              <div class="callout">
-                <p class="label">Solution</p>
-                <p class="body">{{ solution }}</p>
-              </div>
-              <div class="callout">
-                <p class="label">Impact</p>
-                <p class="body">{{ impact }}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-title">Highlights</div>
-            <ul class="list">
-              <li v-for="item in highlightList" :key="item">
+            <div class="panel-title">Project notes</div>
+            <ul v-if="detailPoints.length" class="list">
+              <li v-for="item in detailPoints" :key="item">
                 <span class="bullet"></span>
                 <span>{{ item }}</span>
               </li>
             </ul>
+            <p v-else class="text-menu-text text-sm">
+              Details coming soon. Reach out for a walkthrough.
+            </p>
           </div>
-        </div>
 
-        <div class="panel mt-6">
-          <div class="panel-title">Build path</div>
-          <div v-if="timeline.length" class="timeline">
-            <div v-for="(item, idx) in timeline" :key="item.title + idx" class="timeline-row">
-              <div class="marker">{{ idx + 1 }}</div>
-              <div>
-                <p class="step-title">{{ item.title }}</p>
-                <p class="step-body">{{ item.detail }}</p>
-              </div>
-            </div>
-          </div>
-          <p v-else class="text-menu-text text-sm">
-            Timeline coming soon. Reach out for a live walkthrough.
-          </p>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-2 mt-6">
           <div class="panel">
             <div class="panel-title">Stack</div>
             <div class="flex flex-wrap gap-2">
@@ -113,21 +80,21 @@
               </span>
             </div>
           </div>
+        </div>
 
-          <div class="panel" v-if="links.length">
-            <div class="panel-title">Links and next steps</div>
-            <div class="flex flex-wrap gap-3">
-              <a
-                v-for="link in links"
-                :key="link.href"
-                :href="link.href"
-                target="_blank"
-                rel="noopener"
-                class="link-btn"
-              >
-                {{ link.label }}
-              </a>
-            </div>
+        <div class="panel mt-6" v-if="links.length">
+          <div class="panel-title">Links and next steps</div>
+          <div class="flex flex-wrap gap-3">
+            <a
+              v-for="link in links"
+              :key="link.href"
+              :href="link.href"
+              target="_blank"
+              rel="noopener"
+              class="link-btn"
+            >
+              {{ link.label }}
+            </a>
           </div>
         </div>
       </section>
@@ -166,40 +133,13 @@ const accentSoft = computed(
   () => project.value?.accentSoft || "rgba(85, 101, 232, 0.12)"
 );
 
-const timeline = computed(() => {
-  if (project.value?.timeline?.length) return project.value.timeline;
-  if (project.value?.tasks?.length) {
-    return project.value.tasks.map((detail, idx) => ({
-      title: `Step ${idx + 1}`,
-      detail,
-    }));
-  }
+const detailPoints = computed(() => {
+  if (project.value?.tasks?.length) return project.value.tasks;
+  if (project.value?.highlights?.length) return project.value.highlights;
+  if (project.value?.description) return [project.value.description];
+  if (project.value?.summary) return [project.value.summary];
   return [];
 });
-
-const highlightList = computed(() => {
-  if (project.value?.highlights?.length) return project.value.highlights;
-  if (project.value?.tasks?.length) return project.value.tasks;
-  return project.value?.summary ? [project.value.summary] : [];
-});
-
-const problem = computed(
-  () =>
-    project.value?.problem ||
-    project.value?.summary ||
-    "Let's talk through the problem space."
-);
-const solution = computed(
-  () =>
-    project.value?.solution ||
-    project.value?.highlights?.[0] ||
-    "Solution details coming soon."
-);
-const impact = computed(
-  () =>
-    project.value?.impact ||
-    "Impact and rollout details available on a walkthrough."
-);
 
 const links = computed(() => project.value?.links || []);
 </script>
@@ -393,28 +333,6 @@ const links = computed(() => project.value?.links || []);
   margin-bottom: 12px;
 }
 
-.callout {
-  border: 1px solid #1e2d3d;
-  background: #0f1a2a;
-  border-radius: 12px;
-  padding: 12px;
-  height: 100%;
-}
-
-.label {
-  color: #8da2b8;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.body {
-  color: #e5e9f0;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -436,44 +354,6 @@ const links = computed(() => project.value?.links || []);
   margin-top: 6px;
   border-radius: 9999px;
   background: var(--accent, #5565e8);
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.timeline-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
-}
-
-.marker {
-  width: 30px;
-  height: 30px;
-  border-radius: 12px;
-  background: var(--accent-soft, rgba(85, 101, 232, 0.12));
-  border: 1px solid var(--accent, #5565e8);
-  color: #e5e9f0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 13px;
-}
-
-.step-title {
-  color: #e5e9f0;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.step-body {
-  color: #8da2b8;
-  font-size: 13px;
-  line-height: 1.55;
 }
 
 .link-btn {
