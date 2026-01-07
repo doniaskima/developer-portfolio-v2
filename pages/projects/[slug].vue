@@ -11,7 +11,7 @@
         <div class="hero-veil hero-veil-a"></div>
         <div class="hero-veil hero-veil-b"></div>
 
-        <div class="relative px-6 py-6 lg:px-10 lg:py-8 space-y-4">
+        <div class="relative px-6 py-5 lg:px-10 lg:py-6 space-y-3">
           <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
             <div class="flex items-center gap-3 flex-wrap">
               <NuxtLink to="/projects" class="back-btn">
@@ -60,7 +60,7 @@
       <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll">
         <div class="grid gap-6 lg:grid-cols-3">
           <div class="panel lg:col-span-2">
-            <div class="panel-title">Project notes</div>
+            <div class="panel-title">Project details</div>
             <ul v-if="detailPoints.length" class="list">
               <li v-for="item in detailPoints" :key="item">
                 <span class="bullet"></span>
@@ -181,7 +181,7 @@ const links = computed(() => project.value?.links || []);
 .hero-main {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .hero-copy {
@@ -197,8 +197,8 @@ const links = computed(() => project.value?.links || []);
   position: relative;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
   width: 100%;
-  max-width: 380px;
-  aspect-ratio: 4 / 3;
+  max-width: 340px;
+  aspect-ratio: 16 / 10;
 }
 
 .hero-media::after {
@@ -248,16 +248,16 @@ const links = computed(() => project.value?.links || []);
   }
 
   .hero-media {
-    width: 320px;
-    max-width: 320px;
-    flex: 0 0 320px;
+    width: 280px;
+    max-width: 280px;
+    flex: 0 0 280px;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-media {
-    width: 360px;
-    max-width: 360px;
+    width: 320px;
+    max-width: 320px;
     flex-basis: 360px;
   }
 }

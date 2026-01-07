@@ -62,12 +62,13 @@ const curatedProjects: Project[] = [
       "Transferred custom text and fields from CRQuote to SOOrder.",
     ],
     tasks: [
-      "Added DAC fields/attributes across AR/AP/SO/IN; enforced validations and business rules.",
-      "Graph extensions for automation (events, persistence hooks, workflow fixes).",
-      "UI streamlining: selectors, field visibility by role/context, grid tweaks.",
-      "Pricing/freight logic (price fetch, tax category/account mapping).",
-      "Parent->Child payment methods sync (clone/cleanup for virtual and real PMs).",
-      "CRQuote->SOOrder transfer for custom text/fields.",
+      "Assessed client business processes and identified gaps between out-of-the-box ERP capabilities and operational requirements.",
+      "Designed and delivered Haufe X360 customizations to align system behavior with company-specific workflows.",
+      "Automated business rules, validations, and data synchronization to reduce manual effort and prevent operational errors.",
+      "Extended standard functionality in an upgrade-safe manner, avoiding changes to core ERP code.",
+      "Implemented smart UI behavior and safeguards to guide users and ensure consistent, correct data entry.",
+      "Built and maintained integrations with external systems using APIs and scheduled/background processes.",
+      "Ensured reliability through testing, documentation, and maintainable implementation patterns.",
     ],
     timeline: [
       {
