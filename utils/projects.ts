@@ -103,12 +103,13 @@ const curatedProjects: Project[] = [
   },
   {
     slug: "jotform-x360-integration",
-    title: "JotForm to Haufe X360 Integration",
-    headline: "Webhook intake to ERP with validation and retries.",
+    title: "JotForm to Haufe X360 Integration (Contributor)",
+    headline:
+      "Contributor on form-to-ERP automation with validation and retries.",
     image: "/x360/x360.png",
     detailImage: "/x360/x360-2.png",
     summary:
-      "Normalized JotForm payloads, deduped submissions, and upserted leads and contacts into Haufe X360 with monitoring and backoff.",
+      "Contributed to the delivery of a JotForm to Haufe X360 integration that automated form submissions into X360.",
     badge: "Integration",
     tech: [
       "Node.js",
@@ -121,46 +122,46 @@ const curatedProjects: Project[] = [
       "JotForm Webhooks",
     ],
     highlights: [
-      "Webhook intake with schema validation and error handling.",
-      "Normalization for phones, postal codes, and attribute mapping.",
-      "Duplicate detection with safe upserts into X360 via REST/OData.",
-      "Salesperson and contact role validation plus ID reconciliation.",
-      "Structured logs and monitoring in New Relic with retries and backoff.",
-      "End-to-end mapping for leads, contacts, and business accounts.",
+      "Contributed to webhook intake, schema validation, and error handling.",
+      "Supported normalization for phones, postal codes, and attribute mapping.",
+      "Assisted with duplicate detection and safe upserts via REST/OData.",
+      "Helped validate salesperson assignments, roles, and ID reconciliation.",
+      "Improved New Relic logging/monitoring with retry and backoff patterns.",
+      "Supported lead, contact, and business account mapping.",
     ],
     tasks: [
-      "Webhook intake from JotForm with schema validation and error handling.",
-      "Normalization: phone formatting, postal code checks, attribute mapping.",
-      "Duplicate detection and safe upsert into X360 via REST/OData.",
-      "Salesperson and contact role validation; ID reconciliation.",
-      "Structured logs/monitoring (New Relic) with retries/backoff.",
-      "End-to-end mapping for leads/contacts/business accounts.",
+      "Contributed to pipeline improvements for webhook intake, schema validation, and robust error handling.",
+      "Supported data normalization (phone formatting, postal-code checks, attribute mapping) to match X360 rules.",
+      "Assisted with duplicate detection and safe upsert flows using X360 REST/OData endpoints.",
+      "Implemented parts of the form integration into Haufe X360, supporting validation, normalization, and safe upserts.",
+      "Supported end-to-end mapping for leads, contacts, and business accounts.",
     ],
     timeline: [
       {
         title: "Ingest safely",
-        detail: "Validated and normalized inbound JotForm payloads before touching X360.",
+        detail:
+          "Contributed to validation and normalization of inbound JotForm payloads before touching X360.",
       },
       {
         title: "Protect the CRM",
         detail:
-          "Detected duplicates, reconciled IDs, and enforced salesperson and role rules.",
+          "Helped with duplicate detection, ID reconciliation, and salesperson/role rules.",
       },
       {
         title: "Upsert with guardrails",
         detail:
-          "Pushed data to X360 through REST/OData with retries and structured monitoring.",
+          "Supported REST/OData upserts with retries and structured monitoring.",
       },
       {
         title: "Observe",
         detail:
-          "Added New Relic traces and logs so issues surfaced quickly with context.",
+          "Improved New Relic traces and logs so issues surfaced quickly with context.",
       },
     ],
     problem:
       "Inbound form submissions were inconsistent and prone to duplication when syncing to the ERP.",
     solution:
-      "Wrapped webhook intake with validation, normalization, deduplication, and observable upserts into Haufe X360.",
+      "Contributed to a webhook pipeline with validation, normalization, deduplication, and observable upserts into Haufe X360.",
     impact:
       "Reduced bad records and made lead ingestion repeatable with traceability for ops.",
     accent: "#4D5BCE",
@@ -196,7 +197,8 @@ const curatedProjects: Project[] = [
       },
       {
         title: "Export and upsert",
-        detail: "Shipped customer exports with safe upsert logic into Portatour.",
+        detail:
+          "Shipped customer exports with safe upsert logic into Portatour.",
       },
       {
         title: "Import visits",
@@ -252,7 +254,8 @@ const curatedProjects: Project[] = [
       },
       {
         title: "Design rewards",
-        detail: "Created XP and token flows with role-based gating for subcontractors.",
+        detail:
+          "Created XP and token flows with role-based gating for subcontractors.",
       },
       {
         title: "Connect services",
@@ -347,15 +350,15 @@ const curatedProjects: Project[] = [
       "Projects needed reusable UI pieces instead of rebuilding layouts every time.",
     solution:
       "Packaged a composable React kit with theming hooks and documentation.",
-    impact:
-      "Faster prototyping and consistent interface patterns across apps.",
+    impact: "Faster prototyping and consistent interface patterns across apps.",
     accent: "#22D3EE",
     accentSoft: "rgba(34, 211, 238, 0.2)",
   },
   {
     slug: "cmdbook-cli",
     title: "cmdbook-cli",
-    headline: "Command Book for saving and finding the shell commands you care about.",
+    headline:
+      "Command Book for saving and finding the shell commands you care about.",
     summary:
       "CmdBook is a small CLI for storing and retrieving shell commands with tags, descriptions, and fast full-text search.",
     description:
@@ -383,7 +386,8 @@ const curatedProjects: Project[] = [
   {
     slug: "ask-cli",
     title: "ask-cli",
-    headline: "Natural-language to shell commands with local context awareness.",
+    headline:
+      "Natural-language to shell commands with local context awareness.",
     summary:
       "ask is a small terminal assistant that generates shell commands from plain language using your current environment context.",
     description:
@@ -421,7 +425,10 @@ function slugify(text?: string) {
   );
 }
 
-function mergeProjects(base: Partial<Project> = {}, override: Partial<Project> = {}): Project {
+function mergeProjects(
+  base: Partial<Project> = {},
+  override: Partial<Project> = {}
+): Project {
   return {
     ...base,
     ...override,
@@ -486,9 +493,7 @@ export function buildProjects(config?: any): Project[] {
         ...(detailImage ? { detailImage } : {}),
       };
     })
-    .filter(
-      (p) => p.title && p.slug && p.title !== "Incedo Lead Generator"
-    );
+    .filter((p) => p.title && p.slug && p.title !== "Incedo Lead Generator");
 
   const merged: Project[] = [];
 
