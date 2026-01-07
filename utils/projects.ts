@@ -170,47 +170,61 @@ const curatedProjects: Project[] = [
   {
     slug: "portatour-x360-integration",
     title: "Portatour and Haufe X360 Integration",
-    headline: "Two-way scheduling sync for sales routes.",
+    headline: "Sales route planning sync between Portatour and Haufe X360.",
     image: "/x360/x360.png",
     detailImage: "/x360/x360-2.png",
     summary:
-      "Kept customers and visit appointments aligned between Portatour and Haufe X360 with safe import/export pipelines.",
+      "Portatour is a sales route planning and field sales optimization tool. Contributed to syncing customers, leads, and revenue data between Portatour and Haufe X360 with safe, validated pipelines.",
     badge: "Integration",
     tech: [
       "C#",
       "ASPX",
+      "Node.js",
+      "TypeScript",
       "Haufe X360",
       "Portatour API",
       "REST",
+      "MongoDB",
       "Microsoft SQL Server",
+      "Docker",
     ],
+    links: [{ label: "Portatour", href: "https://www.portatour.com/en" }],
     highlights: [
-      "Exported customers from X360 to Portatour with clean upserts.",
-      "Imported visit appointments from Portatour deltas back into X360.",
-      "Aligned master data and referential integrity to avoid orphan records.",
+      "Synced customers and leads between Haufe X360 and Portatour.",
+      "Contributed to revenue synchronization back into Haufe X360.",
+      "Supported validation and mapping to prevent mismatches or duplicates.",
+    ],
+    tasks: [
+      "Worked on synchronizing customers and leads between Haufe X360 and Portatour.",
+      "Contributed to revenue synchronization from Portatour back into Haufe X360 (customer revenue endpoints).",
+      "Supported data validation and mapping to avoid broken links or mismatches between systems.",
+      "Focused on safe sync behavior (no duplicate customers, no inconsistent references).",
+      "Operated scheduled/background sync jobs to keep systems aligned.",
+      "Used Docker deployments and MongoDB-backed services for integration workflows.",
     ],
     timeline: [
       {
-        title: "Model the sync",
+        title: "Align data models",
         detail:
-          "Mapped master data across Portatour and X360 so records matched on either side.",
+          "Supported mapping and validation so customer and lead records stayed consistent across systems.",
       },
       {
-        title: "Export and upsert",
+        title: "Sync revenue",
         detail:
-          "Shipped customer exports with safe upsert logic into Portatour.",
+          "Contributed to revenue endpoints syncing from Portatour back into Haufe X360.",
       },
       {
-        title: "Import visits",
+        title: "Protect integrity",
         detail:
-          "Ingested visit deltas from Portatour and preserved referential integrity in X360.",
+          "Focused on safe sync behavior to prevent duplicates and broken references.",
       },
     ],
     problem:
       "Scheduling and ERP data drifted between Portatour and Haufe X360, creating integrity issues.",
     solution:
-      "Built a bidirectional sync with careful upserts, deltas, and validation around master data.",
-    impact: "Kept routes and ERP data aligned so teams could trust scheduling.",
+      "Contributed to a bidirectional sync that validated mappings and safely moved customers, leads, and revenue data between Portatour and Haufe X360.",
+    impact:
+      "Kept route planning and ERP data aligned without duplicates or broken references.",
     accent: "#67E8F9",
     accentSoft: "rgba(103, 232, 249, 0.18)",
   },
