@@ -121,6 +121,7 @@ const curatedProjects: Project[] = [
       "OData",
       "JotForm Webhooks",
     ],
+    links: [{ label: "JotForm", href: "https://www.jotform.com/" }],
     highlights: [
       "Contributed to webhook intake, schema validation, and error handling.",
       "Supported normalization for phones, postal codes, and attribute mapping.",
@@ -227,6 +228,76 @@ const curatedProjects: Project[] = [
       "Kept route planning and ERP data aligned without duplicates or broken references.",
     accent: "#67E8F9",
     accentSoft: "rgba(103, 232, 249, 0.18)",
+  },
+  {
+    slug: "x360-asana-everhour-integration",
+    title: "Haufe X360, Asana, and Everhour Integration",
+    headline: "Syncs projects, tasks, and time across three tools.",
+    image: "/x360/x360.png",
+    detailImage: "/x360/x360-2.png",
+    summary:
+      "Connected Haufe X360 projects, Asana task planning, and Everhour time tracking so work and time stayed aligned.",
+    badge: "Integration",
+    tech: [
+      "Bun",
+      "Elysia",
+      "Swagger/OpenAPI",
+      "Bree",
+      "MongoDB",
+      "Asana API",
+      "X360 API",
+      "Everhour API",
+      "Pino",
+      "Docker",
+      "Docker Compose",
+    ],
+    links: [
+      { label: "Asana API", href: "https://developers.asana.com/" },
+      { label: "Everhour API", href: "https://everhour.docs.apiary.io/" },
+    ],
+    highlights: [
+      "Kept Asana projects and tasks aligned with X360 changes.",
+      "Recorded Everhour time entries in X360 as project activity.",
+      "Stored cross-links so time mapped to the right project.",
+      "API endpoints for sync triggers, health checks, and retries.",
+    ],
+    tasks: [
+      "When a project becomes active in X360, it creates a matching project in Asana.",
+      "That Asana project is built from a template, including the right sections and tasks.",
+      "It keeps the X360 ↔ Asana project mapping so everything stays linked.",
+      "It maps Everhour time entries to the correct X360 project and pushes them into X360.",
+      "It has a small API to trigger syncs and retry failed time pushes.",
+      "It can run on a schedule to keep everything up to date automatically.",
+    ],
+    timeline: [
+      {
+        title: "Connect tools",
+        detail:
+          "Linked X360 projects to Asana tasks and Everhour time tracking.",
+      },
+      {
+        title: "Sync tasks",
+        detail: "Kept Asana projects and tasks updated when X360 changed.",
+      },
+      {
+        title: "Post time",
+        detail:
+          "Captured Everhour time entries and wrote them back to X360 activity.",
+      },
+      {
+        title: "Operate reliably",
+        detail:
+          "Added API endpoints and scheduled jobs for health checks and retries.",
+      },
+    ],
+    problem:
+      "Project planning and time tracking lived in separate tools, creating drift between work and ERP activity.",
+    solution:
+      "Built an integration that synced Asana tasks, recorded Everhour time into X360, and provided APIs plus scheduled jobs for reliable sync.",
+    impact:
+      "Reduced manual updates and kept planning, time, and ERP data aligned.",
+    accent: "#F97316",
+    accentSoft: "rgba(249, 115, 22, 0.18)",
   },
   {
     slug: "industrial-climbers-platform",
