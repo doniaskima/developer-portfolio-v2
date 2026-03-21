@@ -28,7 +28,7 @@
       </div>
     </section>
 
-    <section class="flex-1 overflow-hidden px-6 pb-16 lg:px-10">
+    <section class="flex-1 overflow-hidden px-6 pt-6 pb-16 lg:px-10 lg:pt-8">
       <div class="flex flex-col lg:flex-row gap-6 h-full">
         <aside class="filter-panel border">
           <div class="filter-header">
