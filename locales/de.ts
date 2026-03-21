@@ -12,6 +12,7 @@ export const de = {
   hero: {
     cmdWhoami: 'whoami',
     cmdCatRole: 'cat rolle.txt',
+    commentGame: '// Spiel abschließen, um fortzufahren',
     commentGithub: '// Du findest mich auch auf meiner Github-Seite',
     commentGithubMobile: '// Mein Profil auf Github:',
   },

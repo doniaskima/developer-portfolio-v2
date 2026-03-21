@@ -37,8 +37,9 @@
             {{ devConfig.role }}
           </h2>
         </div>
-        <div class="term-line stagger stagger-4">
+        <div class="term-line stagger stagger-4 game-comment-gap">
           <span class="line-num">5</span>
+          <span class="term-comment">{{ t('hero.commentGame') }}</span>
         </div>
         <div class="term-line stagger stagger-4" :class="{ hide: isMobile }">
           <span class="line-num">6</span>
@@ -174,11 +175,21 @@ function handleResize() {
   font-family: "Fira Code Regular";
 }
 
+.role-line {
+  margin-bottom: 0.25rem;
+}
+
 .role-line h2 {
   font-size: 32px;
   line-height: 1;
   color: #4d5bce;
   font-family: "Fira Code Retina";
+}
+
+/* Breathing room between role and “complete the game” comment */
+.game-comment-gap {
+  margin-top: 1.25rem;
+  padding-top: 0.35rem;
 }
 
 .code {
