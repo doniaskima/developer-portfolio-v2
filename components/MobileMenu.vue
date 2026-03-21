@@ -24,6 +24,10 @@
           _projects
         </NuxtLink>
 
+        <NuxtLink id="nav-link-mobile" to="/store" :class="{ active: isActive('/store') }" @click="toggleMobileMenu()">
+          _store
+        </NuxtLink>
+
         <NuxtLink id="nav-link-mobile" to="/contact-me" :class="{ active: isActive('/contact-me') }" @click="toggleMobileMenu()">
           _contact-me
         </NuxtLink>
@@ -77,6 +81,9 @@ export default {
       return route => {
         if (route === '/projects') {
           return this.$route.path.startsWith('/projects');
+        }
+        if (route === '/store') {
+          return this.$route.path.startsWith('/store');
         }
         return this.$route.path === route;
       };

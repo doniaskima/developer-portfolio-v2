@@ -18,6 +18,10 @@
             <NuxtLink id="nav-link" to="/projects" :class="{ active: isActive('/projects') }">
               _projects
             </NuxtLink>
+  
+            <NuxtLink id="nav-link" to="/store" :class="{ active: isActive('/store') }">
+              _store
+            </NuxtLink>
           </div>
 
           <NuxtLink id="nav-link-contact" to="/contact-me" :class="{ active: isActive('/contact-me')}">
@@ -43,6 +47,9 @@ export default {
       return route => {
         if (route === '/projects') {
           return this.$route.path.startsWith('/projects');
+        }
+        if (route === '/store') {
+          return this.$route.path.startsWith('/store');
         }
         return this.$route.path === route;
       };
