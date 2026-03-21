@@ -5,35 +5,36 @@
       <div class="hero-glow hero-glow-b"></div>
 
       <div class="relative px-6 py-4 lg:px-10 lg:py-5">
+        <p class="comment-header">{{ t('store.header') }}</p>
         <div class="flex items-center justify-between gap-3 flex-wrap text-xs text-menu-text">
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="pill">{{ filteredCustomizations.length }} extensions found</span>
+            <span class="pill">{{ filteredCustomizations.length }} {{ t('store.found') }}</span>
             <span class="pill" v-if="activeCategory">{{ activeCategory }}</span>
-            <span class="pill" v-else>All categories</span>
+            <span class="pill" v-else>{{ t('store.allCategories') }}</span>
           </div>
 
           <div class="flex items-center gap-3">
-            <label for="sort" class="text-menu-text text-xs">Sorted by</label>
+            <label for="sort" class="text-menu-text text-xs">{{ t('store.sortedBy') }}</label>
             <select
               id="sort"
               v-model="sortBy"
               class="sort-select"
             >
-              <option value="name">Name</option>
-              <option value="price">Price</option>
+              <option value="name">{{ t('store.sortName') }}</option>
+              <option value="price">{{ t('store.sortPrice') }}</option>
             </select>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="flex-1 overflow-hidden px-6 pb-8 lg:px-10">
+    <section class="flex-1 overflow-hidden px-6 pb-16 lg:px-10">
       <div class="flex flex-col lg:flex-row gap-6 h-full">
         <aside class="filter-panel border">
           <div class="filter-header">
             <div>
-              <p class="text-xs uppercase tracking-[0.18em] text-menu-text">Categories</p>
-              <p class="text-white font-semibold text-sm">{{ categories.length }} categories</p>
+              <p class="text-xs uppercase tracking-[0.18em] text-menu-text">{{ t('store.categoriesTitle') }}</p>
+              <p class="text-white font-semibold text-sm">{{ categories.length }} {{ t('store.categoriesCount') }}</p>
             </div>
           </div>
 
@@ -51,7 +52,7 @@
           </div>
 
           <button v-if="activeCategory" class="clear-btn" @click="activeCategory = ''">
-            Reset filter
+            {{ t('store.resetFilter') }}
           </button>
         </aside>
 
@@ -70,15 +71,17 @@
 
           <div v-if="filteredCustomizations.length === 0" class="empty-state">
             <div class="text-3xl pb-2">X__X</div>
-            <p class="text-white text-lg">No extensions for this category.</p>
-            <button class="clear-btn mt-3" @click="activeCategory = ''">Reset filter</button>
+            <p class="text-white text-lg">{{ t('store.noExtensions') }}</p>
+            <button class="clear-btn mt-3" @click="activeCategory = ''">{{ t('store.resetFilter') }}</button>
           </div>
 
           <div v-else class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             <NuxtLink
-              v-for="item in filteredCustomizations"
+              v-for="(item, idx) in filteredCustomizations"
               :key="item.slug"
               :to="`/store/${item.slug}`"
+              v-tilt
+              v-reveal="idx"
               class="store-card group"
               :style="{
                 '--accent': item.accent,
@@ -112,19 +115,22 @@
 import { computed, ref, h } from "vue";
 import { getAllCustomizations, getAllCategories } from "@/utils/customizations";
 import type { CustomizationCategory } from "@/utils/customizations";
+import { vTilt } from "@/composables/useTilt";
+import { vReveal } from "@/directives/reveal";
 
 definePageMeta({
   pageTransition: { name: "project", mode: "out-in" },
 });
 
+const { t, locale } = useI18n();
 const activeCategory = ref<CustomizationCategory | "">("");
 const sortBy = ref("name");
 
-const allCustomizations = getAllCustomizations();
+const allCustomizations = computed(() => getAllCustomizations(locale.value));
 const categories = getAllCategories();
 
 const filteredCustomizations = computed(() => {
-  let items = [...allCustomizations];
+  let items = [...allCustomizations.value];
   if (activeCategory.value) {
     items = items.filter((c) => c.categories.includes(activeCategory.value as CustomizationCategory));
   }

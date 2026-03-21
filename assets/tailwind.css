@@ -35,6 +35,8 @@ main.page {
   border: 1px solid #1E2D3D;
   height: 100%;
   width: 100%;
+  background-image: radial-gradient(circle, rgba(30, 45, 61, 0.5) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 #section-content-title {
@@ -245,6 +247,103 @@ main.page {
 */
 @media screen (min-width: 1920px) and (min-height: 1080px) {
 
+}
+
+/* ── Developer Theme Utilities ── */
+
+.comment-header {
+  font-family: 'Fira Code Retina', monospace;
+  font-size: 13px;
+  color: #607b96;
+  padding: 10px 0;
+  letter-spacing: 0.03em;
+}
+
+.comment-header::before {
+  content: '/* ';
+  color: #607b96;
+}
+
+.comment-header::after {
+  content: ' */';
+  color: #607b96;
+}
+
+.line-comment {
+  font-family: 'Fira Code Retina', monospace;
+  font-size: 13px;
+  color: #607b96;
+}
+
+.line-comment::before {
+  content: '// ';
+  color: #546e7a;
+}
+
+.bracket-decor {
+  position: relative;
+}
+
+.bracket-decor::before {
+  content: '{';
+  position: absolute;
+  top: -6px;
+  left: -4px;
+  font-family: 'Fira Code Light', monospace;
+  font-size: 20px;
+  color: rgba(96, 123, 150, 0.3);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.bracket-decor::after {
+  content: '}';
+  position: absolute;
+  bottom: -6px;
+  right: -4px;
+  font-family: 'Fira Code Light', monospace;
+  font-size: 20px;
+  color: rgba(96, 123, 150, 0.3);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #43d9ad;
+  margin-left: 4px;
+  vertical-align: text-bottom;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.terminal-prompt {
+  color: #43d9ad;
+  font-family: 'Fira Code Retina', monospace;
+}
+
+.terminal-prompt::before {
+  content: '$ ';
+  color: #43d9ad;
+}
+
+.line-num {
+  color: rgba(96, 123, 150, 0.4);
+  font-family: 'Fira Code Retina', monospace;
+  font-size: 13px;
+  min-width: 28px;
+  text-align: right;
+  user-select: none;
+  padding-right: 12px;
+  border-right: 1px solid rgba(30, 45, 61, 0.6);
+  margin-right: 16px;
+  flex-shrink: 0;
 }
 
 /* Borders */

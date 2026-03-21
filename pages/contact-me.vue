@@ -2,7 +2,7 @@
     <main id="contact-me" class="page">
 
         <div id="mobile-page-title">
-            <h2>_contact-me</h2>
+            <h2 class="line-comment">{{ t('contact.title') }}</h2>
         </div>
 
         <div id="page-menu" class="w-full h-full flex flex-col border-right">
@@ -89,10 +89,11 @@ export default {
         }
     },
     setup() {
-        const contact = useRuntimeConfig().dev.contacts
+        const { t, devConfig } = useI18n()
+        const contact = computed(() => devConfig.value.contacts)
 
         return {
-            contact
+            contact, t
         }
     },
     methods: {

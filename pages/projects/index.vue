@@ -5,17 +5,18 @@
       <div class="hero-glow hero-glow-b"></div>
 
       <div class="relative px-6 py-4 lg:px-10 lg:py-5">
+        <p class="comment-header">{{ t('projects.header') }}</p>
         <div class="flex items-center justify-between gap-3 flex-wrap text-xs text-menu-text">
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="pill">Projects: {{ allProjects.length }}</span>
-            <span class="pill">Stacks: {{ techs.length }}</span>
+            <span class="pill">{{ t('projects.projectsLabel') }}: {{ allProjects.length }}</span>
+            <span class="pill">{{ t('projects.stacksLabel') }}: {{ techs.length }}</span>
             <span class="pill" v-if="activeFilters.length">
-              Active filters: {{ activeFilters.join(", ") }}
+              {{ t('projects.activeFilters') }}: {{ activeFilters.join(", ") }}
             </span>
-            <span class="pill" v-else>All stacks visible</span>
+            <span class="pill" v-else>{{ t('projects.allStacks') }}</span>
           </div>
 
-          <NuxtLink to="/contact-me" class="cta-link">Book a chat</NuxtLink>
+          <NuxtLink to="/contact-me" class="cta-link">{{ t('projects.bookChat') }}</NuxtLink>
         </div>
       </div>
     </section>
@@ -25,11 +26,11 @@
         <aside class="filter-panel border" :class="{ collapsed: !filtersOpen }">
           <div class="filter-header">
             <div>
-              <p class="text-xs uppercase tracking-[0.18em] text-menu-text">Stacks</p>
-              <p class="text-white font-semibold text-sm">{{ techs.length }} technologies</p>
+              <p class="text-xs uppercase tracking-[0.18em] text-menu-text">{{ t('projects.stacksLabel') }}</p>
+              <p class="text-white font-semibold text-sm">{{ techs.length }} {{ t('projects.technologies') }}</p>
             </div>
             <button class="filter-toggle" @click="filtersOpen = !filtersOpen">
-              {{ filtersOpen ? "Hide" : "Show" }}
+              {{ filtersOpen ? t('projects.hide') : t('projects.show') }}
             </button>
           </div>
 
@@ -47,15 +48,15 @@
           </div>
 
           <button v-if="selectedTechs.size" class="clear-btn" @click="clearFilters">
-            Clear filters
+            {{ t('projects.clearFilters') }}
           </button>
         </aside>
 
         <div class="flex-1 overflow-auto projects-scroll">
           <div v-if="projects.length === 0" class="empty-state">
             <div class="text-3xl pb-2">X__X</div>
-            <p class="text-white text-lg">No projects for those filters.</p>
-            <button class="clear-btn mt-3" @click="clearFilters">Reset filters</button>
+            <p class="text-white text-lg">{{ t('projects.noProjects') }}</p>
+            <button class="clear-btn mt-3" @click="clearFilters">{{ t('projects.resetFilters') }}</button>
           </div>
 
           <div v-else class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -63,6 +64,8 @@
               v-for="(project, idx) in projects"
               :key="project.slug"
               :to="`/projects/${project.slug}`"
+              v-tilt
+              v-reveal="idx"
               class="project-card group"
               :style="{
                 '--accent': project.accent || '#5565E8',
@@ -83,9 +86,9 @@
 
               <div class="card-body">
                 <div class="card-top">
-                  <span class="badge">{{ project.badge || "Case study" }}</span>
+                  <span class="badge">{{ project.badge || t('projects.caseStudy') }}</span>
                   <span v-if="project.period" class="meta">{{ project.period }}</span>
-                  <span v-else class="meta">{{ project.role || "Multi-stack" }}</span>
+                  <span v-else class="meta">{{ project.role || t('projects.multiStack') }}</span>
                 </div>
 
                 <h3 class="title">{{ project.title }}</h3>
@@ -106,7 +109,7 @@
                     {{ project.highlights?.[0] || project.summary }}
                   </p>
                   <span class="cta">
-                    Open detail
+                    {{ t('projects.openDetail') }}
                     <span aria-hidden="true">-></span>
                   </span>
                 </div>
@@ -122,6 +125,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { buildProjects } from "@/utils/projects";
+import { vTilt } from "@/composables/useTilt";
+import { vReveal } from "@/directives/reveal";
 
 definePageMeta({
   pageTransition: {
@@ -131,10 +136,11 @@ definePageMeta({
 });
 
 const config = useRuntimeConfig();
+const { t, locale } = useI18n();
 const filtersOpen = ref(true);
 const selectedTechs = ref<Set<string>>(new Set());
 
-const allProjects = computed(() => buildProjects(config));
+const allProjects = computed(() => buildProjects(config, locale.value));
 const techs = computed(() =>
   Array.from(new Set(allProjects.value.flatMap((p) => p.tech || []))).sort()
 );

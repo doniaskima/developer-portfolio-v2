@@ -16,10 +16,10 @@
             <div class="flex items-center gap-3 flex-wrap">
               <NuxtLink to="/projects" class="back-btn">
                 <span aria-hidden="true">←</span>
-                Back
+                {{ t('projectDetail.back') }}
               </NuxtLink>
               <div class="flex items-center gap-2 flex-wrap">
-                <NuxtLink to="/projects" class="crumb">Projects</NuxtLink>
+                <NuxtLink to="/projects" class="crumb">{{ t('projectDetail.breadcrumb') }}</NuxtLink>
                 <span class="sep">/</span>
                 <span class="crumb active">{{ project.title }}</span>
               </div>
@@ -27,7 +27,7 @@
             <div class="flex items-center gap-2 flex-wrap">
               <span class="pill" v-if="project.badge">{{ project.badge }}</span>
               <span class="pill" v-if="project.period">{{ project.period }}</span>
-              <span class="pill" v-else-if="project.role">Role: {{ project.role }}</span>
+              <span class="pill" v-else-if="project.role">{{ t('projectDetail.rolePrefix') }} {{ project.role }}</span>
             </div>
           </div>
 
@@ -59,8 +59,8 @@
 
       <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll">
         <div class="grid gap-6 lg:grid-cols-3">
-          <div class="panel lg:col-span-2">
-            <div class="panel-title">Project details</div>
+          <div class="panel bracket-decor lg:col-span-2">
+            <div class="panel-title">{{ t('projectDetail.panelDetails') }}</div>
             <ul v-if="detailPoints.length" class="list">
               <li v-for="item in detailPoints" :key="item">
                 <span class="bullet"></span>
@@ -68,12 +68,12 @@
               </li>
             </ul>
             <p v-else class="text-menu-text text-sm">
-              Details coming soon. Reach out for a walkthrough.
+              {{ t('projectDetail.detailsSoon') }}
             </p>
           </div>
 
-          <div class="panel">
-            <div class="panel-title">Stack</div>
+          <div class="panel bracket-decor">
+            <div class="panel-title">{{ t('projectDetail.panelStack') }}</div>
             <div class="flex flex-wrap gap-2">
               <span v-for="tech in project.tech" :key="tech" class="chip">
                 {{ tech }}
@@ -82,8 +82,8 @@
           </div>
         </div>
 
-        <div class="panel mt-6" v-if="links.length">
-          <div class="panel-title">Links and next steps</div>
+        <div class="panel bracket-decor mt-6" v-if="links.length">
+          <div class="panel-title">{{ t('projectDetail.panelLinks') }}</div>
           <div class="flex flex-wrap gap-3">
             <a
               v-for="link in links"
@@ -104,8 +104,8 @@
       v-else
       class="flex flex-1 items-center justify-center flex-col gap-3 p-8 text-menu-text"
     >
-      <p class="text-xl text-white">Project not found.</p>
-      <NuxtLink to="/projects" class="cta-link">Back to projects</NuxtLink>
+      <p class="text-xl text-white">{{ t('projectDetail.notFound') }}</p>
+      <NuxtLink to="/projects" class="cta-link">{{ t('projectDetail.backToProjects') }}</NuxtLink>
     </div>
   </main>
 </template>
@@ -123,9 +123,10 @@ definePageMeta({
 
 const config = useRuntimeConfig();
 const route = useRoute();
+const { t, locale } = useI18n();
 
 const project = computed(() =>
-  getProjectBySlug((route.params.slug as string) || "", config)
+  getProjectBySlug((route.params.slug as string) || "", config, locale.value)
 );
 
 const accent = computed(() => project.value?.accent || "#5565E8");
@@ -326,11 +327,16 @@ const links = computed(() => project.value?.links || []);
 }
 
 .panel-title {
-  color: #e5e9f0;
+  color: #607b96;
   font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: 'Fira Code Retina', monospace;
+  letter-spacing: 0.04em;
   margin-bottom: 12px;
+}
+
+.panel-title::before {
+  content: '// ';
+  color: #546e7a;
 }
 
 .list {

@@ -12,10 +12,10 @@
           <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
             <div class="flex items-center gap-3 flex-wrap">
               <NuxtLink to="/store" class="back-btn">
-                <span aria-hidden="true">&larr;</span> All Extensions
+                <span aria-hidden="true">&larr;</span> {{ t('storeDetail.backAll') }}
               </NuxtLink>
               <div class="flex items-center gap-2 flex-wrap">
-                <NuxtLink to="/store" class="crumb">Store</NuxtLink>
+                <NuxtLink to="/store" class="crumb">{{ t('storeDetail.breadcrumb') }}</NuxtLink>
                 <span class="sep">/</span>
                 <span class="crumb active">{{ item.title }}</span>
               </div>
@@ -46,9 +46,9 @@
                   href="mailto:doniaskima@doniacode.com?subject=Extension%20Inquiry"
                   class="cta-btn primary"
                 >
-                  Get in touch
+                  {{ t('storeDetail.getInTouch') }}
                 </a>
-                <a href="#details" class="cta-btn secondary">More information</a>
+                <a href="#details" class="cta-btn secondary">{{ t('storeDetail.moreInfo') }}</a>
               </div>
             </div>
           </div>
@@ -57,8 +57,8 @@
 
       <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll" :style="{ '--accent': item.accent, '--accent-soft': item.accentSoft }">
         <!-- Highlights -->
-        <div class="panel" v-if="item.highlights.length">
-          <div class="panel-title">Highlights</div>
+        <div class="panel bracket-decor" v-if="item.highlights.length">
+          <div class="panel-title">{{ t('storeDetail.highlights') }}</div>
           <ul class="highlight-list">
             <li v-for="(h, i) in item.highlights" :key="i">
               <span class="check-icon" aria-hidden="true">&#10003;</span>
@@ -68,8 +68,8 @@
         </div>
 
         <!-- Details -->
-        <div id="details" class="panel mt-6">
-          <div class="panel-title">Details</div>
+        <div id="details" class="panel bracket-decor mt-6">
+          <div class="panel-title">{{ t('storeDetail.details') }}</div>
           <p class="detail-text">{{ item.details }}</p>
 
           <div v-if="item.detailSections?.length" class="detail-sections">
@@ -82,20 +82,20 @@
 
         <!-- Example -->
         <div class="panel mt-6" v-if="item.example">
-          <div class="panel-title">Example</div>
+          <div class="panel-title">{{ t('storeDetail.example') }}</div>
           <p class="detail-text">{{ item.example }}</p>
         </div>
 
         <!-- Standard Features -->
-        <div class="panel mt-6" v-if="item.standardFeatures?.length">
-          <div class="panel-title">Standard Feature Description</div>
+        <div class="panel bracket-decor mt-6" v-if="item.standardFeatures?.length">
+          <div class="panel-title">{{ t('storeDetail.standardFeatures') }}</div>
 
           <div v-for="section in item.standardFeatures" :key="section.title" class="feature-block">
             <h3 class="feature-block-title">{{ section.title }}</h3>
             <ul class="feature-list">
               <li v-for="(f, i) in section.features" :key="i" class="feature-item">
-                <span class="feature-label" v-if="f.field">Field: &ldquo;{{ f.field }}&rdquo;</span>
-                <span class="feature-label" v-else-if="f.function">Function: &ldquo;{{ f.function }}&rdquo;</span>
+                <span class="feature-label" v-if="f.field">{{ t('storeDetail.fieldLabel') }}: &ldquo;{{ f.field }}&rdquo;</span>
+                <span class="feature-label" v-else-if="f.function">{{ t('storeDetail.functionLabel') }}: &ldquo;{{ f.function }}&rdquo;</span>
                 <span class="feature-label status" v-else-if="f.status">
                   <span
                     class="status-dot"
@@ -105,7 +105,7 @@
                       green: f.status === 'Green',
                     }"
                   ></span>
-                  Status &ldquo;{{ f.status }}&rdquo;
+                  {{ t('storeDetail.statusLabel') }} &ldquo;{{ f.status }}&rdquo;
                 </span>
                 <span class="feature-desc">{{ f.description }}</span>
               </li>
@@ -115,13 +115,13 @@
 
         <!-- Note -->
         <div class="panel mt-6" v-if="item.note">
-          <div class="panel-title">Note</div>
+          <div class="panel-title">{{ t('storeDetail.note') }}</div>
           <p class="detail-text note-text">{{ item.note }}</p>
         </div>
 
         <!-- Setup fee -->
         <div class="panel mt-6" v-if="item.setupFee">
-          <div class="panel-title">Setup Fee</div>
+          <div class="panel-title">{{ t('storeDetail.setupFee') }}</div>
           <p class="detail-text">{{ item.setupFee }}</p>
         </div>
       </section>
@@ -131,8 +131,8 @@
       v-else
       class="flex flex-1 items-center justify-center flex-col gap-3 p-8 text-menu-text"
     >
-      <p class="text-xl text-white">Extension not found.</p>
-      <NuxtLink to="/store" class="cta-link">Back to store</NuxtLink>
+      <p class="text-xl text-white">{{ t('storeDetail.notFound') }}</p>
+      <NuxtLink to="/store" class="cta-link">{{ t('storeDetail.backToStore') }}</NuxtLink>
     </div>
   </main>
 </template>
@@ -145,8 +145,9 @@ definePageMeta({
   pageTransition: { name: "project", mode: "out-in" },
 });
 
+const { t, locale } = useI18n();
 const route = useRoute();
-const item = computed(() => getCustomizationBySlug(route.params.slug as string));
+const item = computed(() => getCustomizationBySlug(route.params.slug as string, locale.value));
 
 const PaletteIcon = () =>
   h("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", class: "hero-icon-svg" }, [
@@ -391,11 +392,17 @@ const iconMap: Record<string, any> = {
 }
 
 .panel-title {
-  color: #e5e9f0;
-  font-size: 14px;
-  font-weight: 700;
+  color: #607b96;
+  font-size: 13px;
+  font-family: 'Fira Code Retina', monospace;
+  font-weight: 600;
   letter-spacing: 0.04em;
   margin-bottom: 14px;
+}
+
+.panel-title::before {
+  content: '// ';
+  color: #546e7a;
 }
 
 .detail-text {

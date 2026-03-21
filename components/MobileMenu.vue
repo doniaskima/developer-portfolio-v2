@@ -4,32 +4,37 @@
     <!-- header -->
     <div id="mobile-header" class="w-full h-16 flex justify-between items-center">
       <NuxtLink class="text-menu-text font-fira_retina flex h-full items-center mx-5" to="/" @click="goHome()">
-        {{ config.dev.logo_name }}
+        {{ devConfig.logo_name }}
       </NuxtLink>
-      <img src="/icons/burger.svg" v-if="!menuOpen" @click="toggleMobileMenu()" class="w-5 h-5 mx-5 my-auto"/>
-      <img src="/icons/burger-close.svg" v-else @click="toggleMobileMenu()" name="icon-park-outline:close" class="w-5 h-5 mx-5 my-auto"/>
+      <div class="flex items-center gap-3 mx-5">
+        <button class="mobile-locale-toggle" @click="toggleLocale()">
+          {{ locale === 'en' ? 'DE' : 'EN' }}
+        </button>
+        <img src="/icons/burger.svg" v-if="!menuOpen" @click="toggleMobileMenu()" class="w-5 h-5 my-auto"/>
+        <img src="/icons/burger-close.svg" v-else @click="toggleMobileMenu()" name="icon-park-outline:close" class="w-5 h-5 my-auto"/>
+      </div>
     </div>
 
     <!-- mobile menu -->
       <div id="menu" class="bg-mobile-menu-blue z-10 hidden">
         <NuxtLink id="nav-link-mobile" to="/" :class="{ active: isActive('/') }" @click="toggleMobileMenu()">
-          _hello
+          {{ t('nav.hello') }}
         </NuxtLink>
   
         <NuxtLink id="nav-link-mobile" to="/about-me" :class="{ active: isActive('/about-me') }" @click="toggleMobileMenu()">
-          _about-me
+          {{ t('nav.aboutMe') }}
         </NuxtLink>
   
         <NuxtLink id="nav-link-mobile" to="/projects" :class="{ active: isActive('/projects') }" @click="toggleMobileMenu()">
-          _projects
+          {{ t('nav.projects') }}
         </NuxtLink>
 
         <NuxtLink id="nav-link-mobile" to="/store" :class="{ active: isActive('/store') }" @click="toggleMobileMenu()">
-          _store
+          {{ t('nav.store') }}
         </NuxtLink>
 
         <NuxtLink id="nav-link-mobile" to="/contact-me" :class="{ active: isActive('/contact-me') }" @click="toggleMobileMenu()">
-          _contact-me
+          {{ t('nav.contactMe') }}
         </NuxtLink>
     </div>
 
@@ -45,9 +50,10 @@ export default {
   },
   setup() {
     const config = useRuntimeConfig()
+    const { t, locale, toggleLocale, devConfig } = useI18n()
 
     return {
-      config
+      config, t, locale, toggleLocale, devConfig
     }
   },
   methods: {
@@ -105,6 +111,18 @@ export default {
 
 #nav-link-mobile.active {
   color: white
+}
+
+.mobile-locale-toggle {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #43d9ad;
+  background: none;
+  border: 1px solid #1e2d3d;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
 }
 
 </style>

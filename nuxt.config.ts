@@ -1,4 +1,5 @@
 const config = require('./developer.json')
+const configDe = require('./developer.de.json')
 const siteTitle = `${config.name} | ${config.role}`
 
 
@@ -19,6 +20,7 @@ export default defineNuxtConfig({
    * TODO: Migrate apple-touch-icon config to manifest.json
    */
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: siteTitle, // App window nav title
       meta: [
@@ -76,7 +78,8 @@ export default defineNuxtConfig({
     // Keys within public are also exposed client-side
     public: {
       apiBase: '/api',
-      dev: config
+      dev: config,
+      devDe: configDe
     }
   }
 })

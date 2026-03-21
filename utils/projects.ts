@@ -32,6 +32,18 @@ export type Project = {
   accent?: string;
   accentSoft?: string;
   detailImage?: string;
+  de?: {
+    title?: string;
+    headline?: string;
+    summary?: string;
+    description?: string;
+    highlights?: string[];
+    tasks?: string[];
+    problem?: string;
+    solution?: string;
+    impact?: string;
+    timeline?: ProjectTimelineItem[];
+  };
 };
 
 const curatedProjects: Project[] = [
@@ -98,6 +110,58 @@ const curatedProjects: Project[] = [
       "Added the right fields, validations, automation, and pricing logic so workflows matched the business instead of the other way around.",
     impact:
       "Reduced manual fixes, kept documents in sync, and let teams trust their ERP data.",
+    de: {
+      title: "Haufe X360 – ERP-Anpassungen",
+      headline:
+        "Individuelle Preislogik, Workflows und Datenströme für Haufe X360.",
+      summary:
+        "Erweiterung von Haufe X360 mit neuen DAC-Feldern, Preislogik, Workflow-Automatisierung und Angebots-/Auftragsabgleich für Finanz- und Vertriebsteams.",
+      highlights: [
+        "DAC-Felder und Attribute in AR/AP/SO/IN mit Validierungen hinzugefügt.",
+        "Graph-Erweiterungen und Persistenz-Hooks für Automatisierung erstellt.",
+        "UI optimiert: Selektoren, rollenbasierte Sichtbarkeit und Grid-Anpassungen.",
+        "Preis- und Frachtlogik mit zugeordneten Steuerkategorien implementiert.",
+        "Zahlungsmethoden für virtuelle und reale ZMs synchronisiert.",
+        "Benutzerdefinierte Texte und Felder von CRQuote nach SOOrder übertragen.",
+      ],
+      tasks: [
+        "Geschäftsprozesse analysiert und Lücken zwischen Standard-ERP und Anforderungen identifiziert.",
+        "Haufe X360-Anpassungen entworfen und umgesetzt für unternehmensspezifische Workflows.",
+        "Geschäftsregeln, Validierungen und Datensynchronisation automatisiert.",
+        "Standardfunktionalität upgrade-sicher erweitert ohne Änderungen am ERP-Kern.",
+        "Intelligentes UI-Verhalten und Schutzmaßnahmen für korrekte Dateneingabe implementiert.",
+        "Integrationen mit externen Systemen über APIs erstellt und gepflegt.",
+        "Zuverlässigkeit durch Tests, Dokumentation und wartbare Muster sichergestellt.",
+      ],
+      timeline: [
+        {
+          title: "Datenmodell",
+          detail:
+            "DAC-Felder und Validierungen in Finanz- und Vertriebsdokumenten eingeführt.",
+        },
+        {
+          title: "Automatisierung",
+          detail:
+            "Graphs und Hooks erweitert, um Geschäftsregeln durchzusetzen und manuelle Korrekturen zu reduzieren.",
+        },
+        {
+          title: "Erfahrung",
+          detail:
+            "Selektoren, Grids und rollenbasierte Sichtbarkeit angepasst, damit die UI zu Workflows passt.",
+        },
+        {
+          title: "Preis und Sync",
+          detail:
+            "Preis-/Frachtlogik und Zahlungsmethoden-Sync für vertrauenswürdige Aufträge umgesetzt.",
+        },
+      ],
+      problem:
+        "Finanz- und Vertriebsteams benötigten ein auf ihre Regeln zugeschnittenes Haufe X360 ohne Kompromisse bei der Datenintegrität.",
+      solution:
+        "Die richtigen Felder, Validierungen, Automatisierungen und Preislogik hinzugefügt, damit Workflows zum Geschäft passen.",
+      impact:
+        "Manuelle Korrekturen reduziert, Dokumente synchron gehalten und Teams vertrauen ihren ERP-Daten.",
+    },
     accent: "#FEA55F",
     accentSoft: "rgba(254, 165, 95, 0.15)",
   },
@@ -179,6 +243,56 @@ const curatedProjects: Project[] = [
       "Contributed to a webhook pipeline with validation, normalization, deduplication, and observable upserts into Haufe X360.",
     impact:
       "Reduced bad records and made lead ingestion repeatable with traceability for ops.",
+    de: {
+      title: "JotForm zu Haufe X360 Integration (Mitwirkender)",
+      headline:
+        "Mitwirkung an der Formular-zu-ERP-Automatisierung mit Validierung und Wiederholungsversuchen.",
+      summary:
+        "Beitrag zur JotForm-zu-Haufe-X360-Integration, die Formulareinreichungen automatisiert in X360 überführt.",
+      highlights: [
+        "Webhook-Aufnahme, Schema-Validierung und Fehlerbehandlung unterstützt.",
+        "Normalisierung für Telefonnummern, Postleitzahlen und Attribut-Mapping.",
+        "Duplikaterkennung und sichere Upserts via REST/OData.",
+        "Salesperson-Zuweisungen, Rollen und ID-Abgleich validiert.",
+        "New Relic Logging/Monitoring mit Retry- und Backoff-Mustern verbessert.",
+        "Lead-, Kontakt- und Geschäftskonto-Mapping unterstützt.",
+      ],
+      tasks: [
+        "Pipeline-Verbesserungen für Webhook-Aufnahme und Fehlerbehandlung.",
+        "Datennormalisierung (Telefon, PLZ, Attribute) nach X360-Regeln.",
+        "Duplikaterkennung und sichere Upsert-Flows über X360 REST/OData.",
+        "Teile der Formularintegration in Haufe X360 implementiert.",
+        "End-to-End-Mapping für Leads, Kontakte und Geschäftskonten.",
+      ],
+      timeline: [
+        {
+          title: "Sicher aufnehmen",
+          detail:
+            "Beitrag zur Validierung und Normalisierung eingehender JotForm-Daten vor X360-Kontakt.",
+        },
+        {
+          title: "CRM schützen",
+          detail:
+            "Unterstützung bei Duplikaterkennung, ID-Abgleich und Vertriebsmitarbeiter-/Rollenregeln.",
+        },
+        {
+          title: "Upsert mit Leitplanken",
+          detail:
+            "Unterstützung von REST/OData-Upserts mit Wiederholungsversuchen und strukturiertem Monitoring.",
+        },
+        {
+          title: "Beobachten",
+          detail:
+            "New Relic Traces und Logs verbessert, damit Probleme schnell mit Kontext auftauchen.",
+        },
+      ],
+      problem:
+        "Eingehende Formulardaten waren inkonsistent und anfällig für Duplikate bei der ERP-Synchronisation.",
+      solution:
+        "Beitrag zu einer Webhook-Pipeline mit Validierung, Normalisierung, Deduplizierung und beobachtbaren Upserts in Haufe X360.",
+      impact:
+        "Fehlerhafte Datensätze reduziert und Lead-Erfassung wiederholbar mit Nachverfolgbarkeit gemacht.",
+    },
     accent: "#4D5BCE",
     accentSoft: "rgba(77, 91, 206, 0.16)",
   },
@@ -240,6 +354,49 @@ const curatedProjects: Project[] = [
       "Contributed to a bidirectional sync that validated mappings and safely moved customers, leads, and revenue data between Portatour and Haufe X360.",
     impact:
       "Kept route planning and ERP data aligned without duplicates or broken references.",
+    de: {
+      title: "Portatour und Haufe X360 Integration",
+      headline:
+        "Vertriebsrouten-Synchronisation zwischen Portatour und Haufe X360.",
+      summary:
+        "Synchronisation von Kunden, Leads und Umsatzdaten zwischen Portatour und Haufe X360 mit sicheren, validierten Pipelines.",
+      highlights: [
+        "Kunden und Leads zwischen Haufe X360 und Portatour synchronisiert.",
+        "Umsatzsynchronisation zurück in Haufe X360.",
+        "Validierung und Mapping zur Vermeidung von Unstimmigkeiten oder Duplikaten.",
+      ],
+      tasks: [
+        "Synchronisation von Kunden und Leads zwischen Haufe X360 und Portatour.",
+        "Umsatzsynchronisation von Portatour zurück in Haufe X360.",
+        "Datenvalidierung und -mapping zur Vermeidung fehlerhafter Verknüpfungen.",
+        "Sichere Synchronisation ohne doppelte Kunden oder inkonsistente Referenzen.",
+        "Geplante Hintergrund-Sync-Jobs zum Abgleich der Systeme.",
+        "Docker-Deployments und MongoDB-basierte Services für Integrations-Workflows.",
+      ],
+      timeline: [
+        {
+          title: "Datenmodelle abgleichen",
+          detail:
+            "Mapping und Validierung unterstützt, damit Kunden- und Lead-Datensätze systemübergreifend konsistent bleiben.",
+        },
+        {
+          title: "Umsatz synchronisieren",
+          detail:
+            "Beitrag zu Umsatz-Endpunkten für Sync von Portatour zurück in Haufe X360.",
+        },
+        {
+          title: "Integrität schützen",
+          detail:
+            "Fokus auf sicheres Sync-Verhalten zur Vermeidung von Duplikaten und fehlerhaften Referenzen.",
+        },
+      ],
+      problem:
+        "Planungs- und ERP-Daten drifteten zwischen Portatour und Haufe X360 auseinander.",
+      solution:
+        "Bidirektionale Synchronisation mit validierten Mappings für Kunden, Leads und Umsatzdaten.",
+      impact:
+        "Routenplanung und ERP-Daten ohne Duplikate oder fehlerhafte Referenzen abgeglichen.",
+    },
     accent: "#67E8F9",
     accentSoft: "rgba(103, 232, 249, 0.18)",
   },
@@ -310,6 +467,55 @@ const curatedProjects: Project[] = [
       "Built an integration that synced Asana tasks, recorded Everhour time into X360, and provided APIs plus scheduled jobs for reliable sync.",
     impact:
       "Reduced manual updates and kept planning, time, and ERP data aligned.",
+    de: {
+      title: "Haufe X360, Asana und Everhour Integration",
+      headline:
+        "Synchronisiert Projekte, Aufgaben und Zeiten über drei Tools.",
+      summary:
+        "Verbindung von Haufe X360 Projekten, Asana Aufgabenplanung und Everhour Zeiterfassung, damit Arbeit und Zeit abgeglichen bleiben.",
+      highlights: [
+        "Asana-Projekte und -Aufgaben mit X360-Änderungen abgeglichen.",
+        "Everhour-Zeiteinträge als Projektaktivität in X360 erfasst.",
+        "Cross-Links gespeichert, damit Zeit dem richtigen Projekt zugeordnet wird.",
+        "API-Endpunkte für Sync-Trigger, Health-Checks und Wiederholungsversuche.",
+      ],
+      tasks: [
+        "Aktive X360-Projekte erstellen automatisch ein Asana-Projekt.",
+        "Asana-Projekt wird aus Template mit Sektionen und Aufgaben erstellt.",
+        "X360 ↔ Asana Projekt-Mapping wird gepflegt.",
+        "Everhour-Zeiteinträge werden dem richtigen X360-Projekt zugeordnet.",
+        "Kleine API für Sync-Trigger und fehlgeschlagene Zeitbuchungen.",
+        "Geplante Ausführung für automatische Aktualisierung.",
+      ],
+      timeline: [
+        {
+          title: "Tools verbinden",
+          detail:
+            "X360-Projekte mit Asana-Aufgaben und Everhour-Zeiterfassung verknüpft.",
+        },
+        {
+          title: "Aufgaben synchronisieren",
+          detail:
+            "Asana-Projekte und -Aufgaben bei X360-Änderungen aktualisiert.",
+        },
+        {
+          title: "Zeit buchen",
+          detail:
+            "Everhour-Zeiteinträge erfasst und in X360-Aktivität zurückgeschrieben.",
+        },
+        {
+          title: "Zuverlässig betreiben",
+          detail:
+            "API-Endpunkte und geplante Jobs für Health-Checks und Wiederholungsversuche hinzugefügt.",
+        },
+      ],
+      problem:
+        "Projektplanung und Zeiterfassung in separaten Tools verursachten Drift zwischen Arbeit und ERP.",
+      solution:
+        "Integration für Asana-Aufgaben-Sync, Everhour-Zeiterfassung in X360 und APIs plus geplante Jobs.",
+      impact:
+        "Manuelle Updates reduziert und Planung, Zeit und ERP-Daten abgeglichen.",
+    },
     accent: "#F97316",
     accentSoft: "rgba(249, 115, 22, 0.18)",
   },
@@ -373,6 +579,54 @@ const curatedProjects: Project[] = [
       "Hardened the legacy stack, designed and implemented the rewards engine, spun up a NestJS microservice, and documented the moving parts.",
     impact:
       "Unified operations across teams, improved engagement via gated rewards, and reduced onboarding friction thanks to living docs.",
+    de: {
+      title: "Industriekletterer-Plattform",
+      headline:
+        "Belohnungsbasierte Feldoperationen für Teams und Subunternehmer.",
+      summary:
+        "Stabilisierung und Weiterentwicklung der Multi-Stack-Plattform mit Belohnungssystem und einem NestJS-Microservice.",
+      highlights: [
+        "Kritische Bugs behoben und Features über Spring Boot und React ausgeliefert.",
+        "XP/Token-Belohnungen mit gestuften Fähigkeiten für Subunternehmer entwickelt.",
+        "NestJS-Microservice über RabbitMQ-Events eingeführt.",
+        "Dokumentation in Storybook, JSDoc und Markdown erstellt.",
+      ],
+      tasks: [
+        "Bugs behoben und Features plattformübergreifend entwickelt.",
+        "Legacy-App (Spring Boot + React) gepflegt und Features ausgeliefert.",
+        "Belohnungssystem für Subunternehmer (XP/Token) mit gestuften Features entwickelt.",
+        "Neuen NestJS-Microservice implementiert; Kommunikation via RabbitMQ.",
+        "Dokumentation mit Storybook, JSDoc und Markdown geschrieben.",
+      ],
+      timeline: [
+        {
+          title: "Stabilisieren und priorisieren",
+          detail:
+            "Blockierende Bugs gepatcht und inkrementelle Fixes auf der Spring Boot + React Legacy-App ausgeliefert.",
+        },
+        {
+          title: "Belohnungen entwerfen",
+          detail:
+            "XP- und Token-Flows mit rollenbasiertem Gating für Subunternehmer erstellt.",
+        },
+        {
+          title: "Services verbinden",
+          detail:
+            "NestJS-Microservice aufgebaut und über RabbitMQ-Messaging mit der Plattform verbunden.",
+        },
+        {
+          title: "Dokumentieren",
+          detail:
+            "Storybook-Einträge und Markdown/JSDoc für die neue Oberfläche hinterlassen, um Velocity zu halten.",
+        },
+      ],
+      problem:
+        "Ein geteilter Stack brauchte Stabilität bei gleichzeitiger Einführung eines Belohnungsmodells.",
+      solution:
+        "Legacy-Stack gehärtet, Belohnungssystem entworfen, NestJS-Microservice aufgebaut und dokumentiert.",
+      impact:
+        "Vereinheitlichte Abläufe, verbesserte Engagement durch Belohnungen und reduzierte Einarbeitungszeit.",
+    },
     accent: "#43D9AD",
     accentSoft: "rgba(67, 217, 173, 0.14)",
   },
@@ -412,6 +666,40 @@ const curatedProjects: Project[] = [
       "Implemented new frontend workstreams with reusable pieces and careful state handling.",
     impact:
       "Helped Plot ship features quickly while keeping the interface cohesive.",
+    de: {
+      title: "Plot",
+      headline: "Social-Video-Intelligenz-UI für Creator.",
+      summary:
+        "Frontend-Beiträge mit neuen Features und Feinschliff für Plots Creator-Tools und Analysen.",
+      highlights: [
+        "Feature-Arbeit und UI-Fixes über die Creator-Experience hinweg.",
+        "Wiederverwendbare Interface-Bausteine für konsistente neue Screens.",
+        "Interaktionsdetails und Leerzustände für Analyseansichten poliert.",
+      ],
+      timeline: [
+        {
+          title: "Verstehen und scopen",
+          detail:
+            "Bestehende Patterns und Designs geprüft, um Velocity ohne Markenbruch zu halten.",
+        },
+        {
+          title: "UI ausliefern",
+          detail:
+            "Frontend-Aufgaben für Creator-Flows mit Fokus auf Geschwindigkeit und Zugänglichkeit umgesetzt.",
+        },
+        {
+          title: "Polieren",
+          detail:
+            "Abstände, Zustände und Performance verfeinert für ein Premium-Erlebnis.",
+        },
+      ],
+      problem:
+        "Die Social-Video-Oberfläche brauchte konsistente, schnelle UI-Lieferung.",
+      solution:
+        "Neue Frontend-Workstreams mit wiederverwendbaren Bausteinen und sorgfältigem State-Handling.",
+      impact:
+        "Plot konnte Features schnell liefern und gleichzeitig die Oberfläche kohärent halten.",
+    },
     accent: "#8B5CF6",
     accentSoft: "rgba(139, 92, 246, 0.18)",
   },
@@ -450,6 +738,41 @@ const curatedProjects: Project[] = [
     solution:
       "Packaged a composable React kit with theming hooks and documentation.",
     impact: "Faster prototyping and consistent interface patterns across apps.",
+    de: {
+      title: "react-crafitify",
+      headline:
+        "Komposierbare Komponentenbibliothek für schnelle UI-Erstellung.",
+      summary:
+        "Eine React-Komponentenbibliothek mit Fokus auf Anpassung, die Teams fertige Bausteine bietet.",
+      highlights: [
+        "Anpassbare Komponenten mit klaren Props und Slots.",
+        "Theming-Hooks für verschiedene Produkte.",
+        "Dokumentierte Patterns für konsistente Nutzung.",
+      ],
+      timeline: [
+        {
+          title: "Primitives entwerfen",
+          detail:
+            "Basis-Patterns und API-Form für wiederverwendbare Komponenten skizziert.",
+        },
+        {
+          title: "Bauen",
+          detail:
+            "Bibliothek mit Fokus auf Anpassung und sinnvolle Standardwerte implementiert.",
+        },
+        {
+          title: "Dokumentieren",
+          detail:
+            "Nutzungsanleitungen geschrieben, damit neue Nutzer schnell einsteigen können.",
+        },
+      ],
+      problem:
+        "Projekte brauchten wiederverwendbare UI-Bausteine statt jedes Mal Layouts neu zu erstellen.",
+      solution:
+        "Komposierbare React-Bibliothek mit Theming-Hooks und Dokumentation.",
+      impact:
+        "Schnelleres Prototyping und konsistente Interface-Patterns über Apps hinweg.",
+    },
     accent: "#22D3EE",
     accentSoft: "rgba(34, 211, 238, 0.2)",
   },
@@ -479,6 +802,26 @@ const curatedProjects: Project[] = [
       "Built a local-first command notebook with tags and instant search via SQLite FTS5.",
     impact:
       "Cuts time spent hunting for commands and keeps my favorite snippets in one place.",
+    de: {
+      title: "cmdbook-cli",
+      headline:
+        "Command Book zum Speichern und Finden wichtiger Shell-Befehle.",
+      summary:
+        "CmdBook ist ein kleines CLI zum Speichern und Abrufen von Shell-Befehlen mit Tags, Beschreibungen und Volltextsuche.",
+      highlights: [
+        "Befehle mit Beschreibungen, Tags, Shell und Arbeitsverzeichnis speichern.",
+        "FTS5-Suche über Befehle und Beschreibungen.",
+        "Favoriten, Tag-Filter und Duplikaterkennung.",
+        "Export/Import als JSON für Backup und Migration.",
+        "Lokale Daten in ~/.cmdbook/cmdbook.db.",
+      ],
+      problem:
+        "Ich habe immer wieder dieselben Shell-Befehle gegoogelt und brauchte einen schnelleren Weg.",
+      solution:
+        "Ein lokales Befehlsnotizbuch mit Tags und Sofortsuche via SQLite FTS5.",
+      impact:
+        "Spart Zeit bei der Befehlssuche und hält Lieblings-Snippets an einem Ort.",
+    },
     accent: "#F59E0B",
     accentSoft: "rgba(245, 158, 11, 0.2)",
   },
@@ -508,6 +851,26 @@ const curatedProjects: Project[] = [
       "Built a CLI assistant that captures environment context and returns executable commands.",
     impact:
       "Speeds up terminal workflows while keeping command history and shareable snippets.",
+    de: {
+      title: "ask-cli",
+      headline:
+        "Natürliche Sprache zu Shell-Befehlen mit lokalem Kontextbewusstsein.",
+      summary:
+        "ask ist ein kleiner Terminal-Assistent, der Shell-Befehle aus natürlicher Sprache mit Umgebungskontext generiert.",
+      highlights: [
+        "Befehle mit Kontext (OS, Shell, cwd, Dateien, Git-Status) generiert.",
+        "ask und ask explain Modi für Befehle oder Erklärungen.",
+        "Verlaufsprotokoll in ~/.ask-cli/history.json.",
+        "Zwischenablage-Support mit optionaler cmdbook-Integration via --save.",
+        "Unterstützt OPENAI_API_KEY oder ASK_CLI_API_KEY.",
+      ],
+      problem:
+        "Ich wollte Ideen schnell in exakte Shell-Befehle umwandeln, ohne den Kontext zu verlieren.",
+      solution:
+        "CLI-Assistent, der Umgebungskontext erfasst und ausführbare Befehle zurückgibt.",
+      impact:
+        "Beschleunigt Terminal-Workflows mit Befehlshistorie und teilbaren Snippets.",
+    },
     accent: "#38BDF8",
     accentSoft: "rgba(56, 189, 248, 0.2)",
   },
@@ -544,7 +907,11 @@ function mergeProjects(
   } as Project;
 }
 
-function finalizeProject(project: Project, config?: any): Project {
+function finalizeProject(
+  project: Project,
+  config?: any,
+  locale: string = "en"
+): Project {
   const email = config?.public?.dev?.contacts?.direct?.sources?.email;
   const links: ProjectLink[] = [];
 
@@ -559,7 +926,9 @@ function finalizeProject(project: Project, config?: any): Project {
   if (email) {
     const href = `mailto:${email}?subject=${encodeURIComponent(project.title)}`;
     if (!links.some((l) => l.href === href)) {
-      links.push({ label: "Book a walkthrough", href, kind: "contact" });
+      const label =
+        locale === "de" ? "Vorstellung buchen" : "Book a walkthrough";
+      links.push({ label, href, kind: "contact" });
     }
   }
 
@@ -574,7 +943,30 @@ function finalizeProject(project: Project, config?: any): Project {
   };
 }
 
-export function buildProjects(config?: any): Project[] {
+export function getLocalizedProject(
+  project: Project,
+  locale: string = "en"
+): Project {
+  if (locale === "de" && project.de) {
+    const { de, ...rest } = project;
+    return {
+      ...rest,
+      ...(de.title !== undefined && { title: de.title }),
+      ...(de.headline !== undefined && { headline: de.headline }),
+      ...(de.summary !== undefined && { summary: de.summary }),
+      ...(de.description !== undefined && { description: de.description }),
+      ...(de.highlights !== undefined && { highlights: de.highlights }),
+      ...(de.tasks !== undefined && { tasks: de.tasks }),
+      ...(de.problem !== undefined && { problem: de.problem }),
+      ...(de.solution !== undefined && { solution: de.solution }),
+      ...(de.impact !== undefined && { impact: de.impact }),
+      ...(de.timeline !== undefined && { timeline: de.timeline }),
+    };
+  }
+  return project;
+}
+
+export function buildProjects(config?: any, locale: string = "en"): Project[] {
   const fromConfig: Project[] = Object.values(
     config?.public?.dev?.projects || {}
   )
@@ -598,19 +990,27 @@ export function buildProjects(config?: any): Project[] {
 
   curatedProjects.forEach((curated) => {
     const match = fromConfig.find((p) => p.slug === curated.slug);
-    merged.push(finalizeProject(mergeProjects(match, curated), config));
+    let project = finalizeProject(mergeProjects(match, curated), config, locale);
+    if (locale === "de" && project.de) {
+      project = getLocalizedProject(project, locale);
+    }
+    merged.push(project);
   });
 
   fromConfig.forEach((project) => {
     const alreadyIncluded = merged.find((p) => p.slug === project.slug);
     if (!alreadyIncluded) {
-      merged.push(finalizeProject(mergeProjects(project), config));
+      merged.push(finalizeProject(mergeProjects(project), config, locale));
     }
   });
 
   return merged;
 }
 
-export function getProjectBySlug(slug: string, config?: any) {
-  return buildProjects(config).find((p) => p.slug === slug);
+export function getProjectBySlug(
+  slug: string,
+  config?: any,
+  locale: string = "en"
+) {
+  return buildProjects(config, locale).find((p) => p.slug === slug);
 }

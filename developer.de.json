@@ -1,0 +1,143 @@
+{
+    "name": "Donia Skima",
+    "logo_name": "Donia Skima",
+    "role": "Softwareentwicklerin",
+    "about": {
+        "sections": {
+            "professional-info": {
+                "title": "professional-info",
+                "icon": "icons/info-professional.svg",
+                "info": {
+                    "experience": {
+                        "title": "experience",
+                        "description": "Full-Stack-Entwicklerin, die Web- und Mobile-Produkte für Startups und KMUs liefert. Ich arbeite mit React/NestJS/Spring Boot, baue Integrationen und halte Deployments stabil, während Teams schnell iterieren."
+                    },
+                    "hard-skills": {
+                        "title": "hard-skills",
+                        "description": "Frontend: React, TypeScript, Flutter. Backend: NestJS, Spring Boot, Node. Daten/Integrationen: REST, OData, SQL, MongoDB, RabbitMQ. Bereitstellung: Docker, CI/CD, schlanke Dokumentation."
+                    },
+                    "soft-skills": {
+                        "title": "soft-skills",
+                        "description": "Klare Kommunikation, teamfähig, ruhig unter Druck. Ich mag klare Ziele, schnelles Feedback und halte Stakeholder ohne unnötigen Lärm auf dem Laufenden."
+                    }
+                }
+            },
+            "personal-info": {
+                "title": "personal-info",
+                "icon": "icons/info-personal.svg",
+                "info": {
+                    "bio": {
+                        "title": "bio",
+                        "description": "Ich entwickle zuverlässige Produkte für Teams, die designbewusstes Engineering und Integrationen brauchen, die einfach funktionieren."
+                    },
+                    "interests": {
+                        "title": "interests",
+                        "description": "Tooling, Design-Systeme, schnelle Prototypen und Wissensaustausch mit Teams."
+                    },
+                    "education": {
+                        "title": "education",
+                        "description": "Informatik-Studium – Higher Institute of Informatics and Mathematics of Monastir.",
+                        "files": {
+                            "university": "Higher Institute of Informatics and Mathematics of Monastir"
+                        }
+                    }
+                }
+            },
+            "hobbies-info": {
+                "title": "hobbies-info",
+                "icon": "icons/info-hobbies.svg",
+                "info": {
+                    "favorite-games": {
+                        "title": "favorite-games",
+                        "description": "Ich entspanne mich mit Valorant und Co-op-Spielen mit Freunden."
+                    }
+                }
+            }
+        }
+    },
+    "contacts": {
+        "direct": {
+            "title": "kontakte",
+            "sources": {
+                "email": "doniaskima@doniacode.com",
+                "phone": "+330644091965"
+            }
+        },
+        "social": {
+            "github": {
+                "title": "Github-Profil",
+                "url": "https://github.com/",
+                "user": "doniaskima"
+            }
+        },
+        "find_me_also_in": {
+            "title": "finde-mich-auch-auf",
+            "sources": {
+                "gurushots": {
+                    "title": "GuruShots-Profil",
+                    "url": "https://gurushots.com/",
+                    "user": "username"
+                },
+                "instagram": {
+                    "title": "Instagram-Konto",
+                    "url": "https://instagram.com/",
+                    "user": "do.nia2240"
+                }
+            }
+        }
+    },
+    "gists": {
+        "1": "83861a67e377633ee8368df01ee3a355",
+        "2": "694c1f32332788a2ac7f37b09e5aa40e"
+    },
+    "projects": {
+        "1": {
+            "title": "",
+            "description": "Das Projekt für ein Industriekletterunternehmen in Deutschland ist ein umfangreiches Vorhaben zur Erstellung einer robusten und skalierbaren Plattform durch Integration bestehender und neu entwickelter Microservices.",
+            "img": "",
+            "tech": ["Flutter","React","Nestjs","Spring-boot","RabbitMq","CSS","Typescript"],
+            "url": "/",
+            "details": ""
+        },
+        "2": {
+            "title": "Incedo Lead Generator",
+            "description": "Ich habe zum Incedo Lead Generator beigetragen, einer innovativen Plattform zur präzisen Zielgruppenansprache. Ob im Recruiting oder im Vertrieb – durch intelligente Automatisierung.",
+            "img": "/images/projects/ilg.png",
+            "tech": ["React","Nestjs","Typescript"],
+            "url": "https://lead-generator.incedo.net",
+            "details": ""
+        },
+        "5": {
+            "title": "Plot",
+            "description": "Als freiberuflicher Frontend-Entwickler habe ich zum Plot-Projekt beigetragen. Plot macht soziale Videos intelligenter. Ich habe an verschiedenen Frontend-Aufgaben gearbeitet und wichtige Funktionen geliefert.",
+            "img": "/images/projects/Plot.png",
+            "tech": ["React","Typescript"],
+            "url": "https://www.plot.so/",
+            "details": ""
+        },
+        "6": {
+            "title": "react-crafitify",
+            "description": "React-Crafitify ist eine vielseitige React-Komponentenbibliothek zur Verbesserung der Benutzeroberfläche von Webanwendungen. Mit Fokus auf Ästhetik und Benutzerfreundlichkeit bietet sie anpassbare UI-Komponenten.",
+            "img": "/images/projects/ai-resources.png",
+            "tech": ["React"],
+            "url": "https://github.com/doniaskima/react-crafitify",
+            "details": ""
+        },
+        "7": {
+            "title": "cmdbook-cli",
+            "description": "Ein Spaßprojekt-CLI, das ich entwickle, um Terminal-UX und kleine Hilfsprogramme zu erkunden.",
+            "img": "",
+            "tech": ["CLI","Tooling"],
+            "url": "https://github.com/doniaskima/cmdbook-cli",
+            "details": ""
+        },
+        "8": {
+            "title": "ask-cli",
+            "description": "Ein spielerisches CLI-Projekt, das ich zum Spaß entwickle, um mit Prompts und Helfern zu experimentieren.",
+            "img": "",
+            "tech": ["CLI","Tooling"],
+            "url": "https://github.com/doniaskima/ask-cli",
+            "details": ""
+        }
+    }
+}

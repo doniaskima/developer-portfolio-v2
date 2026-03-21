@@ -1,7 +1,7 @@
 <template>
   <main v-if="!loading" id="about-me" class="page">
     <div id="mobile-page-title">
-      <h2>_about-me</h2>
+      <h2 class="line-comment">{{ t('about.title') }}</h2>
     </div>
 
     <div id="page-menu" class="w-full flex">
@@ -9,7 +9,7 @@
       <div id="sections">
         <div
           id="section-icon"
-          v-for="section in config.dev.about.sections"
+          v-for="section in devConfig.about.sections"
           :key="section.title"
           :class="{ active: isSectionActive(section.title) }"
         >
@@ -39,7 +39,7 @@
             class="section-arrow mx-3 open"
           />
           <p
-            v-html="config.dev.about.sections[currentSection].title"
+            v-html="devConfig.about.sections[currentSection].title"
             class="font-fira_regular text-white text-sm"
           ></p>
         </div>
@@ -47,7 +47,7 @@
         <!-- folders -->
         <div>
           <div
-            v-for="(folder, key, index) in config.dev.about.sections[
+            v-for="(folder, key, index) in devConfig.about.sections[
               currentSection
             ].info"
             :key="key"
@@ -97,13 +97,13 @@
             class="section-arrow mx-3 open"
           />
           <p
-            v-html="config.dev.contacts.direct.title"
+            v-html="devConfig.contacts.direct.title"
             class="font-fira_regular text-white text-sm"
           ></p>
         </div>
         <div id="contact-sources" class="hidden lg:flex lg:flex-col mt-2 mx-6">
           <div
-            v-for="(source, key) in config.dev.contacts.direct.sources"
+            v-for="(source, key) in devConfig.contacts.direct.sources"
             :key="key"
             class="flex items-center mb-2"
           >
@@ -119,7 +119,7 @@
 
       <!-- mobile -->
       <div id="section-content" class="lg:hidden w-full font-fira_regular">
-        <div v-for="section in config.dev.about.sections" :key="section.title">
+        <div v-for="section in devConfig.about.sections" :key="section.title">
           <!-- section title (mobile) -->
           <div
             :key="section.title"
@@ -141,7 +141,7 @@
           <div :id="'folders-' + section.title" class="hidden">
             <!-- <div :id="'folders-' + section.title" :class="currentSection == section.title ? 'block' : 'hidden'"> -->
             <div
-              v-for="(folder, key, index) in config.dev.about.sections[
+              v-for="(folder, key, index) in devConfig.about.sections[
                 section.title
               ].info"
               :key="key"
@@ -188,7 +188,7 @@
             class="section-arrow"
           />
           <p
-            v-html="config.dev.contacts.direct.title"
+            v-html="devConfig.contacts.direct.title"
             class="font-fira_regular text-white text-sm"
           ></p>
         </div>
@@ -196,7 +196,7 @@
         <!-- section content folders -->
         <div id="contacts" class="hidden">
           <div
-            v-for="(source, key) in config.dev.contacts.direct.sources"
+            v-for="(source, key) in devConfig.contacts.direct.sources"
             :key="key"
             class="flex items-center my-2"
           >
@@ -219,7 +219,7 @@
         <div class="tab-height w-full hidden lg:flex border-bot items-center">
           <div class="flex items-center border-right h-full">
             <p
-              v-html="config.dev.about.sections[currentSection].title"
+              v-html="devConfig.about.sections[currentSection].title"
               class="font-fira_regular text-menu-text text-sm px-3"
             ></p>
             <img src="/icons/close.svg" alt="" class="mx-3" />
@@ -230,13 +230,13 @@
         <div id="tab-mobile" class="flex lg:hidden font-fira_retina">
           <span class="text-white">// </span>
           <h3
-            v-html="config.dev.about.sections[currentSection].title"
+            v-html="devConfig.about.sections[currentSection].title"
             class="text-white px-2"
           ></h3>
           <span class="text-menu-text"> / </span>
           <h3
             v-html="
-              config.dev.about.sections[currentSection].info[folder].title
+              devConfig.about.sections[currentSection].info[folder].title
             "
             class="text-menu-text pl-2"
           ></h3>
@@ -250,7 +250,7 @@
           <div class="w-full h-full ml-5 mr-10 lg:my-5 overflow-scroll">
             <CommentedText
               :text="
-                config.dev.about.sections[currentSection].info[folder]
+                devConfig.about.sections[currentSection].info[folder]
                   .description
               "
             />
@@ -422,8 +422,12 @@ export default {
    */
   setup() {
     const config = useRuntimeConfig();
+    const { t, locale, devConfig } = useI18n();
     return {
       config,
+      t,
+      locale,
+      devConfig,
     };
   },
   computed: {
@@ -453,12 +457,12 @@ export default {
     focusCurrentFolder(folder) {
       this.folder = folder.title;
       // handle if folder belongs to the current section. It happens when you click on a folder from a different section in mobile view.
-      this.currentSection = this.config.dev.about.sections[this.currentSection]
+      this.currentSection = this.devConfig.about.sections[this.currentSection]
         .info[folder.title]
         ? this.currentSection
-        : Object.keys(this.config.dev.about.sections).find(
+        : Object.keys(this.devConfig.about.sections).find(
             (section) =>
-              this.config.dev.about.sections[section].info[folder.title]
+              this.devConfig.about.sections[section].info[folder.title]
           );
     },
     /**

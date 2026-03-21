@@ -42,6 +42,17 @@ export type Customization = {
   accentSoft: string;
   badge?: string;
   image?: string;
+  de?: {
+    shortDescription?: string;
+    highlights?: string[];
+    details?: string;
+    detailSections?: { heading: string; body: string }[];
+    example?: string;
+    note?: string;
+    price?: string;
+    priceNote?: string;
+    setupFee?: string;
+  };
 };
 
 function slugify(text: string) {
@@ -133,6 +144,35 @@ const customizations: Customization[] = [
     accent: "#FEA55F",
     accentSoft: "rgba(254, 165, 95, 0.15)",
     badge: "Logistics",
+    de: {
+      shortDescription:
+        "Maximale Übersicht in der Belegverarbeitung: automatische Statusfärbung verwandelt komplexe Tabellen in intuitive Dashboards. Engpässe und Bestände sofort visuell erkennen – für fehlerfreie Disposition und schnellere Prozesse.",
+      price: "Ab €99 netto pro Monat",
+      priceNote: "zzgl. Einrichtungsgebühr",
+      setupFee: "Einmalige Einrichtungsgebühr von €499 netto.",
+      highlights: [
+        "Visuelle Echtzeitkontrolle: Status-Ampel direkt in Positionszeilen ohne manuelle Prüfung",
+        "Optimierter Workflow: Drastische Zeitersparnis durch Fokus auf kritische Abweichungen",
+        "Proaktives Handeln: Engpässe erkennen, bevor sie im Lieferprozess zum Problem werden",
+        "Exzellenter Kundenservice: Sofortige, verlässliche Liefertermine bereits bei der Erfassung",
+        "Fehlerminimierung: Visuelle Leitsysteme unterstützen Einkauf, Lager und Vertrieb nachhaltig",
+      ],
+      details:
+        "Heben Sie Ihre Belegverarbeitung auf das nächste Level. Ihre intelligente Farblogik fungiert als visuelles Leitsystem im täglichen Arbeiten. Statt jede Position einzeln auf Verfügbarkeit oder Lieferstatus zu prüfen, liefert das System eine intuitive Ampellogik.",
+      detailSections: [
+        {
+          heading: "Einkauf & Bestellungen",
+          body: "Behalten Sie die volle Übersicht über Ihre Lieferanten. Grün signalisiert Vollständigkeit, während Gelb und Rot sofort zeigen, wo Liefertermine wackeln oder Nachfassaktionen nötig sind.",
+        },
+        {
+          heading: "Vertrieb & Auftragsmanagement",
+          body: "Bereits bei der Erfassung von Angeboten oder Aufträgen prüft das System im Hintergrund Ihren Lagerbestand. Grün bedeutet sofort lieferbar – ein wichtiges Versprechen an Ihre Kunden. Bei Gelb oder Rot können Sie sofort reagieren, Alternativen anbieten oder Beschaffungsprozesse auslösen.",
+        },
+      ],
+      example:
+        "Stellen Sie sich vor, Sie öffnen einen großen Sammelauftrag. Statt mühsam Lieferbelege zu vergleichen, sehen Sie sofort: zwei Positionen sind grün (abgeschlossen), eine gelb (Teilmengen) und eine rot. Ihr Blick geht direkt zum Problem – Sie sparen wertvolle Minuten pro Beleg.",
+      note: "Der Leistungsumfang zum genannten Basispreis ist in der Standard-Leistungsbeschreibung abschließend definiert. Anpassungen über den Standard hinaus sind jederzeit nach vorheriger Abstimmung möglich. Diese führen zu einer Anpassung der monatlichen Gebühr und bedürfen einer gemeinsamen schriftlichen Vereinbarung.",
+    },
   },
   {
     slug: "erweiterte-seitenleisten",
@@ -156,6 +196,21 @@ const customizations: Customization[] = [
     accent: "#43D9AD",
     accentSoft: "rgba(67, 217, 173, 0.14)",
     badge: "Interface",
+    de: {
+      shortDescription:
+        "Systemweite Übersicht ohne Fensterwechsel: Nutzen Sie kontextbasierte Seitenleisten in jedem Bildschirm, um sofort relevante Zusatzinformationen einzusehen. Behalten Sie den Fokus und greifen Sie modulübergreifend auf Daten zu.",
+      price: "Ab €99 netto pro Monat",
+      priceNote: "zzgl. Einrichtungsgebühr",
+      setupFee: "Einmalige Einrichtungsgebühr von €499 netto.",
+      highlights: [
+        "Sofortiger Kontext: Zugehörige Daten (offene Aufträge, Rechnungen, Kontakte) ohne Navigation sehen",
+        "Weniger Klicks: Kein Tab-Wechsel mehr für modulübergreifende Informationen",
+        "Rollenbasierte Panels: Jede Rolle sieht die relevantesten Seitenleisten-Inhalte",
+        "Konsistente UX: Gleiches Seitenleisten-Pattern über alle wichtigen Bildschirme",
+      ],
+      details:
+        "Erweiterte Seitenleisten bringen die benötigten Informationen direkt an Ihren Arbeitsplatz. Ob auf einem Kundendatensatz, einem Verkaufsauftrag oder einem Lagerartikel – die Seitenleiste zeigt verknüpfte Datensätze, KPIs und Schnellaktionen ohne den aktuellen Bildschirm zu verlassen.",
+    },
   },
   {
     slug: "ki-assistenzmodul",
@@ -179,6 +234,19 @@ const customizations: Customization[] = [
     accent: "#8B5CF6",
     accentSoft: "rgba(139, 92, 246, 0.18)",
     badge: "AI",
+    de: {
+      shortDescription:
+        "Eine KI, die Sie versteht. Lassen Sie sich durch Ihre Haufe X360 Umgebung führen und erhalten Sie sofortige Antworten, Analysen und leicht verständliche Informationen.",
+      price: "Preis auf Anfrage",
+      highlights: [
+        "Natürlichsprachliche Abfragen gegen Ihre ERP-Daten",
+        "Kontextbewusste Vorschläge basierend auf aktuellem Bildschirm und Benutzerrolle",
+        "Automatisierte Berichtserstellung aus Konversationsanfragen",
+        "Proaktive Anomalie-Warnungen und empfohlene Maßnahmen",
+      ],
+      details:
+        "Das KI-Assistenzmodul integriert eine Konversationsschnittstelle direkt in Haufe X360. Stellen Sie Fragen zu Lagerbeständen, Verkaufstrends oder offenen Rechnungen in natürlicher Sprache und erhalten Sie strukturierte Antworten aus Live-Daten.",
+    },
   },
   {
     slug: "oberflaechen-design-optimierung",
@@ -202,6 +270,21 @@ const customizations: Customization[] = [
     accent: "#F472B6",
     accentSoft: "rgba(244, 114, 182, 0.18)",
     badge: "Interface",
+    de: {
+      shortDescription:
+        "Passen Sie Ihr Haufe X360 Systemdesign nach Ihren Wünschen an! Wir gestalten das Design nach Ihren Bedürfnissen, ob mit Firmenlogo und Unternehmensfarben oder anderen Präferenzen.",
+      price: "Ab €49 netto pro Monat",
+      priceNote: "zzgl. Einrichtungsgebühr",
+      setupFee: "Einmalige Einrichtungsgebühr von €299 netto.",
+      highlights: [
+        "Individuelles Branding mit Firmenlogo und Unternehmensfarben",
+        "Angepasste Dashboard-Layouts für verschiedene Benutzerrollen",
+        "Verbesserte Navigation mit reorganisierten Menüs und Shortcuts",
+        "Konsistente Designsprache über alle angepassten Bildschirme",
+      ],
+      details:
+        "Die Oberflächen-Design-Optimierung verwandelt das Erscheinungsbild Ihrer Haufe X360 Instanz. Wir passen Farbpaletten an, integrieren Ihre Corporate Identity und ordnen Interface-Elemente neu, damit sich das System wie eine natürliche Erweiterung Ihrer Marke anfühlt.",
+    },
   },
   {
     slug: "verkaufsbelege-materialien",
@@ -225,6 +308,21 @@ const customizations: Customization[] = [
     accent: "#4D5BCE",
     accentSoft: "rgba(77, 91, 206, 0.16)",
     badge: "Sale",
+    de: {
+      shortDescription:
+        "Optimieren Sie komplexe Produktkonfigurationen in Verkaufsbelegen. Verwalten Sie Stücklisten direkt in Angeboten und Aufträgen für präzise Preiskalkulation und Bestandszuordnung.",
+      price: "Ab €79 netto pro Monat",
+      priceNote: "zzgl. Einrichtungsgebühr",
+      setupFee: "Einmalige Einrichtungsgebühr von €399 netto.",
+      highlights: [
+        "Stücklistenverwaltung direkt in Verkaufsbelegen",
+        "Automatische Preiskalkulation für konfigurierte Produkte",
+        "Echtzeit-Bestandsprüfung für alle Stücklistenkomponenten",
+        "Nahtlose Übernahme vom Angebot zum Auftrag mit Stücklistenintegrität",
+      ],
+      details:
+        "Verkaufsbelege Materialien ermöglicht Ihrem Vertriebsteam die Arbeit mit komplexen Produktstrukturen ohne den Verkaufsworkflow zu verlassen. Komponenten werden validiert, bepreist und als Einheit reserviert, sodass Sie liefern können, was Sie anbieten.",
+    },
   },
   {
     slug: "standorterweiterung",
@@ -248,15 +346,47 @@ const customizations: Customization[] = [
     accent: "#22D3EE",
     accentSoft: "rgba(34, 211, 238, 0.2)",
     badge: "Logistics",
+    de: {
+      shortDescription:
+        "Erweitern Sie das Standortmanagement mit zusätzlichen Feldern, Validierungen und Automatisierung für Multi-Standort-Operationen und regionale Geschäftsregeln.",
+      price: "Ab €69 netto pro Monat",
+      priceNote: "zzgl. Einrichtungsgebühr",
+      setupFee: "Einmalige Einrichtungsgebühr von €349 netto.",
+      highlights: [
+        "Multi-Standort-Bestandsverfolgung mit standortspezifischen Regeln",
+        "Automatisierte Lagerauswahl basierend auf Kundenregion",
+        "Standortbezogene Preis- und Steuerkonfiguration",
+        "Standortübergreifende Transfer-Workflows mit Genehmigungsketten",
+      ],
+      details:
+        "Die Standorterweiterung bringt Multi-Standort-Bewusstsein in Ihre Haufe X360 Prozesse. Von der automatischen Lagerzuordnung bis zu standortspezifischen Preisregeln berücksichtigt jede Transaktion die Geografie Ihres Geschäfts.",
+    },
   },
 ];
 
-export function getAllCustomizations(): Customization[] {
-  return customizations;
+function localizeCustomization(c: Customization, locale: string): Customization {
+  if (locale !== 'de' || !c.de) return c;
+  return {
+    ...c,
+    shortDescription: c.de.shortDescription || c.shortDescription,
+    highlights: c.de.highlights || c.highlights,
+    details: c.de.details || c.details,
+    detailSections: c.de.detailSections || c.detailSections,
+    example: c.de.example || c.example,
+    note: c.de.note || c.note,
+    price: c.de.price || c.price,
+    priceNote: c.de.priceNote || c.priceNote,
+    setupFee: c.de.setupFee || c.setupFee,
+  };
 }
 
-export function getCustomizationBySlug(slug: string): Customization | undefined {
-  return customizations.find((c) => c.slug === slug);
+export function getAllCustomizations(locale: string = 'en'): Customization[] {
+  return customizations.map((c) => localizeCustomization(c, locale));
+}
+
+export function getCustomizationBySlug(slug: string, locale: string = 'en'): Customization | undefined {
+  const c = customizations.find((c) => c.slug === slug);
+  return c ? localizeCustomization(c, locale) : undefined;
 }
 
 export function getAllCategories(): CustomizationCategory[] {
