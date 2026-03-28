@@ -22,6 +22,10 @@
             <NuxtLink id="nav-link" to="/store" :class="{ active: isActive('/store') }">
               {{ t('nav.store') }}
             </NuxtLink>
+
+            <NuxtLink id="nav-link" to="/blog" :class="{ active: isActive('/blog') }">
+              {{ t('nav.blog') }}
+            </NuxtLink>
           </div>
 
           <div class="flex items-center">
@@ -54,6 +58,9 @@ export default {
         }
         if (route === '/store') {
           return this.$route.path.startsWith('/store');
+        }
+        if (route === '/blog') {
+          return this.$route.path.startsWith('/blog');
         }
         return this.$route.path === route;
       };
