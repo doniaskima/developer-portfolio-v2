@@ -1,7 +1,7 @@
 {
     "name": "Donia Skima",
     "logo_name": "Donia Skima",
-    "role": "Software Developer",
+    "role": "ERP / Software Developer specializing in Acumatica",
     "about": {
         "sections": {
             "professional-info": {
@@ -10,11 +10,11 @@
                 "info": {
                     "experience": {
                         "title": "Experience",
-                        "description": "Full-stack engineer shipping web and mobile products for startups and SMBs. I move between React/NestJS/Spring Boot, wire integrations, and keep deployments stable while teams iterate fast."
+                        "description": "ERP and software engineer focused on Acumatica: customizations, integrations, and business workflows. I also ship web and mobile products with React/NestJS/Spring Boot, wire APIs, and keep deployments stable while teams iterate."
                     },
                     "hard-skills": {
                         "title": "hard-skills",
-                        "description": "Frontend: React, TypeScript, Flutter. Backend: NestJS, Spring Boot, Node. Data/Integrations: REST, OData, SQL, MongoDB, RabbitMQ. Delivery: Docker, CI/CD, lean docs."
+                        "description": "Acumatica: customization projects, business logic, screens, GI/BQL, imports, and integrations. Stack: React, TypeScript, Flutter, NestJS, Spring Boot, Node. Data: REST, OData, SQL, MongoDB, RabbitMQ. Delivery: Docker, CI/CD."
                     },
                     "soft-skills": {
                         "title": "soft-skills",
@@ -28,7 +28,7 @@
                 "info": { 
                     "bio": {
                         "title": "bio",
-                        "description": "I build reliable products for teams that need design-aware engineering and integrations that just work."
+                        "description": "I specialize in Acumatica ERP and full-stack delivery—clear customizations, solid integrations, and engineering that fits how teams actually work."
                     },
                     "interests": {
                         "title": "interests",

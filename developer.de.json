@@ -1,7 +1,7 @@
 {
     "name": "Donia Skima",
     "logo_name": "Donia Skima",
-    "role": "Softwareentwicklerin",
+    "role": "ERP-/Softwareentwicklerin, Schwerpunkt Acumatica",
     "about": {
         "sections": {
             "professional-info": {
@@ -10,11 +10,11 @@
                 "info": {
                     "experience": {
                         "title": "experience",
-                        "description": "Full-Stack-Entwicklerin, die Web- und Mobile-Produkte für Startups und KMUs liefert. Ich arbeite mit React/NestJS/Spring Boot, baue Integrationen und halte Deployments stabil, während Teams schnell iterieren."
+                        "description": "ERP- und Softwareentwicklerin mit Schwerpunkt Acumatica: Anpassungen, Integrationen und Geschäftsprozesse. Dazu Web- und Mobile-Produkte mit React/NestJS/Spring Boot, APIs und stabile Deployments für schnelle Iteration."
                     },
                     "hard-skills": {
                         "title": "hard-skills",
-                        "description": "Frontend: React, TypeScript, Flutter. Backend: NestJS, Spring Boot, Node. Daten/Integrationen: REST, OData, SQL, MongoDB, RabbitMQ. Bereitstellung: Docker, CI/CD, schlanke Dokumentation."
+                        "description": "Acumatica: Customization Projects, Business-Logik, Screens, GI/BQL, Importe und Integrationen. Stack: React, TypeScript, Flutter, NestJS, Spring Boot, Node. Daten: REST, OData, SQL, MongoDB, RabbitMQ. Delivery: Docker, CI/CD."
                     },
                     "soft-skills": {
                         "title": "soft-skills",
@@ -28,7 +28,7 @@
                 "info": {
                     "bio": {
                         "title": "bio",
-                        "description": "Ich entwickle zuverlässige Produkte für Teams, die designbewusstes Engineering und Integrationen brauchen, die einfach funktionieren."
+                        "description": "Ich spezialisiere mich auf Acumatica ERP und Full-Stack-Umsetzung—klare Anpassungen, belastbare Integrationen und Engineering, das zu echten Arbeitsabläufen passt."
                     },
                     "interests": {
                         "title": "interests",

@@ -33,8 +33,8 @@
         <div class="term-line role-line stagger stagger-3">
           <span class="line-num">4</span>
           <span class="term-output">&gt;&nbsp;</span>
-          <h2 class="line-1 anim-typewriter max-w-fit">
-            {{ devConfig.role }}
+          <h2 class="role-heading">
+            {{ devConfig.role }}<span class="role-cursor" aria-hidden="true">|</span>
           </h2>
         </div>
         <div class="term-line stagger stagger-4 game-comment-gap">
@@ -78,7 +78,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
-const config = useRuntimeConfig();
 const { t, devConfig } = useI18n();
 
 const isMobile = ref(false);
@@ -109,11 +108,17 @@ function handleResize() {
   width: 100%;
   flex: 1 1 auto;
   padding-left: 275px;
-  overflow: hidden;
+  padding-right: 1.25rem;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: stretch;
 }
 
 .hero {
-  width: 100%;
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -122,7 +127,7 @@ function handleResize() {
 .game {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  flex: 0 0 auto;
   height: 100%;
   justify-content: center;
   z-index: 20;
@@ -177,13 +182,25 @@ function handleResize() {
 
 .role-line {
   margin-bottom: 0.25rem;
+  align-items: flex-start;
 }
 
-.role-line h2 {
+.role-heading {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
   font-size: 32px;
-  line-height: 1;
+  line-height: 1.25;
   color: #4d5bce;
   font-family: "Fira Code Retina";
+  font-weight: 400;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.role-cursor {
+  color: rgba(255, 255, 255, 0.75);
+  animation: blinkTextCursor 800ms steps(1) infinite;
 }
 
 /* Breathing room between role and “complete the game” comment */
@@ -281,36 +298,14 @@ function handleResize() {
   }
 }
 
-/* Typewrite Animation */
-
-.line-1 {
-  width: fit-content;
-  border-right: 3px solid rgba(255, 255, 255, 0.75);
-  white-space: nowrap;
-  overflow: hidden;
-  padding-right: 2px;
-}
-
-.anim-typewriter {
-  animation: typewriter 3.5s steps(40) 1s 1 normal both,
-    blinkTextCursor 800ms steps(40) infinite normal;
-}
-
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
 @keyframes blinkTextCursor {
-  from {
-    border-right-color: rgba(255, 255, 255, 0.75);
+  0%,
+  50% {
+    opacity: 1;
   }
-  to {
-    border-right-color: transparent;
+  51%,
+  100% {
+    opacity: 0;
   }
 }
 
@@ -332,7 +327,7 @@ function handleResize() {
     font-size: 36px;
   }
 
-  .role-line h2 {
+  .role-heading {
     font-size: 20px;
     color: #43d9ad;
   }

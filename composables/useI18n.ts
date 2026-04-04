@@ -1,5 +1,7 @@
 import { en } from '~/locales/en';
 import { de } from '~/locales/de';
+import devEn from '~/developer.json';
+import devDe from '~/developer.de.json';
 
 export type Locale = 'en' | 'de';
 
@@ -7,7 +9,6 @@ const translations = { en, de } as const;
 
 export function useI18n() {
   const locale = useState<Locale>('locale', () => 'en');
-  const cfg = useRuntimeConfig();
 
   if (process.client) {
     const stored = localStorage.getItem('portfolio-locale');
@@ -34,10 +35,10 @@ export function useI18n() {
     }
   }
 
-  const devConfig = computed(() => {
-    const deCfg = (cfg.public as any).devDe;
-    return locale.value === 'de' && deCfg ? deCfg : cfg.public.dev;
-  });
+  /** Direct JSON import so hero/about copy hot-reloads in dev (runtimeConfig is fixed until server restart). */
+  const devConfig = computed(() =>
+    locale.value === 'de' ? devDe : devEn
+  );
 
   return { locale, t, toggleLocale, devConfig };
 }
