@@ -59,7 +59,7 @@
 
       <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll">
         <div class="grid gap-6 lg:grid-cols-3">
-          <div class="panel bracket-decor lg:col-span-2">
+          <div class="panel lg:col-span-2">
             <div class="panel-title">{{ t('projectDetail.panelDetails') }}</div>
             <ul v-if="detailPoints.length" class="list">
               <li v-for="item in detailPoints" :key="item">
@@ -72,7 +72,7 @@
             </p>
           </div>
 
-          <div class="panel bracket-decor">
+          <div class="panel">
             <div class="panel-title">{{ t('projectDetail.panelStack') }}</div>
             <div class="flex flex-wrap gap-2">
               <span v-for="tech in project.tech" :key="tech" class="chip">
@@ -82,7 +82,7 @@
           </div>
         </div>
 
-        <div class="panel bracket-decor mt-6" v-if="links.length">
+        <div class="panel mt-6" v-if="links.length">
           <div class="panel-title">{{ t('projectDetail.panelLinks') }}</div>
           <div class="flex flex-wrap gap-3">
             <a

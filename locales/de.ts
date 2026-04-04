@@ -95,6 +95,7 @@ export const de = {
     setupFee: 'Einrichtungsgebühr',
     notFound: 'Erweiterung nicht gefunden.',
     backToStore: 'Zurück zum Store',
+    screenshots: 'Produkt-Screenshots',
   },
   about: {
     title: 'über-mich',

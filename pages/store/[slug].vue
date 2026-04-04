@@ -1,63 +1,115 @@
 <template>
   <main id="store-detail" class="page flex flex-col overflow-hidden">
-    <div v-if="item" class="flex flex-col flex-1 overflow-hidden">
+    <div v-if="item" class="flex flex-col flex-1 min-h-0 overflow-hidden">
       <section
-        class="detail-hero relative overflow-hidden border-bot"
+        class="store-detail-unified flex-1 min-h-0 overflow-y-auto detail-scroll relative"
         :style="{ '--accent': item.accent, '--accent-soft': item.accentSoft }"
       >
-        <div class="hero-veil hero-veil-a"></div>
-        <div class="hero-veil hero-veil-b"></div>
+        <div class="hero-veil hero-veil-a" aria-hidden="true"></div>
+        <div class="hero-veil hero-veil-b" aria-hidden="true"></div>
 
-        <div class="relative px-6 py-5 lg:px-10 lg:py-6 space-y-4">
-          <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
-            <div class="flex items-center gap-3 flex-wrap">
-              <NuxtLink to="/store" class="back-btn">
-                <span aria-hidden="true">&larr;</span> {{ t('storeDetail.backAll') }}
-              </NuxtLink>
+        <div class="store-detail-inner relative z-[1] px-6 py-5 lg:px-10 lg:py-8 lg:pb-12 flex flex-col gap-10">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
+              <div class="flex items-center gap-3 flex-wrap">
+                <NuxtLink to="/store" class="back-btn">
+                  <span aria-hidden="true">&larr;</span> {{ t('storeDetail.backAll') }}
+                </NuxtLink>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <NuxtLink to="/store" class="crumb">{{ t('storeDetail.breadcrumb') }}</NuxtLink>
+                  <span class="sep">/</span>
+                  <span class="crumb active">{{ item.title }}</span>
+                </div>
+              </div>
               <div class="flex items-center gap-2 flex-wrap">
-                <NuxtLink to="/store" class="crumb">{{ t('storeDetail.breadcrumb') }}</NuxtLink>
-                <span class="sep">/</span>
-                <span class="crumb active">{{ item.title }}</span>
+                <span v-for="cat in item.categories" :key="cat" class="pill">{{ cat }}</span>
               </div>
             </div>
-            <div class="flex items-center gap-2 flex-wrap">
-              <span v-for="cat in item.categories" :key="cat" class="pill">{{ cat }}</span>
+
+            <div class="hero-main">
+              <div class="hero-icon" :style="{ background: item.accentSoft }">
+                <component :is="iconMap[item.icon] || 'span'" />
+              </div>
+
+              <div class="space-y-3 hero-copy">
+                <h1 class="text-white text-2xl lg:text-3xl font-fira_bold leading-snug">
+                  {{ item.title }}
+                </h1>
+                <p class="text-base text-menu-text leading-7 max-w-4xl">
+                  {{ item.shortDescription }}
+                </p>
+                <div class="hero-price-row">
+                  <span class="hero-price" v-if="item.price">{{ item.price }}</span>
+                  <span class="hero-setup" v-if="item.setupFee">{{ item.setupFee }}</span>
+                </div>
+                <div class="flex gap-3 flex-wrap pt-1">
+                  <a
+                    href="mailto:doniaskima@doniacode.com?subject=Extension%20Inquiry"
+                    class="cta-btn primary"
+                  >
+                    {{ t('storeDetail.getInTouch') }}
+                  </a>
+                  <a href="#details" class="cta-btn secondary">{{ t('storeDetail.moreInfo') }}</a>
+                </div>
+              </div>
+
+              <figure v-if="heroImages.length" class="hero-shot hero-carousel">
+                <div class="hero-carousel-viewport">
+                  <div
+                    class="hero-carousel-track"
+                    :style="carouselTrackStyle"
+                  >
+                    <div
+                      v-for="(src, i) in heroImages"
+                      :key="src + i"
+                      class="hero-carousel-slide"
+                      :style="{ width: `${100 / heroImages.length}%` }"
+                    >
+                      <img
+                        :src="src"
+                        :alt="`${item.title} — screenshot ${i + 1} of ${heroImages.length}`"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div v-if="heroImages.length > 1" class="hero-carousel-controls" role="group" :aria-label="t('storeDetail.screenshots')">
+                  <button
+                    type="button"
+                    class="hero-carousel-btn"
+                    aria-label="Previous screenshot"
+                    @click="prevSlide"
+                  >
+                    ‹
+                  </button>
+                  <div class="hero-carousel-dots">
+                    <button
+                      v-for="(_, i) in heroImages"
+                      :key="i"
+                      type="button"
+                      class="hero-carousel-dot"
+                      :class="{ active: i === activeSlide }"
+                      :aria-label="`Screenshot ${i + 1}`"
+                      :aria-current="i === activeSlide ? 'true' : undefined"
+                      @click="activeSlide = i"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    class="hero-carousel-btn"
+                    aria-label="Next screenshot"
+                    @click="nextSlide"
+                  >
+                    ›
+                  </button>
+                </div>
+              </figure>
             </div>
           </div>
 
-          <div class="hero-main">
-            <div class="hero-icon" :style="{ background: item.accentSoft }">
-              <component :is="iconMap[item.icon] || 'span'" />
-            </div>
-
-            <div class="space-y-3 hero-copy">
-              <h1 class="text-white text-2xl lg:text-3xl font-fira_bold leading-snug">
-                {{ item.title }}
-              </h1>
-              <p class="text-base text-menu-text leading-7 max-w-4xl">
-                {{ item.shortDescription }}
-              </p>
-              <div class="hero-price-row">
-                <span class="hero-price" v-if="item.price">{{ item.price }}</span>
-                <span class="hero-setup" v-if="item.setupFee">{{ item.setupFee }}</span>
-              </div>
-              <div class="flex gap-3 flex-wrap pt-1">
-                <a
-                  href="mailto:doniaskima@doniacode.com?subject=Extension%20Inquiry"
-                  class="cta-btn primary"
-                >
-                  {{ t('storeDetail.getInTouch') }}
-                </a>
-                <a href="#details" class="cta-btn secondary">{{ t('storeDetail.moreInfo') }}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll" :style="{ '--accent': item.accent, '--accent-soft': item.accentSoft }">
         <!-- Highlights -->
-        <div class="panel bracket-decor" v-if="item.highlights.length">
+        <div class="panel" v-if="item.highlights.length">
           <div class="panel-title">{{ t('storeDetail.highlights') }}</div>
           <ul class="highlight-list">
             <li v-for="(h, i) in item.highlights" :key="i">
@@ -68,7 +120,7 @@
         </div>
 
         <!-- Details -->
-        <div id="details" class="panel bracket-decor mt-6">
+        <div id="details" class="panel">
           <div class="panel-title">{{ t('storeDetail.details') }}</div>
           <p class="detail-text">{{ item.details }}</p>
 
@@ -81,13 +133,13 @@
         </div>
 
         <!-- Example -->
-        <div class="panel mt-6" v-if="item.example">
+        <div class="panel" v-if="item.example">
           <div class="panel-title">{{ t('storeDetail.example') }}</div>
           <p class="detail-text">{{ item.example }}</p>
         </div>
 
         <!-- Standard Features -->
-        <div class="panel bracket-decor mt-6" v-if="item.standardFeatures?.length">
+        <div class="panel" v-if="item.standardFeatures?.length">
           <div class="panel-title">{{ t('storeDetail.standardFeatures') }}</div>
 
           <div v-for="section in item.standardFeatures" :key="section.title" class="feature-block">
@@ -101,7 +153,6 @@
                     class="status-dot"
                     :class="{
                       red: f.status === 'Red',
-                      yellow: f.status === 'Yellow',
                       green: f.status === 'Green',
                     }"
                   ></span>
@@ -114,15 +165,16 @@
         </div>
 
         <!-- Note -->
-        <div class="panel mt-6" v-if="item.note">
+        <div class="panel" v-if="item.note">
           <div class="panel-title">{{ t('storeDetail.note') }}</div>
           <p class="detail-text note-text">{{ item.note }}</p>
         </div>
 
         <!-- Setup fee -->
-        <div class="panel mt-6" v-if="item.setupFee">
+        <div class="panel" v-if="item.setupFee">
           <div class="panel-title">{{ t('storeDetail.setupFee') }}</div>
           <p class="detail-text">{{ item.setupFee }}</p>
+        </div>
         </div>
       </section>
     </div>
@@ -138,7 +190,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, h } from "vue";
+import { computed, h, ref, watch } from "vue";
 import { getCustomizationBySlug } from "@/utils/customizations";
 
 definePageMeta({
@@ -148,6 +200,45 @@ definePageMeta({
 const { t, locale } = useI18n();
 const route = useRoute();
 const item = computed(() => getCustomizationBySlug(route.params.slug as string, locale.value));
+
+const activeSlide = ref(0);
+
+const heroImages = computed(() => {
+  const it = item.value;
+  if (!it) return [];
+  if (it.images && it.images.length > 0) return it.images;
+  if (it.image) return [it.image];
+  return [];
+});
+
+const carouselTrackStyle = computed(() => {
+  const n = heroImages.value.length;
+  if (n < 1) return {};
+  const pct = (activeSlide.value * 100) / n;
+  return {
+    width: `${n * 100}%`,
+    transform: `translateX(-${pct}%)`,
+  };
+});
+
+function nextSlide() {
+  const n = heroImages.value.length;
+  if (n < 2) return;
+  activeSlide.value = (activeSlide.value + 1) % n;
+}
+
+function prevSlide() {
+  const n = heroImages.value.length;
+  if (n < 2) return;
+  activeSlide.value = (activeSlide.value - 1 + n) % n;
+}
+
+watch(
+  () => item.value?.slug,
+  () => {
+    activeSlide.value = 0;
+  }
+);
 
 const PaletteIcon = () =>
   h("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", class: "hero-icon-svg" }, [
@@ -206,8 +297,10 @@ const iconMap: Record<string, any> = {
   flex-direction: column;
 }
 
-.detail-hero {
-  background: linear-gradient(135deg, var(--accent-soft, rgba(85, 101, 232, 0.12)) 0%, #0c1422 45%, #0a111c 100%);
+.store-detail-unified {
+  background:
+    radial-gradient(circle at 12% 18%, var(--accent-soft, rgba(77, 91, 206, 0.1)), transparent 45%),
+    linear-gradient(160deg, var(--accent-soft, rgba(85, 101, 232, 0.1)) 0%, #0c1422 38%, #0a111c 72%, #0b1220 100%);
 }
 
 .hero-veil {
@@ -265,6 +358,147 @@ const iconMap: Record<string, any> = {
 .hero-copy {
   flex: 1;
   min-width: 0;
+}
+
+.hero-shot {
+  margin: 0;
+  flex: 0 1 min(100%, 440px);
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #080f18;
+  border-radius: 16px;
+  border: 1px solid #1e2d3d;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  padding: 10px;
+  min-height: 220px;
+}
+
+.hero-shot.hero-carousel {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.hero-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.hero-carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform;
+}
+
+.hero-carousel-slide {
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.hero-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(480px, 52vh);
+  border-radius: 10px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.hero-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+}
+
+.hero-carousel-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid #1e2d3d;
+  background: #0b1420;
+  color: #e5e9f0;
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.hero-carousel-btn:hover {
+  border-color: var(--accent, #fea55f);
+  color: var(--accent, #fea55f);
+}
+
+.hero-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 9999px;
+  border: none;
+  background: #2a3d52;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hero-carousel-dot:hover {
+  background: #607b96;
+}
+
+.hero-carousel-dot.active {
+  background: var(--accent, #fea55f);
+  transform: scale(1.15);
+}
+
+@media (min-width: 768px) {
+  .hero-shot {
+    flex-basis: min(100%, 520px);
+    min-height: 260px;
+    padding: 12px;
+  }
+
+  .hero-shot img {
+    max-height: min(520px, 55vh);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-shot {
+    flex: 0 0 min(580px, 46vw);
+    max-width: min(620px, 48vw);
+    min-height: 300px;
+    padding: 14px;
+  }
+
+  .hero-shot img {
+    max-height: min(580px, 58vh);
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-shot {
+    flex-basis: 640px;
+    max-width: 660px;
+  }
+
+  .hero-shot img {
+    max-height: min(640px, 60vh);
+  }
 }
 
 .hero-price-row {
@@ -355,11 +589,6 @@ const iconMap: Record<string, any> = {
   padding: 6px 12px;
   border-radius: 9999px;
   font-size: 11px;
-}
-
-/* Body */
-.detail-body {
-  background: radial-gradient(circle at 10% 20%, var(--accent-soft, rgba(77, 91, 206, 0.08)), transparent 40%);
 }
 
 .detail-scroll {
@@ -508,10 +737,6 @@ const iconMap: Record<string, any> = {
 
 .status-dot.red {
   background: #ef4444;
-}
-
-.status-dot.yellow {
-  background: #eab308;
 }
 
 .status-dot.green {

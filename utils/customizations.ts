@@ -41,8 +41,13 @@ export type Customization = {
   accent: string;
   accentSoft: string;
   badge?: string;
+  /** Single preview (e.g. store card); use `images` for detail carousel. */
   image?: string;
+  /** Ordered screenshots for store detail carousel; falls back to `image` if omitted. */
+  images?: string[];
   de?: {
+    title?: string;
+    subtitle?: string;
     shortDescription?: string;
     highlights?: string[];
     details?: string;
@@ -57,112 +62,94 @@ export type Customization = {
 
 const customizations: Customization[] = [
   {
-    slug: "intelligente-farblogik-belegzeilen",
-    title: "Intelligente Farblogik für Belegzeilen",
-    subtitle: "Intelligent Color Logic for Document Lines",
+    slug: "line-level-availability-signals",
+    title: "Line-Level Availability & Receipt Signals",
+    subtitle: "Acumatica row cues for sales orders and purchase orders",
     icon: "palette",
     categories: ["Article Management", "Logistics", "Sale"],
     shortDescription:
-      "Maximum overview in document processing: automatic status coloring transforms complex tables into intuitive dashboards. Instantly identify supply bottlenecks and inventory visually — for error-free disposition and faster processes.",
-    price: "From €99 net per month",
-    priceNote: "plus setup fee",
-    setupFee: "One-time setup fee of €499 net.",
+      "Turn dense document grids into scannable views: each line gets a clear color cue for stock coverage or receipt progress, with optional footer metrics and a plain-language availability note—so teams spot exceptions before they become fire drills.",
     highlights: [
-      "Visual real-time control: Status traffic light directly in position lines without manual inspection",
-      "Optimized workflow: Drastic time savings by focusing on critical deviations",
-      "Proactive action: Identify bottlenecks before they become a problem in the delivery process",
-      "Excellent customer service: Immediate, reliable delivery dates already during entry",
-      "Error minimization: Visual guidance systems support your purchasing, warehouse, and sales sustainably",
+      "At-a-glance lines: red and green row styles driven by your rules—no extra clicks per line",
+      "Faster triage: buyers and sellers focus on the few rows that actually need attention",
+      "Earlier conversations: see shortfall risk while the order is still on screen",
+      "Shared context: optional footer fields surface on-hand, demand, available, and related quantities in one place",
+      "Readable availability: optional narrative text in the Availability field for quick human scan",
     ],
     details:
-      "Take your document processing to the next level. Your intelligent color logic acts as a visual guidance system in your daily work. Instead of checking each position individually for availability or delivery status, the system provides an intuitive traffic light logic.",
+      "This package is built around practical signal design—not decorative coloring. On sales orders, the row style reflects how well available quantity covers the quantity on that line. On purchase orders, it reflects receipt progress against what was ordered. The goal is simple: make exceptions obvious, keep copy concise, and stay aligned with how Acumatica already thinks about quantities.",
     detailSections: [
       {
-        heading: "Purchasing & Orders",
-        body: "Keep full overview of your suppliers. Green signals completion, while Yellow and Red immediately show where delivery dates are shaky or follow-up actions are needed on your end.",
+        heading: "Procurement & inbound",
+        body: "Receiving teams see which PO lines are still open at a glance. Lines that are fully received read green; anything not yet complete—including partial receipts—stays red until received quantity meets or exceeds what was ordered.",
       },
       {
-        heading: "Sales & Order Management",
-        body: "Already when entering quotes or orders, the system checks your warehouse stock in the background. Green means immediately deliverable — an important promise to your customers. With Yellow or Red you can react immediately, offer alternatives or trigger procurement processes without losing time.",
+        heading: "Sales orders",
+        body: "While lines are entered, coverage logic compares available quantity to the order quantity on the same line. Green means full coverage (available meets or exceeds the line quantity). Red means a gap—including zero or partial stock—so you can substitute, split, or trigger supply before the customer hears a surprise.",
       },
     ],
     example:
-      "Imagine opening a large collective order. Instead of tediously comparing delivery documents, you see immediately: two positions are green (completed), one yellow (partial quantities), and one red. Your eye goes straight to the problem — you save valuable minutes per document.",
+      "Picture a multi-line sales order: two lines glow green and two red. Instead of mentally diffing quantity columns, your eye lands on the reds first—then you use the footer or availability note to explain the story in one sentence to a colleague or customer.",
     standardFeatures: [
       {
         title: "Sales Order (SO301000)",
         features: [
-          { field: "In Stock", description: "Physical stock at warehouse location" },
-          { field: "Total Sales Qty", description: "Sum of all open orders" },
-          { field: "Available Stock", description: "Calculated: Stock minus open orders" },
-          { field: "Order Qty", description: "Expected inflow from open purchase orders" },
-          { function: "Footer Bar", description: "Extension of inventory check for open order and sales data" },
-          { function: "Info-Text Availability", description: "Formats stock data as readable text in the Availability field" },
-          { function: "Traffic Light Coloring", description: "Status indication of positions" },
-          { status: "Red", description: "Not available (Available Stock <= 0)" },
-          { status: "Yellow", description: "Partially available (Available Stock > 0 but < Order Qty)" },
-          { status: "Green", description: "Fully available (Available Stock >= Order Qty)" },
-        ],
-      },
-      {
-        title: "Quote (CR304500)",
-        features: [
-          { field: "In Stock", description: "Physical stock at warehouse location" },
-          { field: "Total Sales Qty", description: "Sum of all open orders" },
-          { field: "Available Stock", description: "Calculated: Stock minus open orders" },
-          { field: "Order Qty", description: "Expected inflow from open purchase orders" },
-          { function: "Footer Bar", description: "Extension of inventory check for open order and sales data" },
-          { function: "Info-Text Availability", description: "Formats stock data as readable text in the Availability field" },
-          { function: "Traffic Light Coloring", description: "Status indication of positions" },
-          { status: "Red", description: "Not available (Available Stock <= 0)" },
-          { status: "Yellow", description: "Partially available (Available Stock > 0 but < Order Qty)" },
-          { status: "Green", description: "Fully available (Available Stock >= Order Qty)" },
+          { field: "In Stock", description: "Physical quantity at the selected warehouse/location" },
+          { field: "Total Sales Qty", description: "Aggregated open sales demand used in the calculation context" },
+          { field: "Available Stock", description: "Derived available quantity for the item (stock minus relevant reservations/demand)" },
+          { field: "Order Qty", description: "Quantity on this document line—the target the traffic-light rule compares against" },
+          { function: "Footer bar", description: "Optional strip that rolls up on-hand, demand, available, and related figures for quick context" },
+          { function: "Availability narrative", description: "Optional formatted text written into the Availability field for easy reading" },
+          { function: "Row status coloring", description: "Applies red or green background styling to detail lines from the rules below" },
+          { status: "Red", description: "Short coverage — available quantity is less than the order quantity on the line (includes zero)" },
+          { status: "Green", description: "Full coverage — available quantity is greater than or equal to the order quantity on the line" },
         ],
       },
       {
         title: "Purchase Order (PO301000)",
         features: [
-          { field: "Order Qty", description: "Ordered quantity per position" },
-          { field: "Received Qty", description: "Already received quantity" },
-          { function: "Traffic Light Coloring", description: "Status indication of positions" },
-          { status: "Red", description: "No goods received (Qty = 0)" },
-          { status: "Yellow", description: "Partially delivered (Qty > 0 but < Ordered)" },
-          { status: "Green", description: "Fully delivered (Qty >= Ordered)" },
+          { field: "Ordered Qty", description: "Quantity ordered on the line" },
+          { field: "Received Qty", description: "Quantity already received against that line" },
+          { function: "Goods receipt check", description: "Live alignment of received quantity against ordered quantity for each line" },
+          { function: "Row status coloring", description: "Row-level red or green styling from receipt progress" },
+          { status: "Red", description: "Open line — received quantity is less than ordered (includes not yet received and partial receipts)" },
+          { status: "Green", description: "Complete — received quantity is greater than or equal to ordered" },
         ],
       },
     ],
-    note: "The scope of services at the stated base price is conclusively defined in the standard service description. Customizations beyond the standard are possible at any time after prior coordination. These lead to an adjustment of the monthly fee and require a joint written agreement between the customer and us.",
     accent: "#FEA55F",
     accentSoft: "rgba(254, 165, 95, 0.15)",
     badge: "Logistics",
+    images: [
+      "/Customizations/IntelligetColor/intelligentColor.png",
+      "/Customizations/IntelligetColor/intelligentColor-1.png",
+    ],
     de: {
+      title: "Status-Signale auf Belegebene",
+      subtitle: "Zeilenweise Hinweise in Acumatica für Verkaufsaufträge und Bestellungen",
       shortDescription:
-        "Maximale Übersicht in der Belegverarbeitung: automatische Statusfärbung verwandelt komplexe Tabellen in intuitive Dashboards. Engpässe und Bestände sofort visuell erkennen – für fehlerfreie Disposition und schnellere Prozesse.",
-      price: "Ab €99 netto pro Monat",
-      priceNote: "zzgl. Einrichtungsgebühr",
-      setupFee: "Einmalige Einrichtungsgebühr von €499 netto.",
+        "Dichte Positionsraster werden lesbar: Jede Zeile erhält eine klare Farbcodierung für Bestandsdeckung oder Wareneingang—ergänzbar um Fußzeilen-Kennzahlen und einen kurzen Verfügbarkeitstext, damit Ausnahmen früh sichtbar werden.",
       highlights: [
-        "Visuelle Echtzeitkontrolle: Status-Ampel direkt in Positionszeilen ohne manuelle Prüfung",
-        "Optimierter Workflow: Drastische Zeitersparnis durch Fokus auf kritische Abweichungen",
-        "Proaktives Handeln: Engpässe erkennen, bevor sie im Lieferprozess zum Problem werden",
-        "Exzellenter Kundenservice: Sofortige, verlässliche Liefertermine bereits bei der Erfassung",
-        "Fehlerminimierung: Visuelle Leitsysteme unterstützen Einkauf, Lager und Vertrieb nachhaltig",
+        "Sofort erkennbar: Rot- und Grün-Stile pro Zeile nach festen Regeln—ohne Extra-Klicks",
+        "Schnellere Priorisierung: Einkauf und Vertrieb konzentrieren sich auf die wenigen kritischen Zeilen",
+        "Frühere Reaktion: Engpassrisiko schon beim Auftrag erkennen",
+        "Gemeinsamer Kontext: optionale Fußzeile bündelt Bestand, Bedarf, Verfügbarkeit und Mengen",
+        "Lesbare Verfügbarkeit: optional formatierter Text im Verfügbarkeitsfeld",
       ],
       details:
-        "Heben Sie Ihre Belegverarbeitung auf das nächste Level. Ihre intelligente Farblogik fungiert als visuelles Leitsystem im täglichen Arbeiten. Statt jede Position einzeln auf Verfügbarkeit oder Lieferstatus zu prüfen, liefert das System eine intuitive Ampellogik.",
+        "Dieses Paket setzt auf klare Signale statt Deko-Färbung. Bei Verkaufsaufträgen spiegelt der Zeilenstil, wie gut die verfügbare Menge zur Positionsmenge passt. Bei Bestellungen spiegelt er den Wareneingang gegen die bestellte Menge. Ziel: Ausnahmen auffallen lassen, Texte kurz halten, Logik an Acumatica-Mengenfelder anbinden.",
       detailSections: [
         {
-          heading: "Einkauf & Bestellungen",
-          body: "Behalten Sie die volle Übersicht über Ihre Lieferanten. Grün signalisiert Vollständigkeit, während Gelb und Rot sofort zeigen, wo Liefertermine wackeln oder Nachfassaktionen nötig sind.",
+          heading: "Einkauf & Wareneingang",
+          body: "Teams sehen auf einen Blick, welche Bestellzeilen noch offen sind. Vollständig erhaltene Zeilen sind grün; alles Unvollständige—auch Teileingänge—bleibt rot, bis die empfangene Menge die bestellte erreicht oder übersteigt.",
         },
         {
-          heading: "Vertrieb & Auftragsmanagement",
-          body: "Bereits bei der Erfassung von Angeboten oder Aufträgen prüft das System im Hintergrund Ihren Lagerbestand. Grün bedeutet sofort lieferbar – ein wichtiges Versprechen an Ihre Kunden. Bei Gelb oder Rot können Sie sofort reagieren, Alternativen anbieten oder Beschaffungsprozesse auslösen.",
+          heading: "Verkaufsaufträge",
+          body: "Beim Erfassen vergleicht die Logik verfügbare Menge mit der Positionsmenge. Grün heißt volle Deckung (verfügbar ≥ Positionsmenge). Rot heißt Lücke—auch bei Teilmenge oder Null—damit Alternativen, Teillieferungen oder Beschaffung früh starten können.",
         },
       ],
       example:
-        "Stellen Sie sich vor, Sie öffnen einen großen Sammelauftrag. Statt mühsam Lieferbelege zu vergleichen, sehen Sie sofort: zwei Positionen sind grün (abgeschlossen), eine gelb (Teilmengen) und eine rot. Ihr Blick geht direkt zum Problem – Sie sparen wertvolle Minuten pro Beleg.",
-      note: "Der Leistungsumfang zum genannten Basispreis ist in der Standard-Leistungsbeschreibung abschließend definiert. Anpassungen über den Standard hinaus sind jederzeit nach vorheriger Abstimmung möglich. Diese führen zu einer Anpassung der monatlichen Gebühr und bedürfen einer gemeinsamen schriftlichen Vereinbarung.",
+        "Ein Auftrag mit vielen Zeilen: zwei grün, zwei rot. Statt Spalten im Kopf zu verrechnen, springt der Blick zuerst auf die roten Zeilen—Fußzeile oder Textfeld liefert in einem Satz die Begründung.",
     },
   }
 ];
@@ -171,6 +158,8 @@ function localizeCustomization(c: Customization, locale: string): Customization 
   if (locale !== 'de' || !c.de) return c;
   return {
     ...c,
+    title: c.de.title ?? c.title,
+    subtitle: c.de.subtitle ?? c.subtitle,
     shortDescription: c.de.shortDescription || c.shortDescription,
     highlights: c.de.highlights || c.highlights,
     details: c.de.details || c.details,

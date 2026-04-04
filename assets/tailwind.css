@@ -280,34 +280,6 @@ main.page {
   color: #546e7a;
 }
 
-.bracket-decor {
-  position: relative;
-}
-
-.bracket-decor::before {
-  content: '{';
-  position: absolute;
-  top: -6px;
-  left: -4px;
-  font-family: 'Fira Code Light', monospace;
-  font-size: 20px;
-  color: rgba(96, 123, 150, 0.3);
-  pointer-events: none;
-  line-height: 1;
-}
-
-.bracket-decor::after {
-  content: '}';
-  position: absolute;
-  bottom: -6px;
-  right: -4px;
-  font-family: 'Fira Code Light', monospace;
-  font-size: 20px;
-  color: rgba(96, 123, 150, 0.3);
-  pointer-events: none;
-  line-height: 1;
-}
-
 .cursor-blink {
   display: inline-block;
   width: 2px;

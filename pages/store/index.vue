@@ -95,6 +95,15 @@
                 <span v-if="item.badge" class="card-badge">{{ item.badge }}</span>
               </div>
 
+              <div v-if="item.images?.[0] || item.image" class="card-thumb">
+                <img
+                  :src="item.images?.[0] || item.image"
+                  :alt="item.title"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
               <h3 class="card-title">{{ item.title }}</h3>
               <p class="card-subtitle">{{ item.subtitle }}</p>
               <p class="card-desc">{{ item.shortDescription }}</p>
@@ -412,6 +421,21 @@ const iconMap: Record<string, any> = {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+}
+
+.card-thumb {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #1e2d3d;
+  aspect-ratio: 16 / 10;
+  background: #0a111c;
+}
+
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .card-icon {

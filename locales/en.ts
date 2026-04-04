@@ -95,6 +95,7 @@ export const en = {
     setupFee: 'Setup Fee',
     notFound: 'Extension not found.',
     backToStore: 'Back to store',
+    screenshots: 'Product screenshots',
   },
   about: {
     title: 'about-me',

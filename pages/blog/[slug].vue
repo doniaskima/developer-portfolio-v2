@@ -53,7 +53,7 @@
         class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll"
         :style="{ '--accent': post.accent, '--accent-soft': post.accentSoft }"
       >
-        <div class="panel bracket-decor max-w-3xl">
+        <div class="panel max-w-3xl">
           <div class="panel-title">{{ t('blogDetail.article') }}</div>
           <div class="prose-flow">
             <p v-for="(para, i) in post.body" :key="i" class="detail-text">
