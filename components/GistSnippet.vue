@@ -109,8 +109,7 @@ import python from 'highlight.js/lib/languages/python';
 import shell from 'highlight.js/lib/languages/shell';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-// Use ESM build: package `main` is UMD and breaks Nitro prerender (no `default` in Node ESM).
-import hljsVuePlugin from '@highlightjs/vue-plugin/dist/highlightjs-vue.esm.min.js';
+import hljsVuePlugin from '@highlightjs/vue-plugin';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
