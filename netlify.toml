@@ -1,9 +1,8 @@
 [build]
-  # Static site: smaller / less RAM than full SSR `nuxt build` + fixes publish dir for Nuxt 3
-  command = "yarn run generate"
+  command = "node -v && yarn -v && yarn run generate && ls -la .output && ls -la .output/public"
   publish = ".output/public"
 
 [build.environment]
-  # ~4.5GB heap needed for Nuxt 3.0 + Vite; 4096 fails JS OOM; 8192 can trigger Linux OOM kill (137).
+  NODE_VERSION = "18"
   NODE_OPTIONS = "--max-old-space-size=6144"
   NUXT_TELEMETRY_DISABLED = "1"
