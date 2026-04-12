@@ -72,13 +72,6 @@ export default defineNuxtConfig({
     viewer: false,
   },
 
-  // Bundle these for SSR/prerender — avoids Node loading UMD `main` (no ESM default) from node_modules.
-  vite: {
-    ssr: {
-      noExternal: ['@highlightjs/vue-plugin', 'highlight.js'],
-    },
-  },
-
   /**
    * * Runtime Config (Environment Variables)
    * Usage: https://nuxt.com/docs/guide/going-further/runtime-config

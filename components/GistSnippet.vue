@@ -31,7 +31,7 @@
             
         </div>
 
-        <highlightjs class="snippet-container" :code="content"/>
+        <pre class="snippet-container"><code class="hljs" v-html="highlightedHtml"></code></pre>
         <div :id="'comment' + gist.id" class="flex hidden justify-between text-menu-text font-fira_retina mt-4 pt-4 border-top">
             <p id="comment" v-if="comment" class="w-5/6">{{ comment }}</p>
             <p v-else class="w-5/6">No comments.</p>
@@ -52,7 +52,7 @@
     max-height: 220px;
 }
 
-.snippet-container pre {
+pre.snippet-container {
     margin: 0;
     overflow: hidden;
     width: 100%;
@@ -109,7 +109,6 @@ import python from 'highlight.js/lib/languages/python';
 import shell from 'highlight.js/lib/languages/shell';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-import hljsVuePlugin from '@highlightjs/vue-plugin';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
@@ -136,7 +135,8 @@ export default {
             content: null,
             language: null,
             dataFetched: false,
-            comment: null
+            comment: null,
+            highlightedHtml: '',
         }
     },
     mounted(){
@@ -151,8 +151,42 @@ export default {
         this.monthsAgo = this.setMonths(gist.created_at)
         this.content = this.setSnippet(gist)
         this.language = Object.values(gist.files)[0].language
+        this.highlightedHtml = this.highlightCode(this.content, this.language)
         this.dataFetched = true
         this.comment = await this.setComments(gist.comments_url)
+        },
+        highlightCode(code, githubLanguage) {
+            if (!code) return ''
+            const lang = this.hljsLanguageId(githubLanguage)
+            try {
+                if (lang && hljs.getLanguage(lang)) {
+                    return hljs.highlight(code, { language: lang, ignoreIllegals: true }).value
+                }
+            } catch {
+                /* fall through */
+            }
+            return hljs.highlightAuto(code).value
+        },
+        hljsLanguageId(githubLanguage) {
+            if (!githubLanguage || typeof githubLanguage !== 'string') return null
+            const g = githubLanguage.trim().toLowerCase()
+            const aliases = {
+                js: 'javascript',
+                jsx: 'javascript',
+                ts: 'typescript',
+                tsx: 'typescript',
+                py: 'python',
+                rb: 'plaintext',
+                sh: 'shell',
+                bash: 'shell',
+                zsh: 'shell',
+                yml: 'plaintext',
+                vue: 'xml',
+                html: 'xml',
+                xml: 'xml',
+            }
+            const mapped = aliases[g] || g.replace(/\s+/g, '')
+            return hljs.getLanguage(mapped) ? mapped : null
         },
         setMonths(date) {
             let now = new Date()
@@ -181,8 +215,5 @@ export default {
             comment.classList.toggle('hidden')
         }
     },
-    components: {
-        highlightjs: hljsVuePlugin.component
-    }
 }
 </script>
