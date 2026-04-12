@@ -1,3 +1,4 @@
 [build.environment]
-  # Nuxt + Tailwind can exceed Node's default ~2GB heap on Netlify
-  NODE_OPTIONS = "--max-old-space-size=4096"
+  # Nuxt 3 + Vite; 4GB was still OOM on Netlify (heap capped at NODE_OPTIONS)
+  NODE_OPTIONS = "--max-old-space-size=8192"
+  NUXT_TELEMETRY_DISABLED = "1"
