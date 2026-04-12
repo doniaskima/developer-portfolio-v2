@@ -1,6 +1,6 @@
 [build]
-  command = "node -v && yarn -v && yarn run generate && ls -la .output && ls -la .output/public"
-  publish = ".output/public"
+  command = "yarn run generate"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "18"
