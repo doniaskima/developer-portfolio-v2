@@ -1,5 +1,8 @@
-const config = require('./developer.json')
-const configDe = require('./developer.de.json')
+const config = require('./developer.json') as Record<string, unknown>
+const configDe = require('./developer.de.json') as Record<string, unknown>
+// Plain JSON clone so @nuxt/kit's klona merge never hits odd module-loader properties
+const devPublic = JSON.parse(JSON.stringify(config)) as typeof config
+const devDePublic = JSON.parse(JSON.stringify(configDe)) as typeof configDe
 const siteTitle = `${config.name} | ${config.role}`
 
 
@@ -8,7 +11,9 @@ const siteTitle = `${config.name} | ${config.role}`
  Usage: https://nuxt.com/docs/api/configuration/nuxt-config
  */
 export default defineNuxtConfig({
-
+  experimental: {
+    payloadExtraction: false,
+  },
   /**
    * * App Config
    * app config: https://nuxt.com/docs/api/configuration/nuxt-config#app
@@ -64,7 +69,6 @@ export default defineNuxtConfig({
     cssPath: '~/assets/tailwind.css',
     configPath: 'tailwind.config',
     exposeConfig: false,
-    injectPosition: 0,
     viewer: false,
   },
 
@@ -78,8 +82,8 @@ export default defineNuxtConfig({
     // Keys within public are also exposed client-side
     public: {
       apiBase: '/api',
-      dev: config,
-      devDe: configDe
+      dev: devPublic,
+      devDe: devDePublic,
     }
   }
 })

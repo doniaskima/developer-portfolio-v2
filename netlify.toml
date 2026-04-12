@@ -1,4 +1,9 @@
+[build]
+  # Static site: smaller / less RAM than full SSR `nuxt build` + fixes publish dir for Nuxt 3
+  command = "yarn run generate"
+  publish = ".output/public"
+
 [build.environment]
-  # Nuxt 3 + Vite; 4GB was still OOM on Netlify (heap capped at NODE_OPTIONS)
-  NODE_OPTIONS = "--max-old-space-size=8192"
+  # ~4.5GB heap needed for Nuxt 3.0 + Vite; 4096 fails JS OOM; 8192 can trigger Linux OOM kill (137).
+  NODE_OPTIONS = "--max-old-space-size=6144"
   NUXT_TELEMETRY_DISABLED = "1"

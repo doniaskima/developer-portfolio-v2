@@ -260,12 +260,12 @@ main.page {
 }
 
 .comment-header::before {
-  content: '/* ';
+  content: '\002f\002a\002a ';
   color: #607b96;
 }
 
 .comment-header::after {
-  content: ' */';
+  content: ' \002a\002a\002f';
   color: #607b96;
 }
 
