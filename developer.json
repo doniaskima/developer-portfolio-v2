@@ -14,11 +14,11 @@
                     },
                     "hard-skills": {
                         "title": "hard-skills",
-                        "description": "Acumatica: customization projects, business logic, screens, GI/BQL, imports, and integrations. Stack: React, TypeScript, Flutter, NestJS, Spring Boot, Node. Data: REST, OData, SQL, MongoDB, RabbitMQ. Delivery: Docker, CI/CD."
+                        "description": "<p><strong>ERP &amp; Business Systems:</strong><br/>Acumatica customization, screens, GI/BQL, imports, business logic</p><p><strong>Frontend:</strong><br/>React, TypeScript, Next.js</p><p><strong>Backend:</strong><br/>Node.js, NestJS, Spring Boot</p><p><strong>Data &amp; Integration:</strong><br/>REST APIs, OData, SQL, MongoDB, RabbitMQ</p><p><strong>DevOps &amp; Delivery:</strong><br/>Docker, CI/CD</p>"
                     },
                     "soft-skills": {
                         "title": "soft-skills",
-                        "description": "Clear communicator, collaborative, calm under pressure. I like clear goals, fast feedback, and keeping stakeholders looped in without extra noise."
+                        "description": "<p>Clear communicator, collaborative by default, and calm when things get messy.</p><p>I like clear goals, fast feedback, practical problem-solving, and keeping people aligned without unnecessary noise.</p>"
                     }
                 }
             },
@@ -28,17 +28,17 @@
                 "info": { 
                     "bio": {
                         "title": "bio",
-                        "description": "I specialize in Acumatica ERP and full-stack delivery—clear customizations, solid integrations, and engineering that fits how teams actually work."
+                        "description": "<p><strong>Donia Skima</strong> — most of what I build lives where Acumatica ERP, integrations, and web applications meet real business problems: quiet on a slide deck, obvious when something stops breaking every Monday.</p><p>Customizations, automation flows, and connected systems are my usual lane—ERP and backend first, with a modern UI when the plan needs it. I would not call myself a frontend fan; I still want the screen to feel calm and the logic behind it to stay maintainable.</p><img src=\"/remote/remote-work.webp\" alt=\"Remote work setup\" /><p>Typical threads look like this:</p><ul><li>Acumatica / Haufe X360 customization</li><li>API and third-party integrations</li><li>React / TypeScript development</li><li>Business process automation</li></ul><p>I enjoy turning knotty workflows into clean solutions—practical, scalable, and boring-in-production in the right way.</p><p>And from time to time, yes, I still vibe-code a frontend when the feature deserves a polished face.</p><blockquote class=\"bio-guilty\"><p><strong>Guilty pleasure:</strong> I can't fall asleep without murder cases, psychopath documentaries, or serial-killer series murmuring in the background. Yes, I know, I know—embarrassing. For the record: I'm not a psychopath. I swear.</p></blockquote>"
                     },
                     "interests": {
                         "title": "interests",
-                        "description": "Tooling, design systems, fast prototypes, and sharing what I learn with teams."
+                        "description": "<p>Painkiller features, useful customizations, digging deeper into ERP logic, and figuring out why a process is broken before everyone else decides it is \u201cjust how the system works.\u201d</p>"
                     },
                     "education": {
                         "title": "education",
-                        "description": "Computer Science degree – Higher Institute of Informatics and Mathematics of Monastir.",
+                        "description": "<p>Computer Science background in Monastir, with studies at ISIMM — conveniently located right in front of the beach, which was both inspiring and slightly unfair during exam season.</p>",
                         "files": {
-                            "university": "Higher Institute of Informatics and Mathematics of Monastir"
+                            "university": "ISIMM, Monastir"
                         }
                     }
                 }
@@ -49,7 +49,7 @@
                 "info": {
                     "favorite-games": {
                         "title": "favorite-games",
-                        "description": "I wind down with Valorant and co-op games with friends."
+                        "description": "<p>I tried Valorant with friends and discovered that precise shooting is not really my calling. Give me an impostor game, hidden roles, and suspicious behavior instead.</p>"
                     }
                 }
             }
@@ -59,8 +59,7 @@
         "direct": {
             "title": "contacts",
             "sources": {
-                "email": "doniaskima@doniacode.com",
-                "phone": "+330644091965"
+                "email": "doniaskima@doniacode.com"
             }
         },
         "social": {
@@ -95,7 +94,7 @@
             "title": "",
             "description": "The project, for an industrial climbers company located in Germany, is an extensive endeavor focused on creating a robust and scalable platform by integrating both existing and newly developed microservices.",
             "img": "",
-            "tech": ["Flutter","React","Nestjs","Spring-boot","RabbitMq","CSS","Typescript"],
+            "tech": ["React","Nestjs","Spring-boot","RabbitMq","CSS","Typescript"],
             "url": "/",
             "details":""
         },

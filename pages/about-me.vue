@@ -247,7 +247,9 @@
           id="commented-text"
           class="flex h-full w-full lg:border-right overflow-hidden"
         >
-          <div class="w-full h-full ml-5 mr-10 lg:my-5 overflow-scroll">
+          <div
+            class="w-full h-full ml-5 mr-10 sm:mr-12 lg:mx-8 lg:mr-14 lg:my-6 lg:pr-2 overflow-scroll"
+          >
             <CommentedText
               :text="
                 devConfig.about.sections[currentSection].info[folder]

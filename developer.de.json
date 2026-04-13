@@ -14,11 +14,11 @@
                     },
                     "hard-skills": {
                         "title": "hard-skills",
-                        "description": "Acumatica: Customization Projects, Business-Logik, Screens, GI/BQL, Importe und Integrationen. Stack: React, TypeScript, Flutter, NestJS, Spring Boot, Node. Daten: REST, OData, SQL, MongoDB, RabbitMQ. Delivery: Docker, CI/CD."
+                        "description": "<p><strong>ERP &amp; Business-Systeme:</strong><br/>Acumatica-Anpassungen, Screens, GI/BQL, Importe, Business-Logik</p><p><strong>Frontend:</strong><br/>React, TypeScript, Next.js</p><p><strong>Backend:</strong><br/>Node.js, NestJS, Spring Boot</p><p><strong>Daten &amp; Integration:</strong><br/>REST-APIs, OData, SQL, MongoDB, RabbitMQ</p><p><strong>DevOps &amp; Delivery:</strong><br/>Docker, CI/CD</p>"
                     },
                     "soft-skills": {
                         "title": "soft-skills",
-                        "description": "Klare Kommunikation, teamfähig, ruhig unter Druck. Ich mag klare Ziele, schnelles Feedback und halte Stakeholder ohne unnötigen Lärm auf dem Laufenden."
+                        "description": "<p>Klare Kommunikation, von Haus aus teamorientiert und ruhig, wenn es unübersichtlich wird.</p><p>Ich mag klare Ziele, schnelles Feedback, pragmatisches Problemlösen und alle auf einer Linie zu halten—ohne unnötigen Lärm.</p>"
                     }
                 }
             },
@@ -28,17 +28,17 @@
                 "info": {
                     "bio": {
                         "title": "bio",
-                        "description": "Ich spezialisiere mich auf Acumatica ERP und Full-Stack-Umsetzung—klare Anpassungen, belastbare Integrationen und Engineering, das zu echten Arbeitsabläufen passt."
+                        "description": "<p><strong>Donia Skima</strong> — der Großteil dessen, was ich baue, spielt sich zwischen Acumatica ERP, Integrationen und Webanwendungen ab, die echte Betriebsprobleme lösen: wenig spektakulär in der Präsentation, spürbar, wenn der Alltag plötzlich reibungsloser läuft.</p><p>Anpassungen, Automationsflows und vernetzte Systeme sind mein Alltag — zuerst ERP und Backend, dazu ein modernes UI, wenn es zur Geschichte passt. Als „Frontend-Fan“ würde ich mich nicht bezeichnen; trotzdem soll die Oberfläche ruhig wirken und der Code dahinter verständlich bleiben.</p><img src=\"/remote/remote-work.webp\" alt=\"Remote-Arbeit\" /><p>Oft stecken darin diese Themen:</p><ul><li>Acumatica / Haufe X360-Anpassungen</li><li>APIs und Drittanbieter-Integrationen</li><li>React / TypeScript-Entwicklung</li><li>Geschäftsprozess-Automatisierung</li></ul><p>Ich verwandle gern undurchsichtige Workflows in klare, wartbare Lösungen — praktisch, skalierbar und in Produktion angenehm unspektakulär.</p><p>Und ja: Ab und zu gibt es trotzdem ein bisschen „vibe-code“ am Frontend, wenn es dem Feature guttut.</p><blockquote class=\"bio-guilty\"><p><strong>Guilty pleasure:</strong> Ohne Mordfälle, Psychopathen-Dokus oder Serienkiller-Serien im Hintergrund finde ich oft keinen Schlaf. Ja, ja, ich weiß—peinlich. Nur zur Klarstellung: kein Psychopath. Ehrenwort.</p></blockquote>"
                     },
                     "interests": {
                         "title": "interests",
-                        "description": "Tooling, Design-Systeme, schnelle Prototypen und Wissensaustausch mit Teams."
+                        "description": "<p>Features, die echten Schmerz nehmen, sinnvolle Anpassungen, tiefer in ERP-Logik einsteigen und klären, warum ein Prozess wirklich bricht—bevor alle anderen beschließen, das sei einfach „normal, so funktioniert das System halt“.</p>"
                     },
                     "education": {
                         "title": "education",
-                        "description": "Informatik-Studium – Higher Institute of Informatics and Mathematics of Monastir.",
+                        "description": "<p>Informatik-Hintergrund in Monastir, Studium am ISIMM — praktischerweise direkt vor dem Strand, was inspirierend und in der Prüfungszeit zugleich leicht unfair war.</p>",
                         "files": {
-                            "university": "Higher Institute of Informatics and Mathematics of Monastir"
+                            "university": "ISIMM, Monastir"
                         }
                     }
                 }
@@ -49,7 +49,7 @@
                 "info": {
                     "favorite-games": {
                         "title": "favorite-games",
-                        "description": "Ich entspanne mich mit Valorant und Co-op-Spielen mit Freunden."
+                        "description": "<p>Ich habe Valorant mit Freunden ausprobiert und gemerkt, dass präzises Schießen nicht wirklich meine Stärke ist. Dafür nehme ich lieber Impostor-Spiele, versteckte Rollen und genug verdächtiges Verhalten.</p>"
                     }
                 }
             }
@@ -59,8 +59,7 @@
         "direct": {
             "title": "kontakte",
             "sources": {
-                "email": "doniaskima@doniacode.com",
-                "phone": "+330644091965"
+                "email": "doniaskima@doniacode.com"
             }
         },
         "social": {
@@ -95,7 +94,7 @@
             "title": "",
             "description": "Das Projekt für ein Industriekletterunternehmen in Deutschland ist ein umfangreiches Vorhaben zur Erstellung einer robusten und skalierbaren Plattform durch Integration bestehender und neu entwickelter Microservices.",
             "img": "",
-            "tech": ["Flutter","React","Nestjs","Spring-boot","RabbitMq","CSS","Typescript"],
+            "tech": ["React","Nestjs","Spring-boot","RabbitMq","CSS","Typescript"],
             "url": "/",
             "details": ""
         },
