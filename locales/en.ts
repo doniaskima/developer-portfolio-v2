@@ -41,6 +41,8 @@ export const en = {
     panelDetails: 'Project details',
     panelStack: 'Stack',
     panelLinks: 'Links and next steps',
+    panelWhatICanCustomize: 'What I can customize',
+    panelCustomizationExamples: 'Typical customization examples',
     detailsSoon: 'Details coming soon. Reach out for a walkthrough.',
     notFound: 'Project not found.',
     backToProjects: 'Back to projects',

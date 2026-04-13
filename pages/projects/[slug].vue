@@ -1,6 +1,7 @@
 <template>
   <main id="project-detail" class="page flex flex-col overflow-hidden">
-    <div v-if="project" class="flex flex-col flex-1 min-h-0 overflow-hidden">
+    <template v-if="project">
+    <div class="flex flex-col flex-1 min-h-0 overflow-hidden">
       <section
         class="project-detail-unified flex-1 min-h-0 overflow-y-auto detail-scroll relative"
         :style="{
@@ -12,7 +13,7 @@
         <div class="hero-veil hero-veil-b" aria-hidden="true"></div>
 
         <div
-          class="project-detail-inner relative z-[1] px-6 py-5 lg:px-10 lg:py-8 lg:pb-12 flex flex-col gap-10"
+          class="project-detail-inner px-6 py-5 lg:px-10 lg:py-8 lg:pb-12 flex flex-col gap-10"
         >
           <div class="space-y-3 border-bot pb-6 lg:pb-8">
             <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
@@ -47,7 +48,7 @@
                 <h1 class="text-white text-2xl lg:text-3xl font-fira_bold leading-snug">
                   {{ project.title }}
                 </h1>
-                <p class="text-base text-menu-text leading-7 max-w-4xl">
+                <p class="text-base text-menu-text leading-7 max-w-4xl whitespace-pre-line">
                   {{ project.summary || project.headline }}
                 </p>
                 <div class="flex flex-wrap gap-2">
@@ -84,6 +85,26 @@
               </div>
             </div>
 
+            <div class="panel mt-6" v-if="customizePoints.length">
+              <div class="panel-title">{{ t('projectDetail.panelWhatICanCustomize') }}</div>
+              <ul class="list">
+                <li v-for="item in customizePoints" :key="item">
+                  <span class="bullet"></span>
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="panel mt-6" v-if="customizationExamplePoints.length">
+              <div class="panel-title">{{ t('projectDetail.panelCustomizationExamples') }}</div>
+              <ul class="list">
+                <li v-for="item in customizationExamplePoints" :key="item">
+                  <span class="bullet"></span>
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+
             <div class="panel mt-6" v-if="links.length">
               <div class="panel-title">{{ t('projectDetail.panelLinks') }}</div>
               <div class="flex flex-wrap gap-3">
@@ -103,14 +124,13 @@
         </div>
       </section>
     </div>
-
-    <div
-      v-else
-      class="flex flex-1 items-center justify-center flex-col gap-3 p-8 text-menu-text"
-    >
+    </template>
+    <template v-else>
+    <div class="flex flex-1 items-center justify-center flex-col gap-3 p-8 text-menu-text">
       <p class="text-xl text-white">{{ t('projectDetail.notFound') }}</p>
       <NuxtLink to="/projects" class="cta-link">{{ t('projectDetail.backToProjects') }}</NuxtLink>
     </div>
+    </template>
   </main>
 </template>
 
@@ -147,6 +167,14 @@ const detailPoints = computed(() => {
 });
 
 const links = computed(() => project.value?.links || []);
+
+const customizePoints = computed(
+  () => project.value?.whatICanCustomize || []
+);
+
+const customizationExamplePoints = computed(
+  () => project.value?.customizationExamples || []
+);
 </script>
 
 <style scoped>
@@ -154,6 +182,11 @@ const links = computed(() => project.value?.links || []);
   background: linear-gradient(180deg, #0b1220 0%, #0a111c 60%, #0b1220 100%);
   display: flex;
   flex-direction: column;
+}
+
+.project-detail-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .project-detail-unified {

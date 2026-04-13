@@ -41,6 +41,8 @@ export const de = {
     panelDetails: 'Projektdetails',
     panelStack: 'Technologien',
     panelLinks: 'Links und nächste Schritte',
+    panelWhatICanCustomize: 'Was ich anpassen kann',
+    panelCustomizationExamples: 'Typische Anpassungsbeispiele',
     detailsSoon: 'Details folgen in Kürze. Kontaktieren Sie mich für eine Vorstellung.',
     notFound: 'Projekt nicht gefunden.',
     backToProjects: 'Zurück zu Projekten',

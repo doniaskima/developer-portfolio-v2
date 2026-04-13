@@ -29,6 +29,10 @@ export type Project = {
   problem?: string;
   solution?: string;
   impact?: string;
+  /** Optional “what I can customize” bullets (e.g. ERP services). */
+  whatICanCustomize?: string[];
+  /** Optional “typical customization examples” bullets. */
+  customizationExamples?: string[];
   accent?: string;
   accentSoft?: string;
   detailImage?: string;
@@ -43,6 +47,8 @@ export type Project = {
     solution?: string;
     impact?: string;
     timeline?: ProjectTimelineItem[];
+    whatICanCustomize?: string[];
+    customizationExamples?: string[];
   };
 };
 
@@ -53,8 +59,9 @@ const curatedProjects: Project[] = [
     headline: "Custom pricing, workflows, and data rails for Haufe X360.",
     image: "/x360/x360.png",
     detailImage: "/x360/x360-2.png",
-    summary:
-      "Extended Haufe X360 with upgrade-safe customizations for business-specific workflows. Implemented validations, automation, and integrations to reduce manual work and errors. Improved UI behavior, data consistency, and overall maintainability.",
+    summary: `Extended Haufe X360 with upgrade-safe customizations for business-specific workflows.
+Implemented validations, automation, and integrations to reduce manual work and errors.
+Improved UI behavior, data consistency, and overall maintainability.`,
     badge: "ERP",
     tech: [
       "C#",
@@ -74,13 +81,9 @@ const curatedProjects: Project[] = [
       "Transferred custom text and fields from CRQuote to SOOrder.",
     ],
     tasks: [
-      "Assessed client business processes and identified gaps between out-of-the-box ERP capabilities and operational requirements.",
-      "Designed and delivered Haufe X360 customizations to align system behavior with company-specific workflows.",
-      "Automated business rules, validations, and data synchronization to reduce manual effort and prevent operational errors.",
-      "Extended standard functionality in an upgrade-safe manner, avoiding changes to core ERP code.",
-      "Implemented smart UI behavior and safeguards to guide users and ensure consistent, correct data entry.",
-      "Built and maintained integrations with external systems using APIs and scheduled/background processes.",
-      "Ensured reliability through testing, documentation, and maintainable implementation patterns.",
+      "Extended Haufe X360 with upgrade-safe customizations for business-specific workflows.",
+      "Implemented validations, automation, and integrations to reduce manual work and errors.",
+      "Improved UI behavior, data consistency, and overall maintainability.",
     ],
     timeline: [
       {
@@ -110,12 +113,28 @@ const curatedProjects: Project[] = [
       "Added the right fields, validations, automation, and pricing logic so workflows matched the business instead of the other way around.",
     impact:
       "Reduced manual fixes, kept documents in sync, and let teams trust their ERP data.",
+    whatICanCustomize: [
+      "Add new fields when your business needs information the standard ERP does not cover.",
+      "Create custom features when a workflow does not exist out of the box.",
+      "Adapt screens and forms so users only see what is relevant for their task.",
+      "Automate manual steps to save time and reduce mistakes.",
+      "Connect the ERP with external tools and platforms so data stays aligned.",
+      "Adjust business logic so the system matches how your company really works.",
+    ],
+    customizationExamples: [
+      "A client needs extra fields for their own internal process.",
+      "A sales or service workflow needs a step the standard system does not provide.",
+      "Certain information should appear only when a specific option is selected.",
+      "Data should automatically flow from one part of the system to another.",
+      "The ERP should exchange data with another platform or tool.",
+    ],
     de: {
       title: "Haufe X360 – ERP-Anpassungen",
       headline:
         "Individuelle Preislogik, Workflows und Datenströme für Haufe X360.",
-      summary:
-        "Erweiterung von Haufe X360 mit upgrade-sicheren Anpassungen für unternehmensspezifische Workflows. Validierungen, Automatisierung und Integrationen umgesetzt, um manuelle Arbeit und Fehler zu reduzieren. UI-Verhalten, Datenkonsistenz und langfristige Wartbarkeit verbessert.",
+      summary: `Erweiterung von Haufe X360 mit upgrade-sicheren Anpassungen für unternehmensspezifische Workflows.
+Validierungen, Automatisierung und Integrationen umgesetzt, um manuelle Arbeit und Fehler zu reduzieren.
+UI-Verhalten, Datenkonsistenz und langfristige Wartbarkeit verbessert.`,
       highlights: [
         "DAC-Felder und Attribute in AR/AP/SO/IN mit Validierungen hinzugefügt.",
         "Graph-Erweiterungen und Persistenz-Hooks für Automatisierung erstellt.",
@@ -125,13 +144,9 @@ const curatedProjects: Project[] = [
         "Benutzerdefinierte Texte und Felder von CRQuote nach SOOrder übertragen.",
       ],
       tasks: [
-        "Geschäftsprozesse analysiert und Lücken zwischen Standard-ERP und Anforderungen identifiziert.",
-        "Haufe X360-Anpassungen entworfen und umgesetzt für unternehmensspezifische Workflows.",
-        "Geschäftsregeln, Validierungen und Datensynchronisation automatisiert.",
-        "Standardfunktionalität upgrade-sicher erweitert ohne Änderungen am ERP-Kern.",
-        "Intelligentes UI-Verhalten und Schutzmaßnahmen für korrekte Dateneingabe implementiert.",
-        "Integrationen mit externen Systemen über APIs erstellt und gepflegt.",
-        "Zuverlässigkeit durch Tests, Dokumentation und wartbare Muster sichergestellt.",
+        "Erweiterung von Haufe X360 mit upgrade-sicheren Anpassungen für unternehmensspezifische Workflows.",
+        "Validierungen, Automatisierung und Integrationen umgesetzt, um manuelle Arbeit und Fehler zu reduzieren.",
+        "UI-Verhalten, Datenkonsistenz und langfristige Wartbarkeit verbessert.",
       ],
       timeline: [
         {
@@ -161,6 +176,21 @@ const curatedProjects: Project[] = [
         "Die richtigen Felder, Validierungen, Automatisierungen und Preislogik hinzugefügt, damit Workflows zum Geschäft passen.",
       impact:
         "Manuelle Korrekturen reduziert, Dokumente synchron gehalten und Teams vertrauen ihren ERP-Daten.",
+      whatICanCustomize: [
+        "Neue Felder ergänzen, wenn Ihr Geschäft Informationen braucht, die das Standard-ERP nicht abdeckt.",
+        "Individuelle Funktionen entwickeln, wenn ein Workflow nicht von Haus aus vorhanden ist.",
+        "Masken und Formulare anpassen, damit Nutzer nur sehen, was für ihre Aufgabe relevant ist.",
+        "Manuelle Schritte automatisieren, um Zeit zu sparen und Fehler zu vermeiden.",
+        "Das ERP mit externen Tools und Plattformen verbinden, damit Daten konsistent bleiben.",
+        "Geschäftslogik anpassen, damit das System so arbeitet, wie Ihr Unternehmen wirklich arbeitet.",
+      ],
+      customizationExamples: [
+        "Ein Kunde benötigt zusätzliche Felder für seinen internen Prozess.",
+        "Ein Vertriebs- oder Service-Workflow braucht einen Schritt, den das Standardsystem nicht bietet.",
+        "Bestimmte Informationen sollen nur erscheinen, wenn eine bestimmte Option gewählt wurde.",
+        "Daten sollen automatisch von einem Teil des Systems in einen anderen gelangen.",
+        "Das ERP soll Daten mit einer anderen Plattform oder einem anderen Tool austauschen.",
+      ],
     },
     accent: "#FEA55F",
     accentSoft: "rgba(254, 165, 95, 0.15)",
@@ -896,6 +926,10 @@ function mergeProjects(
     tech: override.tech || base.tech || [],
     highlights: override.highlights || base.highlights,
     tasks: override.tasks || base.tasks,
+    whatICanCustomize:
+      override.whatICanCustomize || base.whatICanCustomize,
+    customizationExamples:
+      override.customizationExamples || base.customizationExamples,
     timeline: override.timeline || base.timeline,
     links: override.links || base.links,
     summary: override.summary || base.summary || base.description,
@@ -960,6 +994,12 @@ export function getLocalizedProject(
       ...(de.solution !== undefined && { solution: de.solution }),
       ...(de.impact !== undefined && { impact: de.impact }),
       ...(de.timeline !== undefined && { timeline: de.timeline }),
+      ...(de.whatICanCustomize !== undefined && {
+        whatICanCustomize: de.whatICanCustomize,
+      }),
+      ...(de.customizationExamples !== undefined && {
+        customizationExamples: de.customizationExamples,
+      }),
     };
   }
   return project;
