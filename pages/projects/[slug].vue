@@ -280,13 +280,13 @@ const customizationExamplePoints = computed(
 }
 
 .detail-showcase {
-  margin: 0 0 1.5rem;
+  margin: 0 auto 1.5rem;
   border-radius: 16px;
   border: 1px solid #1e2d3d;
   background: #0b1420;
   overflow: hidden;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
-  max-width: 100%;
+  max-width: min(100%, 768px);
   min-width: 0;
 }
 
