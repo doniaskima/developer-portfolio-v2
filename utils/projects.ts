@@ -54,7 +54,7 @@ const curatedProjects: Project[] = [
     image: "/x360/x360.png",
     detailImage: "/x360/x360-2.png",
     summary:
-      "Extended Haufe X360 with new DAC fields, pricing logic, workflow automation, and quote-to-order alignment for finance and sales teams.",
+      "Extended Haufe X360 with upgrade-safe customizations for business-specific workflows. Implemented validations, automation, and integrations to reduce manual work and errors. Improved UI behavior, data consistency, and overall maintainability.",
     badge: "ERP",
     tech: [
       "C#",
@@ -115,7 +115,7 @@ const curatedProjects: Project[] = [
       headline:
         "Individuelle Preislogik, Workflows und Datenströme für Haufe X360.",
       summary:
-        "Erweiterung von Haufe X360 mit neuen DAC-Feldern, Preislogik, Workflow-Automatisierung und Angebots-/Auftragsabgleich für Finanz- und Vertriebsteams.",
+        "Erweiterung von Haufe X360 mit upgrade-sicheren Anpassungen für unternehmensspezifische Workflows. Validierungen, Automatisierung und Integrationen umgesetzt, um manuelle Arbeit und Fehler zu reduzieren. UI-Verhalten, Datenkonsistenz und langfristige Wartbarkeit verbessert.",
       highlights: [
         "DAC-Felder und Attribute in AR/AP/SO/IN mit Validierungen hinzugefügt.",
         "Graph-Erweiterungen und Persistenz-Hooks für Automatisierung erstellt.",
