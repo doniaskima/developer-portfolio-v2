@@ -36,6 +36,8 @@ export type Project = {
   accent?: string;
   accentSoft?: string;
   detailImage?: string;
+  /** Full-width image above Project details / Stack (e.g. workflow diagram). */
+  showcaseImage?: string;
   de?: {
     title?: string;
     headline?: string;
@@ -49,6 +51,7 @@ export type Project = {
     timeline?: ProjectTimelineItem[];
     whatICanCustomize?: string[];
     customizationExamples?: string[];
+    showcaseImage?: string;
   };
 };
 
@@ -200,8 +203,8 @@ UI-Verhalten, Datenkonsistenz und langfristige Wartbarkeit verbessert.`,
     title: "JotForm to Haufe X360 Integration (Contributor)",
     headline:
       "Contributor on form-to-ERP automation with validation and retries.",
-    image: "/x360/x360.png",
-    detailImage: "/x360/x360-2.png",
+    image: "/integrations/jotform/jotform.png",
+    showcaseImage: "/integrations/jotform/jotform.png",
     summary:
       "Contributed to the delivery of a JotForm to Haufe X360 integration that automated form submissions into X360.",
     badge: "Integration",
@@ -239,11 +242,11 @@ UI-Verhalten, Datenkonsistenz und langfristige Wartbarkeit verbessert.`,
       "Supported lead, contact, and business account mapping.",
     ],
     tasks: [
-      "Contributed to pipeline improvements for webhook intake, schema validation, and robust error handling.",
-      "Supported data normalization (phone formatting, postal-code checks, attribute mapping) to match X360 rules.",
-      "Assisted with duplicate detection and safe upsert flows using X360 REST/OData endpoints.",
-      "Implemented parts of the form integration into Haufe X360, supporting validation, normalization, and safe upserts.",
-      "Supported end-to-end mapping for leads, contacts, and business accounts.",
+      "Contributed to an existing JotForm to Haufe X360 integration by implementing new form integrations and field mappings.",
+      "Worked on bug fixes and logic updates for validation, normalization, and webhook handling.",
+      "Supported data checks such as phone formatting, postal-code validation, and attribute mapping based on X360 requirements.",
+      "Assisted with duplicate detection and upsert-related logic through X360 REST/OData endpoints.",
+      "Helped maintain and extend mapping flows for leads, contacts, and business accounts.",
     ],
     timeline: [
       {
@@ -288,11 +291,11 @@ UI-Verhalten, Datenkonsistenz und langfristige Wartbarkeit verbessert.`,
         "Lead-, Kontakt- und Geschäftskonto-Mapping unterstützt.",
       ],
       tasks: [
-        "Pipeline-Verbesserungen für Webhook-Aufnahme und Fehlerbehandlung.",
-        "Datennormalisierung (Telefon, PLZ, Attribute) nach X360-Regeln.",
-        "Duplikaterkennung und sichere Upsert-Flows über X360 REST/OData.",
-        "Teile der Formularintegration in Haufe X360 implementiert.",
-        "End-to-End-Mapping für Leads, Kontakte und Geschäftskonten.",
+        "Beitrag zu einer bestehenden JotForm-zu-Haufe-X360-Integration durch neue Formularintegrationen und Feld-Mappings.",
+        "Fehlerbehebungen und Logik-Updates für Validierung, Normalisierung und Webhook-Handling umgesetzt.",
+        "Datenprüfungen unterstützt, z. B. Telefonformatierung, Postleitzahl-Validierung und Attribut-Mapping gemäß X360-Anforderungen.",
+        "Unterstützung bei Duplikaterkennung und Upsert-Logik über X360-REST-/OData-Endpunkte.",
+        "Pflege und Erweiterung der Mapping-Flows für Leads, Kontakte und Geschäftskonten unterstützt.",
       ],
       timeline: [
         {
@@ -930,6 +933,7 @@ function mergeProjects(
       override.whatICanCustomize || base.whatICanCustomize,
     customizationExamples:
       override.customizationExamples || base.customizationExamples,
+    showcaseImage: override.showcaseImage || base.showcaseImage,
     timeline: override.timeline || base.timeline,
     links: override.links || base.links,
     summary: override.summary || base.summary || base.description,
@@ -999,6 +1003,9 @@ export function getLocalizedProject(
       }),
       ...(de.customizationExamples !== undefined && {
         customizationExamples: de.customizationExamples,
+      }),
+      ...(de.showcaseImage !== undefined && {
+        showcaseImage: de.showcaseImage,
       }),
     };
   }

@@ -1,9 +1,9 @@
 <template>
   <main id="project-detail" class="page flex flex-col overflow-hidden">
     <template v-if="project">
-    <div class="flex flex-col flex-1 min-h-0 overflow-hidden">
+    <div class="flex flex-col flex-1 min-h-0 min-w-0 max-w-full overflow-hidden">
       <section
-        class="project-detail-unified flex-1 min-h-0 overflow-y-auto detail-scroll relative"
+        class="project-detail-unified flex-1 min-h-0 min-w-0 overflow-y-auto overflow-x-hidden detail-scroll relative w-full"
         :style="{
           '--accent': accent,
           '--accent-soft': accentSoft,
@@ -13,7 +13,7 @@
         <div class="hero-veil hero-veil-b" aria-hidden="true"></div>
 
         <div
-          class="project-detail-inner px-6 py-5 lg:px-10 lg:py-8 lg:pb-12 flex flex-col gap-10"
+          class="project-detail-inner w-full min-w-0 max-w-full px-6 py-5 lg:px-10 lg:py-8 lg:pb-12 flex flex-col gap-10 box-border"
         >
           <div class="space-y-3 border-bot pb-6 lg:pb-8">
             <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
@@ -36,7 +36,10 @@
             </div>
 
             <div class="hero-main">
-              <div v-if="project.detailImage || project.image" class="hero-media">
+              <div
+                v-if="(project.detailImage || project.image) && !project.showcaseImage"
+                class="hero-media"
+              >
                 <img
                   :src="project.detailImage || project.image"
                   :alt="`${project.title} preview`"
@@ -60,7 +63,16 @@
             </div>
           </div>
 
-          <div>
+          <div class="w-full min-w-0 max-w-full">
+            <figure v-if="project.showcaseImage" class="detail-showcase">
+              <img
+                :src="project.showcaseImage"
+                :alt="`${project.title} — diagram`"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
             <div class="grid gap-6 lg:grid-cols-3">
               <div class="panel lg:col-span-2">
                 <div class="panel-title">{{ t('projectDetail.panelDetails') }}</div>
@@ -182,6 +194,9 @@ const customizationExamplePoints = computed(
   background: linear-gradient(180deg, #0b1220 0%, #0a111c 60%, #0b1220 100%);
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .project-detail-inner {
@@ -190,6 +205,7 @@ const customizationExamplePoints = computed(
 }
 
 .project-detail-unified {
+  min-width: 0;
   background:
     radial-gradient(circle at 10% 20%, rgba(77, 91, 206, 0.08), transparent 40%),
     radial-gradient(circle at 12% 18%, var(--accent-soft, rgba(77, 91, 206, 0.1)), transparent 45%),
@@ -261,6 +277,26 @@ const customizationExamplePoints = computed(
 
 .hero-media:hover img {
   transform: scale(1.03);
+}
+
+.detail-showcase {
+  margin: 0 0 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #1e2d3d;
+  background: #0b1420;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.detail-showcase img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+  object-fit: contain;
 }
 
 .back-btn {
