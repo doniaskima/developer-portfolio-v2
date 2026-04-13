@@ -1,100 +1,104 @@
 <template>
   <main id="project-detail" class="page flex flex-col overflow-hidden">
-    <div v-if="project" class="flex flex-col flex-1 overflow-hidden">
+    <div v-if="project" class="flex flex-col flex-1 min-h-0 overflow-hidden">
       <section
-        class="detail-hero relative overflow-hidden border-bot"
+        class="project-detail-unified flex-1 min-h-0 overflow-y-auto detail-scroll relative"
         :style="{
           '--accent': accent,
           '--accent-soft': accentSoft,
         }"
       >
-        <div class="hero-veil hero-veil-a"></div>
-        <div class="hero-veil hero-veil-b"></div>
+        <div class="hero-veil hero-veil-a" aria-hidden="true"></div>
+        <div class="hero-veil hero-veil-b" aria-hidden="true"></div>
 
-        <div class="relative px-6 py-5 lg:px-10 lg:py-6 space-y-3">
-          <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
-            <div class="flex items-center gap-3 flex-wrap">
-              <NuxtLink to="/projects" class="back-btn">
-                <span aria-hidden="true">←</span>
-                {{ t('projectDetail.back') }}
-              </NuxtLink>
+        <div
+          class="project-detail-inner relative z-[1] px-6 py-5 lg:px-10 lg:py-8 lg:pb-12 flex flex-col gap-10"
+        >
+          <div class="space-y-3 border-bot pb-6 lg:pb-8">
+            <div class="flex items-center justify-between gap-3 flex-wrap text-sm text-menu-text">
+              <div class="flex items-center gap-3 flex-wrap">
+                <NuxtLink to="/projects" class="back-btn">
+                  <span aria-hidden="true">←</span>
+                  {{ t('projectDetail.back') }}
+                </NuxtLink>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <NuxtLink to="/projects" class="crumb">{{ t('projectDetail.breadcrumb') }}</NuxtLink>
+                  <span class="sep">/</span>
+                  <span class="crumb active">{{ project.title }}</span>
+                </div>
+              </div>
               <div class="flex items-center gap-2 flex-wrap">
-                <NuxtLink to="/projects" class="crumb">{{ t('projectDetail.breadcrumb') }}</NuxtLink>
-                <span class="sep">/</span>
-                <span class="crumb active">{{ project.title }}</span>
+                <span class="pill" v-if="project.badge">{{ project.badge }}</span>
+                <span class="pill" v-if="project.period">{{ project.period }}</span>
+                <span class="pill" v-else-if="project.role">{{ t('projectDetail.rolePrefix') }} {{ project.role }}</span>
               </div>
             </div>
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="pill" v-if="project.badge">{{ project.badge }}</span>
-              <span class="pill" v-if="project.period">{{ project.period }}</span>
-              <span class="pill" v-else-if="project.role">{{ t('projectDetail.rolePrefix') }} {{ project.role }}</span>
-            </div>
-          </div>
 
-          <div class="hero-main">
-            <div v-if="project.detailImage || project.image" class="hero-media">
-              <img
-                :src="project.detailImage || project.image"
-                :alt="`${project.title} preview`"
-                loading="lazy"
-              />
-            </div>
+            <div class="hero-main">
+              <div v-if="project.detailImage || project.image" class="hero-media">
+                <img
+                  :src="project.detailImage || project.image"
+                  :alt="`${project.title} preview`"
+                  loading="lazy"
+                />
+              </div>
 
-            <div class="space-y-3 hero-copy">
-              <h1 class="text-white text-2xl lg:text-3xl font-fira_bold leading-snug">
-                {{ project.title }}
-              </h1>
-              <p class="text-base text-menu-text leading-7 max-w-4xl">
-                {{ project.summary || project.headline }}
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span v-for="tech in project.tech" :key="tech" class="chip strong">
-                  {{ tech }}
-                </span>
+              <div class="space-y-3 hero-copy">
+                <h1 class="text-white text-2xl lg:text-3xl font-fira_bold leading-snug">
+                  {{ project.title }}
+                </h1>
+                <p class="text-base text-menu-text leading-7 max-w-4xl">
+                  {{ project.summary || project.headline }}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span v-for="tech in project.tech" :key="tech" class="chip strong">
+                    {{ tech }}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section class="flex-1 overflow-y-auto p-6 lg:p-10 detail-body detail-scroll">
-        <div class="grid gap-6 lg:grid-cols-3">
-          <div class="panel lg:col-span-2">
-            <div class="panel-title">{{ t('projectDetail.panelDetails') }}</div>
-            <ul v-if="detailPoints.length" class="list">
-              <li v-for="item in detailPoints" :key="item">
-                <span class="bullet"></span>
-                <span>{{ item }}</span>
-              </li>
-            </ul>
-            <p v-else class="text-menu-text text-sm">
-              {{ t('projectDetail.detailsSoon') }}
-            </p>
-          </div>
+          <div>
+            <div class="grid gap-6 lg:grid-cols-3">
+              <div class="panel lg:col-span-2">
+                <div class="panel-title">{{ t('projectDetail.panelDetails') }}</div>
+                <ul v-if="detailPoints.length" class="list">
+                  <li v-for="item in detailPoints" :key="item">
+                    <span class="bullet"></span>
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+                <p v-else class="text-menu-text text-sm">
+                  {{ t('projectDetail.detailsSoon') }}
+                </p>
+              </div>
 
-          <div class="panel">
-            <div class="panel-title">{{ t('projectDetail.panelStack') }}</div>
-            <div class="flex flex-wrap gap-2">
-              <span v-for="tech in project.tech" :key="tech" class="chip">
-                {{ tech }}
-              </span>
+              <div class="panel">
+                <div class="panel-title">{{ t('projectDetail.panelStack') }}</div>
+                <div class="flex flex-wrap gap-2">
+                  <span v-for="tech in project.tech" :key="tech" class="chip">
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="panel mt-6" v-if="links.length">
-          <div class="panel-title">{{ t('projectDetail.panelLinks') }}</div>
-          <div class="flex flex-wrap gap-3">
-            <a
-              v-for="link in links"
-              :key="link.href"
-              :href="link.href"
-              target="_blank"
-              rel="noopener"
-              class="link-btn"
-            >
-              {{ link.label }}
-            </a>
+            <div class="panel mt-6" v-if="links.length">
+              <div class="panel-title">{{ t('projectDetail.panelLinks') }}</div>
+              <div class="flex flex-wrap gap-3">
+                <a
+                  v-for="link in links"
+                  :key="link.href"
+                  :href="link.href"
+                  target="_blank"
+                  rel="noopener"
+                  class="link-btn"
+                >
+                  {{ link.label }}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -152,8 +156,11 @@ const links = computed(() => project.value?.links || []);
   flex-direction: column;
 }
 
-.detail-hero {
-  background: linear-gradient(135deg, var(--accent-soft, rgba(85, 101, 232, 0.12)) 0%, #0c1422 45%, #0a111c 100%);
+.project-detail-unified {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(77, 91, 206, 0.08), transparent 40%),
+    radial-gradient(circle at 12% 18%, var(--accent-soft, rgba(77, 91, 206, 0.1)), transparent 45%),
+    linear-gradient(160deg, var(--accent-soft, rgba(85, 101, 232, 0.12)) 0%, #0c1422 45%, #0a111c 100%);
 }
 
 .hero-veil {
@@ -287,10 +294,6 @@ const links = computed(() => project.value?.links || []);
 .chip.strong {
   border-color: var(--accent, #5565e8);
   background: rgba(85, 101, 232, 0.12);
-}
-
-.detail-body {
-  background: radial-gradient(circle at 10% 20%, rgba(77, 91, 206, 0.08), transparent 40%);
 }
 
 .detail-scroll {
