@@ -553,6 +553,130 @@ UI-Verhalten, Datenkonsistenz und langfristige Wartbarkeit verbessert.`,
     accentSoft: "rgba(249, 115, 22, 0.18)",
   },
   {
+    slug: "syniotec-x360-integration",
+    title: "Syniotec RAM and Haufe X360 Integration",
+    headline: "Keeps rental operations and ERP finance on the same data.",
+    image: "/integrations/syniotec/syniotec.svg",
+    showcaseImage: "/integrations/syniotec/syniotec.svg",
+    summary:
+      "Syniotec is rental operations software: teams manage equipment, bookings and contracts, and invoicing for rental work. This integration mirrors billing and master data into Haufe X360 so finance and planners work from aligned records.",
+    badge: "Integration",
+    tech: [
+      "Bun",
+      "Elysia",
+      "Swagger/OpenAPI (Scalar)",
+      "Bree",
+      "MongoDB",
+      "Syniotec RAM API",
+      "Haufe X360 (REST/OData)",
+      "Zod",
+      "Axios",
+      "Pino",
+      "Docker",
+    ],
+    links: [
+      { label: "Syniotec RAM API", href: "https://ram-api.syniotec.com/" },
+      { label: "Syniotec", href: "https://www.syniotec.com/" },
+      {
+        label: "Interfaces & integrations",
+        href: "https://syniotec.com/interfaces/",
+      },
+    ],
+    highlights: [
+      "Turns rental billing into the right ERP records so finance stays in one system.",
+      "Syncs fleet and equipment identifiers between ERP and the rental platform.",
+      "Keeps customers aligned so bookings and invoices reference the correct accounts.",
+      "Translates rental products and units of measure so line items match how you charge.",
+    ],
+    tasks: [
+      "When billing is created in Syniotec RAM, map it into Haufe X360 so AR and related documents stay consistent.",
+      "Keep equipment managed in X360 in sync with the rental platform so planners see the same machines and IDs.",
+      "Reconcile customer master data across both systems to avoid mismatched bookings and invoices.",
+      "Map rental products and measurement types (days, hours, pieces, and so on) to ERP line semantics.",
+      "Log every sync run with structured context so the team can trace issues and safely re-run work.",
+      "Expose OpenAPI (Scalar) for operators, run scheduled jobs with Bree, and validate payloads with Zod.",
+    ],
+    timeline: [
+      {
+        title: "Anchor finance",
+        detail:
+          "Flow rental-generated billing into X360 so invoicing and downstream finance use a single source of truth.",
+      },
+      {
+        title: "Align fleet and customers",
+        detail:
+          "Synchronize equipment and customer records so identifiers and account references stay matched.",
+      },
+      {
+        title: "Translate products and UoM",
+        detail:
+          "Carry rental catalog and charging logic into ERP line items with the correct units and rates.",
+      },
+      {
+        title: "Operate with traceability",
+        detail:
+          "Record sync outcomes with Pino-backed logs for follow-up, fixes, and controlled retries.",
+      },
+    ],
+    problem:
+      "Rental operations lived in Syniotec while finance and asset truth lived in Haufe X360, so billing, fleet, and customer data could drift or be re-keyed by hand.",
+    solution:
+      "Built a Bun and Elysia service with RAM and X360 APIs, MongoDB state, scheduled Bree jobs, and strict validation so rental events become reliable ERP updates.",
+    impact:
+      "Finance works from X360 without duplicate entry, planners see consistent equipment, and the team can audit and replay syncs with confidence.",
+    de: {
+      title: "Syniotec RAM und Haufe X360 Integration",
+      headline:
+        "Hält Mietbetrieb und ERP-Finanzen auf denselben Daten.",
+      summary:
+        "Syniotec ist Software für Mietbetrieb: Teams verwalten Equipment, Buchungen und Verträge sowie Abrechnung für Mietgeschäft. Diese Integration spiegelt Abrechnung und Stammdaten in Haufe X360, damit Finanzen und Planung auf abgestimmten Daten arbeiten.",
+      highlights: [
+        "Wandelt Mietabrechnung in passende ERP-Belege, damit die Finanzabteilung ein System nutzt.",
+        "Synchronisiert Flotte und Geräte-IDs zwischen ERP und Mietplattform.",
+        "Hält Kundenstammdaten konsistent, damit Buchungen und Rechnungen das richtige Konto treffen.",
+        "Übersetzt Mietprodukte und Maßeinheiten, damit Positionen zur tatsächlichen Verrechnung passen.",
+      ],
+      tasks: [
+        "Bei Abrechnung in Syniotec RAM nach Haufe X360 mappen, damit Debitoren und zugehörige Belege konsistent bleiben.",
+        "In X360 geführtes Equipment mit der Mietplattform abgleichen, damit Planer dieselben Maschinen und Kennungen sehen.",
+        "Kundenstammdaten über beide Systeme abstimmen, um falsche Buchungen und Rechnungen zu vermeiden.",
+        "Mietprodukte und Messarten (Tage, Stunden, Stück usw.) auf ERP-Positionslogik abbilden.",
+        "Jeden Sync-Lauf mit Kontext protokollieren, damit das Team nachvollziehen, korrigieren und kontrolliert erneut ausführen kann.",
+        "OpenAPI (Scalar) für Betrieb, Bree für Zeitpläne und Zod zur Payload-Validierung bereitstellen.",
+      ],
+      timeline: [
+        {
+          title: "Finanz verankern",
+          detail:
+            "Mietgenerierte Abrechnung nach X360 führen, damit Rechnungsstellung und Folgeprozesse eine Quelle nutzen.",
+        },
+        {
+          title: "Flotte und Kunden angleichen",
+          detail:
+            "Equipment- und Kundendaten synchron halten, damit Referenzen und Konten übereinstimmen.",
+        },
+        {
+          title: "Produkte und Mengeneinheiten",
+          detail:
+            "Mietkatalog und Verrechnungslogik in ERP-Positionen mit passenden Einheiten und Sätzen übertragen.",
+        },
+        {
+          title: "Nachvollziehbar betreiben",
+          detail:
+            "Sync-Ergebnisse mit Pino-Logs erfassen für Nacharbeit, Korrekturen und kontrollierte Wiederholungen.",
+        },
+      ],
+      problem:
+        "Der Mietbetrieb lief in Syniotec, Finanz- und Anlagenwahrheit in Haufe X360 — Abrechnung, Flotte und Kundendaten drohten auseinanderzulaufen oder manuell nachgepflegt zu werden.",
+      solution:
+        "Bun- und Elysia-Service mit RAM- und X360-APIs, MongoDB-Zustand, geplanten Bree-Jobs und strenger Validierung, damit Mietereignisse zuverlässige ERP-Updates werden.",
+      impact:
+        "Finanz arbeitet aus X360 ohne Doppelpflege, Planung sieht konsistentes Equipment, und das Team kann Syncs prüfen und wiederholen.",
+    },
+    accent: "#14B8A6",
+    accentSoft: "rgba(20, 184, 166, 0.2)",
+  },
+  {
     slug: "industrial-climbers-platform",
     title: "Industrial Climbers Platform",
     headline: "Reward-driven field ops for crews and subcontractors.",
